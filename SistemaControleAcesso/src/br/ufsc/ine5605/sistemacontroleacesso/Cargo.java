@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
+
 /**
  *
  * @author PEaug
