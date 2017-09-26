@@ -30,4 +30,15 @@ public class Funcionario implements IFuncionario{
         this.telefone = telefone;
         this.salario = salario;
     }
+    
+    //Metodos:
+    @Override
+    public boolean getNumeroDeMatricula() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getNome() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
