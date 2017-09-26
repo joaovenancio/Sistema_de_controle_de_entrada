@@ -10,5 +10,9 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
  * @author andre
  */
 public interface IFuncionario {
-    //Codigo
+
+    public boolean getNumeroDeMatricula();
+
+    public Object getNome();
+    
 }

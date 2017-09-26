@@ -5,19 +5,21 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import java.util.Calendar;
 
 /**
  *
  * @author PEaug
  */
-public class Funcionario {
+public class Funcionario implements IFuncionario{
     //Atributos:
     private int numeroDeMatricula;
     private String nome;
     private Calendar dataDeNascimento;
     private String telefone;
     private int salario;
+    public boolean getNumeroDeMatricula;
     
     //Construtor:
     public Funcionario (int numeroDeMatricula, String nome, Calendar dataDeNascimento,

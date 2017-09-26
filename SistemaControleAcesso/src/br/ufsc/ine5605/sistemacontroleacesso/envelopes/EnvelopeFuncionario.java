@@ -5,10 +5,17 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
+import java.util.Calendar;
+
 /**
  *
- * @author PEaug
+ * @author Joao Vitor Venancio
  */
 public class EnvelopeFuncionario {
-    
+    //Atributos:
+    public int numeroDeMatricula;
+    public String nome;
+    public Calendar dataDeNascimento;
+    public String telefone;
+    public int salario;
 }
