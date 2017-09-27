@@ -3,13 +3,8 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
+import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaFuncionario;
 import java.util.ArrayList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -18,10 +13,12 @@ import java.util.ArrayList;
 public class ControladorFuncionario {
     //Atributos:
     private ArrayList<IFuncionario> funcionarios;
+    private TelaFuncionario telaFuncionario;
     
     //Construtor:
     public ControladorFuncionario () {
         this.funcionarios = new ArrayList<IFuncionario>();
+        this.telaFuncionario = new TelaFuncionario(this);
     }
     
     //Metodos:
@@ -59,7 +56,10 @@ public class ControladorFuncionario {
         }
     }
     
-    
+    //Getter:
+    public TelaFuncionario getTelaFuncionario () {
+        return this.telaFuncionario;
+    }
     
     
 }
