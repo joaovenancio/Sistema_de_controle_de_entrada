@@ -6,6 +6,7 @@
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,16 @@ public class EnvelopeFuncionario {
     //Atributos:
     public int numeroDeMatricula;
     public String nome;
-    public Calendar dataDeNascimento;
+    public Date dataDeNascimento;
     public String telefone;
     public int salario;
+
+    //Construtor:
+    public EnvelopeFuncionario(int numeroDeMatricula, String nome, Date dataDeNascimento, String telefone, int salario) {
+        this.numeroDeMatricula = numeroDeMatricula;
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
+        this.telefone = telefone;
+        this.salario = salario;
+    }
 }
