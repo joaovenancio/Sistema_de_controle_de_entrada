@@ -11,4 +11,16 @@ package br.ufsc.ine5605.sistemacontroleacesso;
  */
 public class Gerente extends CargoSemAcesso{
     
+    public Gerente(String codigo, String nome) {
+        super(codigo, nome);
+    }
+    
+    /**
+     *@return se o cargo tem acesso
+     **/
+    @Override
+    public boolean temAcesso(){
+        return true;
+    }
+    
 }
