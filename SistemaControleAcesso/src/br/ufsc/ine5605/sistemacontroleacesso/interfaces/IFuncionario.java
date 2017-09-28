@@ -11,8 +11,11 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
  */
 public interface IFuncionario {
 
-    public boolean getNumeroDeMatricula();
+    public int getNumeroDeMatricula();
+    
+    public String getTelefone();
 
     public Object getNome();
     
+    public int getSalario();
 }

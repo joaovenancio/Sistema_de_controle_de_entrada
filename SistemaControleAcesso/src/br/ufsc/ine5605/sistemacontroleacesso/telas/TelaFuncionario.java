@@ -2,6 +2,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
 import java.util.Date;
@@ -43,6 +44,32 @@ public class TelaFuncionario {
                     EnvelopeFuncionario envelope = this.cadastrarFuncionario();
                     //try catch do controlador.addFuncionario
                     //Tratar dos erros de input que o usuario pode ter causado:
+                    try {
+                        
+                        this.controlador.adicionarFuncionario(envelope);
+                        
+                    } catch (IllegalArgumentException exception) {
+                        System.out.println("########################################");
+                        System.out.println("-" + exception.getMessage());
+                        System.out.println("########################################");
+                        System.out.println("-------------Tente novamente------------");
+                        
+                    }
+                
+                case 2:
+                    
+                    int matricula = this.removerFuncionario();
+                    if (controlador.removerFuncionarioPelaMatricula(matricula)) {
+                        System.out.println ("-Funcioario removido com sucesso!");
+                    } else {
+                        System.out.println ("-Funcionario nao encontrado pela");
+                        System.out.println ("-matricula fornecida, nao foi");
+                        System.out.println ("-possivel remove-lo");
+                    }
+                
+                case 3:
+                    
+                    this.listarFuncionarios();
             }
         }
     }
@@ -79,5 +106,33 @@ public class TelaFuncionario {
         //Enveolpe cirado para adicionar a lista
         return new EnvelopeFuncionario(numeroDeMatricula, nome, dataDeNascimento,
         telefone, salario);
+    }
+    
+    private int removerFuncionario () {
+        //Inicializar
+        System.out.println ("----------------------------------------");
+        System.out.println ("-----------Remover Funcionario----------");
+        System.out.println ("----------------------------------------");
+        System.out.println ("-Inisra o numero de matricula:__________");
+        //Capturar o valor da matricula
+        int matricula = this.teclado.nextInt();
+        
+        return matricula;
+    }
+    
+    private void listarFuncionarios () {
+        //Inicializar
+        System.out.println ("----------------------------------------");
+        System.out.println ("---------Listagem de Funcionarios-------");
+        System.out.println ("----------------------------------------");
+        //Listagem dos funcionarios
+        for (IFuncionario funcionarioLista : this.controlador.getFuncionarios()){
+            
+            System.out.println ("-Nome: " + funcionarioLista.getNome());
+            System.out.println ("-Matricula: " + funcionarioLista.getNumeroDeMatricula());
+            System.out.println ("-Telefone: " + funcionarioLista.getTelefone());
+            System.out.println ("-Salario: " + funcionarioLista.getSalario());
+            System.out.println ("----------------------------------------");
+        }
     }
 }

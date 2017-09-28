@@ -22,9 +22,8 @@ public class ControladorFuncionario {
     }
     
     //Metodos:
-    public boolean adicionarFuncionario (EnvelopeFuncionario envelope) {
+    public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
-            return false;
         } else {
             IFuncionario novoFuncionario = new Funcionario(envelope.numeroDeMatricula,
             envelope.nome, envelope.dataDeNascimento, envelope.telefone, envelope.salario);
@@ -32,27 +31,40 @@ public class ControladorFuncionario {
             //Verificar se jah existe a mesma matricula:
             for (IFuncionario funcionarioLista : funcionarios) {
                 if (funcionarioLista.getNumeroDeMatricula() == novoFuncionario.getNumeroDeMatricula() ) {
-                    return false;
+                    throw new IllegalArgumentException("Numero de matricula jah registrado");
                 } else {
                     //Verificar se jah existe o mesmo nome:
                     if (funcionarioLista.getNome().equals(novoFuncionario.getNome()) ) {
-                        return false;
+                        throw new IllegalArgumentException("Nome de funcionario jah cadastrado");
                     }
                 }
             }
             //Se o nome e a matricula não existirem, pode ser inserido:
             this.funcionarios.add(novoFuncionario);
-            return true;
             
         }
     }
     
-    public boolean removerFuncionario (IFuncionario funcionario) {
-        if (funcionario == null) {
-            return false;
-        } else {
-            this.funcionarios.remove(funcionario);
+    /*
+    Procura pela lista de IFuncioarios por um com a mesma matricula
+    @retruns true se encotrou e removeu
+    @returns false se não encotrou (portanto nao removeu)
+    */
+    public boolean removerFuncionarioPelaMatricula (int matricula) {
+        IFuncionario funcionarioRemover = null;
+        boolean encontrou = false;
+        for (IFuncionario funcionarioLista : this.funcionarios) {
+            if (funcionarioLista.getNumeroDeMatricula() == matricula) {
+                funcionarioRemover = funcionarioLista;
+                encontrou = true;
+                break;
+            }
+        }
+        if (encontrou) {
+            this.funcionarios.remove(funcionarioRemover);
             return true;
+        } else {
+            return false;
         }
     }
     
@@ -61,5 +73,8 @@ public class ControladorFuncionario {
         return this.telaFuncionario;
     }
     
+    public ArrayList<IFuncionario> getFuncionarios () {
+        return this.funcionarios;
+    }
     
 }
