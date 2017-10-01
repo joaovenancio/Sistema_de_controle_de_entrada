@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class EnvelopeFuncionario {
     public Date dataDeNascimento;
     public String telefone;
     public int salario;
+    public IFuncionario funcionario;
 
     //Construtor:
     public EnvelopeFuncionario(int numeroDeMatricula, String nome, Date dataDeNascimento, String telefone, int salario) {
@@ -27,5 +29,6 @@ public class EnvelopeFuncionario {
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.salario = salario;
+        //FALTA O FUNCIONARIO
     }
 }

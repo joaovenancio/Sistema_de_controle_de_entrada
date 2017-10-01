@@ -12,20 +12,24 @@ import java.util.ArrayList;
  */
 public class ControladorFuncionario {
     //Atributos:
-    private ArrayList<IFuncionario> funcionarios;
+    private ArrayList<Funcionario> funcionarios;
     private TelaFuncionario telaFuncionario;
     
     //Construtor:
     public ControladorFuncionario () {
-        this.funcionarios = new ArrayList<IFuncionario>();
+        this.funcionarios = new ArrayList<Funcionario>();
         this.telaFuncionario = new TelaFuncionario(this);
     }
     
     //Metodos:
+    public void iniciarTela () {
+        this.telaFuncionario.iniciar();
+    }
+    
     public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
         } else {
-            IFuncionario novoFuncionario = new Funcionario(envelope.numeroDeMatricula,
+            Funcionario novoFuncionario = new Funcionario(envelope.numeroDeMatricula,
             envelope.nome, envelope.dataDeNascimento, envelope.telefone, envelope.salario);
             //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
             //Verificar se jah existe a mesma matricula:
@@ -73,7 +77,7 @@ public class ControladorFuncionario {
         return this.telaFuncionario;
     }
     
-    public ArrayList<IFuncionario> getFuncionarios () {
+    public ArrayList<Funcionario> getFuncionarios () {
         return this.funcionarios;
     }
     

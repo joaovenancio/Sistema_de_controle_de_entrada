@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class Funcionario implements IFuncionario{
     private Date dataDeNascimento;
     private String telefone;
     private int salario;
-    public boolean getNumeroDeMatricula;
+    private ICargo cargo;
     
     //Construtor:
     public Funcionario (int numeroDeMatricula, String nome, Date dataDeNascimento,
@@ -30,26 +31,61 @@ public class Funcionario implements IFuncionario{
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.salario = salario;
+        //Falta o CARGO
     }
     
     //Metodos:
+    //Getters e setters:
     @Override
     public int getNumeroDeMatricula() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return numeroDeMatricula;
+    }
+
+    public void setNumeroDeMatricula(int numeroDeMatricula) {
+        this.numeroDeMatricula = numeroDeMatricula;
     }
 
     @Override
-    public Object getNome() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(Date dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 
     @Override
     public String getTelefone() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     @Override
     public int getSalario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return salario;
     }
+
+    public void setSalario(int salario) {
+        this.salario = salario;
+    }
+
+    public ICargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(ICargo cargo) {
+        this.cargo = cargo;
+    }
+    
 }

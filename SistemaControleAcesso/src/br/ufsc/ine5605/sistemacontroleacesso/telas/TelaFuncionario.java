@@ -23,7 +23,7 @@ public class TelaFuncionario {
     }
     
     //Metodos:
-    public void iniciaTela() {
+    public void iniciar() {
         int opcao = 0;
         while (opcao <= 3 ) {
             System.out.println ("----------------------------------------");
@@ -38,6 +38,7 @@ public class TelaFuncionario {
             System.out.println ();
             
             opcao = this.teclado.nextInt();
+            this.teclado.nextLine();
             
             switch (opcao) {
                 case 1:
