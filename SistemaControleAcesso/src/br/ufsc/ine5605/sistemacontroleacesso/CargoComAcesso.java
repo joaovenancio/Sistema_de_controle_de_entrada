@@ -5,8 +5,10 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +22,31 @@ public class CargoComAcesso extends Gerente{
         this.arrayComHorarios = new ArrayList<>();
     }
     
-    //recebe por parametro um int(?) e configura isso pra date e add na array
-    public void addHorario(){}
+    /**
+     * @param horario
+     **/
+    public String addHorario(int hora, int minutos){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        Calendar calendario = Calendar.getInstance();
+        
+        calendario.set(Calendar.HOUR_OF_DAY, hora);
+        calendario.set(Calendar.MINUTE, minutos);
+        
+        /*TODO:Implementar a lógica que está no package de testes ou pensar em
+        *uma que esteja de acordo com o alinhamento do projeto
+        */
+        //TODO:Decidir como vai ser o retorno desse método
+        for(Date dataBuscando : this.arrayComHorarios){
+            if(dataBuscando.getHours() == calendario.get(hora)){
+                if(dataBuscando.getMinutes() == calendario.get(minutos)){
+                   
+                    
+                }
+            }
+        }
+        
+    }
+    
+    //TODO:Fazer um getArray que mostre os horários do funcionário
+    //TODO:Rever se as classes estão alinhadas com o documento da homologacao
 }
