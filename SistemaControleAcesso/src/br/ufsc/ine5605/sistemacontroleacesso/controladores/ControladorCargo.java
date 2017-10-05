@@ -5,27 +5,123 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
+import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargo;
+import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaCargo;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import br.ufsc.ine5605.sistemacontroleacesso.Cargo;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
+import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
 //TODO:IMPLEMENTAR
 /**
  *
  * @author PEaug
  */
 public class ControladorCargo {
-    private TelaCargo telaCargo;
+    private Scanner scanner;
+	private TelaCargo telaCargo;
+    private ArrayList<Cargo> listaCargo;
+    private ControladorGeral controladorGeral;
+
+    public ControladorCargo(ControladorGeral controladorGeral){
+    	this.controladorGeral= controladorGeral;
+    	this.listaCargo= new ArrayList<Cargo>();
+    	this.telaCargo= new TelaCargo(this, scanner);
+    }
+
+    public void iniciarTela () {
+        this.telaCargo.iniciar();
+    }
+    
+    public void adicionarCargo(EnvelopeCargo envelope){
+		Gerente cargo= new Gerente(envelope.codigo, envelope.nome);
+
+    	if(cargo != null){
+    		if (! listaCargo.contains(cargo)){
+    			listaCargo.add(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo jah cadastrado.");
+    		}	
+    	}
+    }
+    
+    public void adicionarCargo(EnvelopeCargoSemAcesso envelope){
+		CargoSemAcesso cargo= new CargoSemAcesso(envelope.codigo, envelope.nome);
+
+    	if(cargo != null){
+    		if (! listaCargo.contains(cargo)){
+    			listaCargo.add(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo jah cadastrado.");
+    		}
+    	}
+    }
+    
+    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
+		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
+				envelope.inicio, envelope.fim );
+    	if(cargo != null){
+    		if (! listaCargo.contains(cargo)){
+    			listaCargo.add(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo jah cadastrado.");
+    		}
+    	}
+    }
+    
+    
+    public void removerCargo(EnvelopeCargo cargo){
+    	if(cargo != null){
+    		if (listaCargo.contains(cargo)){
+    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
+    			for(Funcionario func: listaFuncionario){
+    				if (func.getCargo().equals(cargo)){
+    					func.setCargo(null);
+    				}
+    			}
+    			listaCargo.remove(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo nao cadastrado.");
+    		}
+    	}
+    }
+    
+    public void modificarCargo(EnvelopeCargo[] cargo){
+    	if(cargo != null){
+    		if (listaCargo.contains(cargo[0])){
+    			cargo[0].codigo= cargo[1].codigo;
+    			cargo[0].nome= cargo[1].nome;
+    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
+    			for(Funcionario func: listaFuncionario){
+    				if (func.getCargo().equals(cargo)){
+    					func.setCargo(null);
+    				}
+    			}
+    			listaCargo.remove(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo nao cadastrado.");
+    		}
+    	}
+    }
+    
+    public ArrayList<Cargo> getListaCargo() {
+		return listaCargo;
+	}
+    
+    public TelaCargo getTelaCargo() {
+		return telaCargo;
+	}
 
     public ICargo getCargoByIndice(int indiceCargo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+		return null;
 
-    public TelaCargo getTelaCargo() {
-        return this.telaCargo;
-    }
-
-    public void adicionarCargo(EnvelopeCargoSemAcesso envelope) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

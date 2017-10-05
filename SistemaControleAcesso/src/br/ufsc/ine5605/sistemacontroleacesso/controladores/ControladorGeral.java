@@ -16,7 +16,7 @@ public class ControladorGeral {
     
     //Construtor:
     public ControladorGeral() {
-        this.controladorCargo = new ControladorCargo();
+        this.controladorCargo = new ControladorCargo(this);
         this.controladorFuncionario = new ControladorFuncionario(this);
     }
     

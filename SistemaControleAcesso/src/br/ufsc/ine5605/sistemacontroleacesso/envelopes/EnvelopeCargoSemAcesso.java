@@ -5,10 +5,20 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
+
 /**
  *
  * @author PEaug
  */
 public class EnvelopeCargoSemAcesso {
-    
+	public String codigo;
+	public String nome;
+	public ICargo cargo;
+	
+	public EnvelopeCargoSemAcesso(String codigo, String nome) {
+		this.codigo = codigo;
+		this.nome = nome;
+	}
+
 }

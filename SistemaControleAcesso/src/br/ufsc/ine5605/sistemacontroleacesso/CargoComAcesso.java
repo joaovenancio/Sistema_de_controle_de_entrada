@@ -16,9 +16,13 @@ import java.util.Date;
  */
 public class CargoComAcesso extends Gerente{
      private ArrayList<Calendar> arrayComHorarios;
+     private int inicio;
+     private int fim;
              
-    public CargoComAcesso(String codigo, String nome) {
+    public CargoComAcesso(String codigo, String nome, int inicio, int fim) {
         super(codigo, nome);
+        this.inicio= inicio;
+        this.fim= fim;
         this.arrayComHorarios = new ArrayList<>();
     }
     

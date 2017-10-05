@@ -24,10 +24,6 @@ public class EnvelopeCargo {
 	}
 	
 	public boolean ehGerente(){
-		if(cargo instanceof Gerente){
-			return true;
-		}
-		
-		return false;
+		return true;
 	}
 }
