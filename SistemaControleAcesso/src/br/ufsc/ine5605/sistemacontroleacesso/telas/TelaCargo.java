@@ -7,6 +7,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoSemAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import java.util.Scanner;
 //TODO:IMPLEMENTAR
 
@@ -52,7 +53,7 @@ public class TelaCargo {
                     //Tratar dos erros de input que o usuario pode ter causado:
                     try {
 
-                        this.controladorCargo.adicionarCargo(envelope);
+                        this.controladorCargo.adicionarCargoSemAcesso(envelope);
 
                     } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");
@@ -63,29 +64,57 @@ public class TelaCargo {
                     }
 
                 //case 2:
-
-                    //int matricula = this.removerFuncionario();
-                    //if (controlador.removerFuncionarioPelaMatricula(matricula)) {
-                    //    System.out.println("-Funcioario removido com sucesso!");
-                    //} else {
-                    //    System.out.println("-Funcionario nao encontrado pela");
-                    //    System.out.println("-matricula fornecida, nao foi");
-                    //    System.out.println("-possivel remove-lo");
-                    //}
-
+                //int matricula = this.removerFuncionario();
+                //if (controlador.removerFuncionarioPelaMatricula(matricula)) {
+                //    System.out.println("-Funcioario removido com sucesso!");
+                //} else {
+                //    System.out.println("-Funcionario nao encontrado pela");
+                //    System.out.println("-matricula fornecida, nao foi");
+                //    System.out.println("-possivel remove-lo");
+                //}
                 case 3:
 
                     this.listarCargos();
             }
         }
     }
+    private EnvelopeCargoSemAcesso criarCargoSemAcesso() {
+     System.out.println ("----------------------------------------");
+        System.out.println ("-------------Novo Cargo-----------");
+        System.out.println ("----------------------------------------");
+        
+        System.out.println ("-Insira um nome:_________");
+        String nome = this.teclado.nextLine();
+        this.teclado.nextLine();
+        
+        System.out.println ("-Insira um código:___________________");
+        String codigo = this.teclado.nextLine();
+        this.teclado.nextLine();
+        
+        
+        //Enveolpe cirado para adicionar a lista
+        return new EnvelopeCargoSemAcesso(nome, codigo);
+}
 
     public void listarCargos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        //Inicializar
+        System.out.println("----------------------------------------");
+        System.out.println("---------Listagem de Funcionarios-------");
+        System.out.println("----------------------------------------");
+        //Listagem dos funcionarios
+        for (ICargo cargoLista : this.controladorCargo.getCargos()) {
 
-    private EnvelopeCargoSemAcesso criarCargoSemAcesso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            System.out.println("-Nome: " + cargoLista.getNome());
+            System.out.println("-Matricula: " + cargoLista.getNome());
+            System.out.println("-Telefone: " + cargoLista.getCodigo());
+            System.out.println("----------------------------------------");
+        }
     }
-
+    
+    
 }
+    
+
+
+
+

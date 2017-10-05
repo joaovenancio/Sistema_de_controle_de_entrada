@@ -10,6 +10,10 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
  * @author PEaug
  */
 public interface ICargo {
+
+    public String getNome();
+
+    public String getCodigo();
     
     
     
