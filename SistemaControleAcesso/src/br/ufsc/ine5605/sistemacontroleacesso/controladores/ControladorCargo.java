@@ -5,10 +5,22 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
+import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaCargo;
+
 /**
  *
  * @author PEaug
  */
 public class ControladorCargo {
+    private TelaCargo telaCargo;
+
+    public ICargo getCargoByIndice(int indiceCargo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public TelaCargo getTelaCargo() {
+        return this.telaCargo;
+    }
     
 }

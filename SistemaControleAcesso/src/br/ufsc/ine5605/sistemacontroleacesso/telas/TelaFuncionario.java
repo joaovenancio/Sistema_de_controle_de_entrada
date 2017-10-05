@@ -21,6 +21,7 @@ public class TelaFuncionario {
     //Construtor:
     public TelaFuncionario (ControladorFuncionario controlador) {
         this.controlador = controlador;
+        this.teclado = new Scanner(System.in);
     }
     
     //Metodos:
@@ -126,7 +127,7 @@ public class TelaFuncionario {
         //Associar um cargo a um funcionario:
         System.out.println ("-----Slecione o cargo do funcionario----");
         //Mostra os cargos
-        this.controlador.getControladorGeral().getControladorCargo().getTela().listarCargos();
+        this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
         //Input para selecionar o cargo
         System.out.println ("-");
         System.out.println ("-Digite o numero do cargo:_______________");
