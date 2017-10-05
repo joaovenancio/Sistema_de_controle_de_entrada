@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 
 /**
@@ -18,17 +19,20 @@ public class EnvelopeFuncionario {
     public String telefone;
     public int salario;
     public IFuncionario funcionario;
+    public ICargo cargo;
     //Informações para a criacao do atribute Calendar
     public int ano;
     public int mes;
     public int dia;
+    
 
     //Construtor:
-    public EnvelopeFuncionario(int numeroDeMatricula, String nome, String telefone, int salario, int ano, int mes, int dia) {
+    public EnvelopeFuncionario(int numeroDeMatricula, String nome, String telefone, int salario, ICargo cargo, int ano, int mes, int dia) {
         this.numeroDeMatricula = numeroDeMatricula;
         this.nome = nome;
         this.telefone = telefone;
         this.salario = salario;
+        this.cargo = cargo;
         this.ano = ano;
         this.mes = mes;
         this.dia = dia;

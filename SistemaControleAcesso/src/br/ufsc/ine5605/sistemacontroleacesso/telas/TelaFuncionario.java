@@ -2,6 +2,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
@@ -111,9 +112,22 @@ public class TelaFuncionario {
         int salario = this.teclado.nextInt();
         this.teclado.nextLine();
         
+        
+        //Associar um cargo a um funcionario:
+        System.out.println ("-----Slecione o cargo do funcionario----");
+        //Mostra os cargos
+        this.controlador.getControladorGeral().getControladorCargo().getTela().listarCargos();
+        //Input para selecionar o cargo
+        System.out.println ("-");
+        System.out.println ("-Digite o numero do cargo:_______________");
+        int indiceCargo = teclado.nextInt();
+        teclado.nextLine();
+        //GetCargo
+        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().getCargoByIndice(indiceCargo);
+        
         //Enveolpe cirado para adicionar a lista
         return new EnvelopeFuncionario(numeroDeMatricula, nome,
-        telefone, salario, ano, mes, dia);
+        telefone, salario, cargo, ano, mes, dia);
     }
     
     private int removerFuncionario () {

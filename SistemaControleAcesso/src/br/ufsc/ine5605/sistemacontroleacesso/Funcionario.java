@@ -25,11 +25,12 @@ public class Funcionario implements IFuncionario{
     
     //Construtor:
     public Funcionario (int numeroDeMatricula, String nome,
-    String telefone, int salario, Calendar dataDeNascimento) {
+    String telefone, int salario, ICargo cargo, Calendar dataDeNascimento) {
         this.numeroDeMatricula = numeroDeMatricula;
         this.nome = nome;
         this.telefone = telefone;
         this.salario = salario;
+        this.cargo = cargo;
         this.dataDeNascimento = dataDeNascimento;
         //Falta o CARGO
     }

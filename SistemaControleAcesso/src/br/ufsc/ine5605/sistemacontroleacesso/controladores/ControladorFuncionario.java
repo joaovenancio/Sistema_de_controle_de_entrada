@@ -13,20 +13,30 @@ import java.util.Calendar;
  */
 public class ControladorFuncionario {
     //Atributos:
+    private ControladorGeral controladorGeral;
     private ArrayList<Funcionario> funcionarios;
     private TelaFuncionario telaFuncionario;
     
     //Construtor:
-    public ControladorFuncionario () {
+    public ControladorFuncionario (ControladorGeral controladorGeral) {
+        this.controladorGeral = controladorGeral;
         this.funcionarios = new ArrayList<Funcionario>();
         this.telaFuncionario = new TelaFuncionario(this);
     }
     
     //Metodos:
+    /*
+     * Chama a tela do controlador e inicia ela.
+    */
     public void iniciarTela () {
         this.telaFuncionario.iniciar();
     }
     
+    /*
+    Confere se os imputs de dados estao corretos, se nao estiver, joga uma excecao.
+    Se estiver tudo certo, instancia um novo funcionario e adiciona ele a array dentro
+    do controlador.
+    */
     public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
         } else {
@@ -51,7 +61,7 @@ public class ControladorFuncionario {
             
             //Criar o novoFuncionario:
             Funcionario novoFuncionario = new Funcionario(envelope.numeroDeMatricula,
-            envelope.nome, envelope.telefone, envelope.salario, dataDeNascimento);
+            envelope.nome, envelope.telefone, envelope.salario, envelope.cargo, dataDeNascimento);
             
             //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
             //Verificar se jah existe a mesma matricula:
@@ -73,8 +83,8 @@ public class ControladorFuncionario {
     
     /*
     Procura pela lista de IFuncioarios por um com a mesma matricula
-    @retruns true se encotrou e removeu
-    @returns false se não encotrou (portanto nao removeu)
+    @retrun true se encotrou e removeu
+    @return false se não encotrou (portanto nao removeu)
     */
     public boolean removerFuncionarioPelaMatricula (int matricula) {
         IFuncionario funcionarioRemover = null;
@@ -102,5 +112,8 @@ public class ControladorFuncionario {
     public ArrayList<Funcionario> getFuncionarios () {
         return this.funcionarios;
     }
-    
+
+    public ControladorGeral getControladorGeral() {
+        return controladorGeral;
+    }
 }
