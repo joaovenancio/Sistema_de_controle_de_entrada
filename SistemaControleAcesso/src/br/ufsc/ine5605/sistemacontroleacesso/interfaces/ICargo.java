@@ -11,4 +11,6 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
  */
 public interface ICargo {
     
+    
+    
 }

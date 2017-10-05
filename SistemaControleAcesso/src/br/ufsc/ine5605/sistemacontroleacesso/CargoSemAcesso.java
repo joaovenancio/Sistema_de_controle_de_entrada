@@ -23,4 +23,5 @@ public class CargoSemAcesso extends Cargo{
     public boolean temAcesso(){
         return false;
     }
+
 }

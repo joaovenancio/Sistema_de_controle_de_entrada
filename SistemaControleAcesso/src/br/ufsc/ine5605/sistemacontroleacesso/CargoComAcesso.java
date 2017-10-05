@@ -23,10 +23,11 @@ public class CargoComAcesso extends Gerente{
     }
     
     /**
-     * @param horario
+     * @param hora int - hora a ser adicionada no Array de horas
+     * @param minutos int - minutos a serem adicionados no Array de horas
+     * @return
      **/
     public String addHorario(int hora, int minutos){
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         Calendar calendario = Calendar.getInstance();
         
         calendario.set(Calendar.HOUR_OF_DAY, hora);
@@ -36,15 +37,14 @@ public class CargoComAcesso extends Gerente{
         *uma que esteja de acordo com o alinhamento do projeto
         */
         //TODO:Decidir como vai ser o retorno desse método
-        for(Date dataBuscando : this.arrayComHorarios){
-            if(dataBuscando.getHours() == calendario.get(hora)){
-                if(dataBuscando.getMinutes() == calendario.get(minutos)){
-                   
-                    
+        for(Calendar dataBuscando : this.arrayComHorarios){
+            if(dataBuscando.get(Calendar.HOUR) == calendario.get(Calendar.HOUR)){
+                if(dataBuscando.get(Calendar.MINUTE) == calendario.get(Calendar.MINUTE)){
+                   return "Horário já adicionado para esse funcionário";
                 }
             }
         }
-        
+        return "Horário adicionado com sucesso!";
     }
     
     //TODO:Fazer um getArray que mostre os horários do funcionário
