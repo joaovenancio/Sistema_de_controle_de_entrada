@@ -12,25 +12,25 @@ import java.util.Date;
 
 /**
  *
- * @author PEaug
+ * @author Joao Vitor Venancio
  */
 public class Funcionario implements IFuncionario{
     //Atributos:
     private int numeroDeMatricula;
     private String nome;
-    private Date dataDeNascimento;
     private String telefone;
     private int salario;
     private ICargo cargo;
+    private Calendar dataDeNascimento;
     
     //Construtor:
-    public Funcionario (int numeroDeMatricula, String nome, Date dataDeNascimento,
-    String telefone, int salario) {
+    public Funcionario (int numeroDeMatricula, String nome,
+    String telefone, int salario, Calendar dataDeNascimento) {
         this.numeroDeMatricula = numeroDeMatricula;
         this.nome = nome;
-        this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.salario = salario;
+        this.dataDeNascimento = dataDeNascimento;
         //Falta o CARGO
     }
     
@@ -54,11 +54,11 @@ public class Funcionario implements IFuncionario{
         this.nome = nome;
     }
 
-    public Date getDataDeNascimento() {
+    public Calendar getDataDeNascimento() {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
+    public void setDataDeNascimento(Calendar dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 

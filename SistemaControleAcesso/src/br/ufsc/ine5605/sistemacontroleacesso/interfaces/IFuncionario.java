@@ -7,7 +7,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
 
 /**
  *
- * @author andre
+ * @author Joao Vitor Venancio
  */
 public interface IFuncionario {
 

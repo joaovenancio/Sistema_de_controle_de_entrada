@@ -42,6 +42,7 @@ public class TelaFuncionario {
             
             switch (opcao) {
                 case 1:
+                    
                     EnvelopeFuncionario envelope = this.cadastrarFuncionario();
                     //try catch do controlador.addFuncionario
                     //Tratar dos erros de input que o usuario pode ter causado:
@@ -91,8 +92,14 @@ public class TelaFuncionario {
         
         //Aqui fica os inputs para a data de nascimento, esperar a implementacao
         //do Calendar
-        System.out.println ("-:______________________________________");
-        Date dataDeNascimento = new Date();
+        System.out.println ("-Dia do nascimento:_____________________");
+        int dia = this.teclado.nextInt();
+        this.teclado.nextLine();
+        System.out.println ("-Mes do nascimento:_____________________");
+        int mes = this.teclado.nextInt();
+        this.teclado.nextLine();
+        System.out.println ("-Ano do nascimento:_____________________");
+        int ano = this.teclado.nextInt();
         this.teclado.nextLine();
         //
         
@@ -105,8 +112,8 @@ public class TelaFuncionario {
         this.teclado.nextLine();
         
         //Enveolpe cirado para adicionar a lista
-        return new EnvelopeFuncionario(numeroDeMatricula, nome, dataDeNascimento,
-        telefone, salario);
+        return new EnvelopeFuncionario(numeroDeMatricula, nome,
+        telefone, salario, ano, mes, dia);
     }
     
     private int removerFuncionario () {
@@ -117,6 +124,7 @@ public class TelaFuncionario {
         System.out.println ("-Inisra o numero de matricula:__________");
         //Capturar o valor da matricula
         int matricula = this.teclado.nextInt();
+        this.teclado.nextLine();
         
         return matricula;
     }
