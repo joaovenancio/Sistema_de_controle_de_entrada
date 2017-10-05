@@ -12,6 +12,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
  * @author PEaug
  */
 public class EnvelopeCargoSemAcesso {
+<<<<<<< HEAD
 	public String codigo;
 	public String nome;
 	public ICargo cargo;
@@ -21,4 +22,33 @@ public class EnvelopeCargoSemAcesso {
 		this.nome = nome;
 	}
 
+=======
+    private String nome;
+    private String codigo;
+
+    public EnvelopeCargoSemAcesso(String nome, String codigo) {
+        this.nome = nome;
+        this.codigo = codigo;
+    }
+
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+    
+    
+>>>>>>> 80882d1ee8c1a7393e76f5fbf665c7719335e1a2
 }
