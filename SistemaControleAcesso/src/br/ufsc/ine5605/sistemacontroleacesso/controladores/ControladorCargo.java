@@ -5,9 +5,10 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
+import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaCargo;
-
+//TODO:IMPLEMENTAR
 /**
  *
  * @author PEaug
@@ -21,6 +22,10 @@ public class ControladorCargo {
 
     public TelaCargo getTelaCargo() {
         return this.telaCargo;
+    }
+
+    public void adicionarCargo(EnvelopeCargoSemAcesso envelope) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

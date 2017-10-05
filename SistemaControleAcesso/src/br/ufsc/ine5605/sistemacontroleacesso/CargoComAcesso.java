@@ -33,10 +33,6 @@ public class CargoComAcesso extends Gerente{
         calendario.set(Calendar.HOUR_OF_DAY, hora);
         calendario.set(Calendar.MINUTE, minutos);
         
-        /*TODO:Implementar a lógica que está no package de testes ou pensar em
-        *uma que esteja de acordo com o alinhamento do projeto
-        */
-        //TODO:Decidir como vai ser o retorno desse método
         for(Calendar dataBuscando : this.arrayComHorarios){
             if(dataBuscando.get(Calendar.HOUR) == calendario.get(Calendar.HOUR)){
                 if(dataBuscando.get(Calendar.MINUTE) == calendario.get(Calendar.MINUTE)){
@@ -47,6 +43,5 @@ public class CargoComAcesso extends Gerente{
         return "Horário adicionado com sucesso!";
     }
     
-    //TODO:Fazer um getArray que mostre os horários do funcionário
     //TODO:Rever se as classes estão alinhadas com o documento da homologacao
 }

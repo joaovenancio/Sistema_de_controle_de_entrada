@@ -32,7 +32,7 @@ public abstract class Cargo implements ICargo {
     }
     
     /**
-     *@return se o cargo tem acesso
+     *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      **/
     public boolean temAcesso(){
         return true;

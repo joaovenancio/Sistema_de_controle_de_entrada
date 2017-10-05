@@ -17,7 +17,7 @@ public class CargoSemAcesso extends Cargo{
     }
     
     /**
-     *@return se o cargo tem acesso
+     *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      **/
     @Override
     public boolean temAcesso(){
