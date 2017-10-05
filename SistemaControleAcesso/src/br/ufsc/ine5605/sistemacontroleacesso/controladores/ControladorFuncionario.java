@@ -5,6 +5,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaFuncionario;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -12,25 +13,56 @@ import java.util.ArrayList;
  */
 public class ControladorFuncionario {
     //Atributos:
+    private ControladorGeral controladorGeral;
     private ArrayList<Funcionario> funcionarios;
     private TelaFuncionario telaFuncionario;
     
     //Construtor:
-    public ControladorFuncionario () {
+    public ControladorFuncionario (ControladorGeral controladorGeral) {
+        this.controladorGeral = controladorGeral;
         this.funcionarios = new ArrayList<Funcionario>();
         this.telaFuncionario = new TelaFuncionario(this);
     }
     
     //Metodos:
+    /*
+     * Chama a tela do controlador e inicia ela.
+    */
     public void iniciarTela () {
         this.telaFuncionario.iniciar();
     }
     
+    /*
+    Confere se os imputs de dados estao corretos, se nao estiver, joga uma excecao.
+    Se estiver tudo certo, instancia um novo funcionario e adiciona ele a array dentro
+    do controlador.
+    */
     public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
         } else {
+            //Fazer o tratamento dos dados:
+            //Ano nao pode ser abaixo de 0
+            if (envelope.ano < 0 ) {
+                throw new IllegalArgumentException("Ano de nascimento invalido");
+                //Mes nao pode ser abaixou ou acima de 12
+            } else if (!(envelope.mes >= 1 && envelope.mes <= 12)) {
+                throw new IllegalArgumentException("Mes de nascimento invalido, extrapolou os meses possiveis");
+                //O dia precisa ser maior do que 1 e menor do que 31
+            } else if (!(envelope.dia > 0 && envelope.dia <= 31)) {
+                throw new IllegalArgumentException("Dia do nascimento invalida, não existe dia com esse numero");
+            }
+            
+            //Feito o tratamento do ano, criar um objeto do tipo Calendar para poder cirar o funcionario
+            Calendar dataDeNascimento = Calendar.getInstance();
+            dataDeNascimento.clear();
+            dataDeNascimento.set(Calendar.YEAR, envelope.ano);
+            dataDeNascimento.set(Calendar.MONTH, envelope.mes -1); //Os meses começam a contar no 0, por isso o menos um
+            dataDeNascimento.set(Calendar.DATE, envelope.dia);
+            
+            //Criar o novoFuncionario:
             Funcionario novoFuncionario = new Funcionario(envelope.numeroDeMatricula,
-            envelope.nome, envelope.dataDeNascimento, envelope.telefone, envelope.salario);
+            envelope.nome, envelope.telefone, envelope.salario, envelope.cargo, dataDeNascimento);
+            
             //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
             //Verificar se jah existe a mesma matricula:
             for (IFuncionario funcionarioLista : funcionarios) {
@@ -43,7 +75,7 @@ public class ControladorFuncionario {
                     }
                 }
             }
-            //Se o nome e a matricula não existirem, pode ser inserido:
+            //Se o nome e a matricula não existirem, pode ser adicionado:
             this.funcionarios.add(novoFuncionario);
             
         }
@@ -51,8 +83,8 @@ public class ControladorFuncionario {
     
     /*
     Procura pela lista de IFuncioarios por um com a mesma matricula
-    @retruns true se encotrou e removeu
-    @returns false se não encotrou (portanto nao removeu)
+    @retrun true se encotrou e removeu
+    @return false se não encotrou (portanto nao removeu)
     */
     public boolean removerFuncionarioPelaMatricula (int matricula) {
         IFuncionario funcionarioRemover = null;
@@ -80,5 +112,8 @@ public class ControladorFuncionario {
     public ArrayList<Funcionario> getFuncionarios () {
         return this.funcionarios;
     }
-    
+
+    public ControladorGeral getControladorGeral() {
+        return controladorGeral;
+    }
 }
