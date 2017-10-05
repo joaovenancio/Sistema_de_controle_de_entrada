@@ -24,6 +24,10 @@ public class TelaFuncionario {
     }
     
     //Metodos:
+    /**
+     * Mostra uma interface grafica para o usuario interagir. Nele ele pode selecionar
+     * o que quer fazer sobre os funcionarios.
+     */
     public void iniciar() {
         int opcao = 0;
         while (opcao <= 3 ) {
@@ -77,6 +81,12 @@ public class TelaFuncionario {
         }
     }
 
+    /**
+     * Cria uma interface grafica para o usuario poder inserir os dados para a 
+     * criacao de um Funcionario.
+     * @return EnvelopeFuncionario com as informacoes coletadas via insercao
+     * no console.
+     */
     private EnvelopeFuncionario cadastrarFuncionario() {
         //Capturar os valores para criar os funcionarios
         System.out.println ("----------------------------------------");
@@ -130,6 +140,11 @@ public class TelaFuncionario {
         telefone, salario, cargo, ano, mes, dia);
     }
     
+    /**
+     * Cria uma interface para o usuario poder digitar a matricula que sera
+     * excluida do sistema.
+     * @return int com o numero da matricula que o usuario digitou.
+     */
     private int removerFuncionario () {
         //Inicializar
         System.out.println ("----------------------------------------");
@@ -143,6 +158,9 @@ public class TelaFuncionario {
         return matricula;
     }
     
+    /**
+     * Exibe uma lista de todos os usuarios cadastrados no sistema.
+     */
     private void listarFuncionarios () {
         //Inicializar
         System.out.println ("----------------------------------------");

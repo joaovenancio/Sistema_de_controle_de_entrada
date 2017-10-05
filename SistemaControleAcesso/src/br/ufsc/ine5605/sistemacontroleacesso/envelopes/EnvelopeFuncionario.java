@@ -20,7 +20,7 @@ public class EnvelopeFuncionario {
     public int salario;
     public IFuncionario funcionario;
     public ICargo cargo;
-    //Informações para a criacao do atribute Calendar
+    //Informações para a criacao do atributo Calendar
     public int ano;
     public int mes;
     public int dia;
@@ -36,6 +36,5 @@ public class EnvelopeFuncionario {
         this.ano = ano;
         this.mes = mes;
         this.dia = dia;
-        //FALTA O FUNCIONARIO
     }
 }

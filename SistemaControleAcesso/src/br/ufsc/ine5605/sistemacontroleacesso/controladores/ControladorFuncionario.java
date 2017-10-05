@@ -25,18 +25,19 @@ public class ControladorFuncionario {
     }
     
     //Metodos:
-    /*
+    /**
      * Chama a tela do controlador e inicia ela.
-    */
+     */
     public void iniciarTela () {
         this.telaFuncionario.iniciar();
     }
     
-    /*
-    Confere se os imputs de dados estao corretos, se nao estiver, joga uma excecao.
-    Se estiver tudo certo, instancia um novo funcionario e adiciona ele a array dentro
-    do controlador.
-    */
+    /**
+     * Confere se os imputs de dados estao corretos, se nao estiver, joga uma excecao.
+     * Se estiver tudo certo, instancia um novo funcionario e adiciona ele a array dentro
+     * do controlador.
+     * @param envelope 
+     */
     public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
         } else {
@@ -81,11 +82,11 @@ public class ControladorFuncionario {
         }
     }
     
-    /*
-    Procura pela lista de IFuncioarios por um com a mesma matricula
-    @retrun true se encotrou e removeu
-    @return false se não encotrou (portanto nao removeu)
-    */
+    /**
+     * Procura pela lista de IFuncioarios por um com a mesma matricula
+     * @param matricula int - Matricula do funcionaio que se quer remover
+     * @retrun boolean - True se encotrou e removeu / False se não encotrou (portanto nao removeu)
+     */
     public boolean removerFuncionarioPelaMatricula (int matricula) {
         IFuncionario funcionarioRemover = null;
         boolean encontrou = false;
