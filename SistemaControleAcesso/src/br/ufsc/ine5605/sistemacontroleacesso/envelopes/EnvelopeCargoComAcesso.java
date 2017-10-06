@@ -15,14 +15,10 @@ public class EnvelopeCargoComAcesso {
 	public String codigo;
 	public String nome;
 	public ICargo cargo;
-	public int inicio;
-	public int fim;
-	
-	public EnvelopeCargoComAcesso(String codigo, String nome, int inicio, int fim) {
+
+	public EnvelopeCargoComAcesso(String codigo, String nome) {
 		this.codigo = codigo;
 		this.nome = nome;
-		this.inicio = inicio;
-		this.fim = fim;
 	}
     
 }

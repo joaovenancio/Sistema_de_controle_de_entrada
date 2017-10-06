@@ -22,8 +22,4 @@ public class EnvelopeCargo {
 		this.codigo = codigo;
 		this.nome = nome;
 	}
-	
-	public boolean ehGerente(){
-		return true;
-	}
 }
