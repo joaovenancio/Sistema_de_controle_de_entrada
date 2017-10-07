@@ -17,15 +17,21 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 public class EnvelopeCargoComAcesso {
 	public String codigo;
 	public String nome;
-	public ICargo cargo;
-
+	public ICargo cargo;//Qual a necessidade desse atributo??
 	public ArrayList<Calendar> arrayComHorarios;
 
-
+        /*
+        *@param String - Código do cargo a ser adicionado
+        *@param String - Nome do cargo a ser criado
+        *@param Calendar - Horário de ínicio de expediente do cargo
+        *@param Calendar - Horário de final de expediente do cargo        
+        */
 	public EnvelopeCargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
 		this.codigo = codigo;
 		this.nome = nome;
                 this.arrayComHorarios = new ArrayList<>();
+                this.arrayComHorarios.add(inicio);
+                this.arrayComHorarios.add(fim);
                 
 	}
     
