@@ -5,6 +5,9 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 
 /**
@@ -16,7 +19,10 @@ public class EnvelopeCargoComAcesso {
 	public String nome;
 	public ICargo cargo;
 
-	public EnvelopeCargoComAcesso(String codigo, String nome) {
+	public ArrayList<Calendar> arrayComHorarios;
+
+
+	public EnvelopeCargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
 		this.codigo = codigo;
 		this.nome = nome;
 	}

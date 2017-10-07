@@ -9,11 +9,11 @@ import br.ufsc.ine5605.sistemacontroleacesso.Cargo;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoComAcesso;
-import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 
+import java.util.Calendar;
 import java.util.Scanner;
 //TODO:IMPLEMENTAR
 
@@ -54,7 +54,7 @@ public class TelaCargo {
             switch (opcao) {
                 case 1:
 
-                    EnvelopeCargoSemAcesso envelope = this.criarCargoSemAcesso();
+                    EnvelopeCargo envelope = this.criarCargoSemAcesso();
                     //try catch do controlador.addCargo
                     //Tratar dos erros de input que o usuario pode ter causado:
                     try {
@@ -159,18 +159,36 @@ public class TelaCargo {
         String nome = this.teclado.nextLine();
         this.teclado.nextLine();
         
-        System.out.println ("Início do horário de acesso:_____________________");
-        int inicio = this.teclado.nextInt();
-        this.teclado.nextLine();
-        System.out.println ("-Fim do horário de acesso:_____________________");
-        int fim = this.teclado.nextInt();
+        System.out.println ("Início do horário de acesso - hora:_____________________");
+        int inicioHora = this.teclado.nextInt();
         this.teclado.nextLine();
         
+        System.out.println ("Início do horário de acesso - minuto:_____________________");
+        int inicioMinuto = this.teclado.nextInt();
+        this.teclado.nextLine();
+        
+        System.out.println ("-Fim do horário de acesso - hora:_____________________");
+        int fimHora = this.teclado.nextInt();
+        this.teclado.nextLine();
+        
+        System.out.println ("Fim do horário de acesso - minuto:_____________________");
+        int fimMinuto = this.teclado.nextInt();
+        this.teclado.nextLine();
+        
+        Calendar calendarioInicio= Calendar.getInstance();
+        calendarioInicio.set(Calendar.HOUR, inicioHora);
+        calendarioInicio.set(Calendar.MINUTE, inicioMinuto);
+        
+        Calendar calendarioFim= Calendar.getInstance();
+        calendarioFim.set(Calendar.HOUR, fimHora);
+        calendarioFim.set(Calendar.MINUTE, fimMinuto);
+
+        
         //Envelope criado para adicionar a lista
-        return new EnvelopeCargoComAcesso(codigo, nome, inicio, fim);
+        return new EnvelopeCargoComAcesso(codigo, nome, calendarioInicio, calendarioFim);
 	}    
 
-    private EnvelopeCargoSemAcesso criarCargoSemAcesso() {
+    private EnvelopeCargo criarCargoSemAcesso() {
     	//Capturar os valores para criar os cargos
         System.out.println ("----------------------------------------");
         System.out.println ("----------------Novo Cargo--------------");
@@ -185,7 +203,7 @@ public class TelaCargo {
         this.teclado.nextLine();
         
         //Envelope criado para adicionar a lista
-        return new EnvelopeCargoSemAcesso(codigo, nome);
+        return new EnvelopeCargo(codigo, nome);
     }
     
     private EnvelopeCargo criarCargoGerente() {
