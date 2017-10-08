@@ -10,5 +10,11 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
  * @author PEaug
  */
 public class ControladorRegistros {
-    
+    //Atributos:
+    private ControladorGeral controladorGeral;
+            
+    //Construtor
+    public ControladorRegistros (ControladorGeral controladorGeral) {
+        this.controladorGeral = controladorGeral;
+    }
 }

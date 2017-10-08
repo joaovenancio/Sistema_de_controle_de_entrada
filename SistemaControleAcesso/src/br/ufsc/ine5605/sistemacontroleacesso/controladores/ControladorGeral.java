@@ -13,11 +13,15 @@ public class ControladorGeral {
     //Atributos:
     private ControladorFuncionario controladorFuncionario;
     private ControladorCargo controladorCargo;
+    private ControladorPortaFinanceiro controladorPortaFinanceiro;
+    private ControladorRegistros controladorRegistros;
     
     //Construtor:
     public ControladorGeral() {
         this.controladorCargo = new ControladorCargo(this);
         this.controladorFuncionario = new ControladorFuncionario(this);
+        this.controladorPortaFinanceiro = new ControladorPortaFinanceiro(this);
+        this.controladorRegistros = new ControladorRegistros(this);
     }
     
     //Metodos:
@@ -28,5 +32,14 @@ public class ControladorGeral {
     public ControladorCargo getControladorCargo() {
         return controladorCargo;
     }
+
+    public ControladorPortaFinanceiro getControladorPortaFinanceiro() {
+        return controladorPortaFinanceiro;
+    }
+
+    public ControladorRegistros getControladorRegistros() {
+        return controladorRegistros;
+    }
+    
     
 }

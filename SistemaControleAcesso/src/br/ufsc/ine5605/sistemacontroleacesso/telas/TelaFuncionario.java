@@ -6,7 +6,6 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 /**
