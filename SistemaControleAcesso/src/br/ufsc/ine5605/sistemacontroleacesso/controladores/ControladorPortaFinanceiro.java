@@ -19,4 +19,7 @@ public class ControladorPortaFinanceiro {
     }
     
     //Metodos
+    public void iniciarTela() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

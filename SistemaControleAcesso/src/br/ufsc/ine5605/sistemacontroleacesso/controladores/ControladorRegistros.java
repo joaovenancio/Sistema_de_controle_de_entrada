@@ -17,4 +17,8 @@ public class ControladorRegistros {
     public ControladorRegistros (ControladorGeral controladorGeral) {
         this.controladorGeral = controladorGeral;
     }
+
+    public void iniciarTela() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

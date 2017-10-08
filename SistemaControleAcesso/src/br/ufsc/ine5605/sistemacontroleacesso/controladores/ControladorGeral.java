@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.ufsc.ine5605.sistemacontroleacesso.controladores;
+import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaControladorGeral;
 
 /**
  *
@@ -15,6 +16,7 @@ public class ControladorGeral {
     private ControladorCargo controladorCargo;
     private ControladorPortaFinanceiro controladorPortaFinanceiro;
     private ControladorRegistros controladorRegistros;
+    private TelaControladorGeral telaControladorGeral;
     
     //Construtor:
     public ControladorGeral() {
@@ -22,9 +24,17 @@ public class ControladorGeral {
         this.controladorFuncionario = new ControladorFuncionario(this);
         this.controladorPortaFinanceiro = new ControladorPortaFinanceiro(this);
         this.controladorRegistros = new ControladorRegistros(this);
+        this.telaControladorGeral = new TelaControladorGeral(this);
     }
     
     //Metodos:
+    /**
+     * Inicia a interface grafica de usuario principal para se interagir com o sistema.
+     */
+    public void iniciarTela() {
+        this.telaControladorGeral.iniciar();
+    }
+    
     public ControladorFuncionario getControladorFuncionario() {
         return controladorFuncionario;
     }
