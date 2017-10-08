@@ -36,7 +36,7 @@ public class ControladorFuncionario {
      * Confere se os imputs de dados estao corretos, se nao estiver, joga uma excecao.
      * Se estiver tudo certo, instancia um novo funcionario e adiciona ele a array dentro
      * do controlador.
-     * @param envelope 
+     * @param envelope - Conteudo para criar o objeto Funcionario
      */
     public void adicionarFuncionario (EnvelopeFuncionario envelope) {
         if (envelope == null) {
@@ -45,7 +45,7 @@ public class ControladorFuncionario {
             //Ano nao pode ser abaixo de 0
             if (envelope.ano < 0 ) {
                 throw new IllegalArgumentException("Ano de nascimento invalido");
-                //Mes nao pode ser abaixou ou acima de 12
+                //Mes nao pode ser abaixo de 1 ou acima de 12
             } else if (!(envelope.mes >= 1 && envelope.mes <= 12)) {
                 throw new IllegalArgumentException("Mes de nascimento invalido, extrapolou os meses possiveis");
                 //O dia precisa ser maior do que 1 e menor do que 31
