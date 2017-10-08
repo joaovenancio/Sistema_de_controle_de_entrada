@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author PEaug
+ * @author Joao Vitor Venancio
  */
 public class TelaControladorGeral {
     //Atributos
@@ -48,18 +48,22 @@ public class TelaControladorGeral {
             
             switch(opcao) {
                 
+                //Inicia a tela de cargos
                 case 1:
                     this.controladorGeral.getControladorCargo().iniciarTela();
                     break;
                     
+                //Inicia a tela de funcionarios
                 case 2:
                     this.controladorGeral.getControladorFuncionario().iniciarTela();
                     break;
                 
+                //Inicia a tela de registros
                 case 3:
                     this.controladorGeral.getControladorRegistros().iniciarTela();
                     break;
                     
+                //Inicia a tela da porta
                 case 4:
                     this.controladorGeral.getControladorPortaFinanceiro().iniciarTela();
                     break;
