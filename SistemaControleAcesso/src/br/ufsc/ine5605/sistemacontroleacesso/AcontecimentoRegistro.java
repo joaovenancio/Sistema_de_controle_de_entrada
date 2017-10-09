@@ -24,6 +24,9 @@ public enum AcontecimentoRegistro {
                    + " tentou abri-la");
     
     //Atributos
+    /**
+     * Atributo do Enum que representa a descrição do registro
+     */
     private String descricao;
     
     //Construtor

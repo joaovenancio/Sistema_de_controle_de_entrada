@@ -12,7 +12,13 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
  * @author PEaug
  */
 public abstract class Cargo implements ICargo {
+    /**
+     * Atributo que representa o <b>código do Cargo</b>
+     */
     protected String codigo;
+    /**
+     * Atributo que representa o <b>nome do Cargo</b>
+     */
     protected String nome;
 
    /**Método para retorno do código do Cargo

@@ -27,25 +27,4 @@ public class CargoComAcesso extends Gerente{
         this.arrayComHorarios.add(inicio);
         this.arrayComHorarios.add(fim);
     }
-    
-    /**
-     * @param hora int - hora a ser adicionada no Array de horas
-     * @param minutos int - minutos a serem adicionados no Array de horas
-     * @return String - Status da operação
-     **/
-    public String addHorario(int hora, int minutos){
-        Calendar calendario = Calendar.getInstance();
-        
-        calendario.set(Calendar.HOUR_OF_DAY, hora);
-        calendario.set(Calendar.MINUTE, minutos);
-        
-        for(Calendar dataBuscando : this.arrayComHorarios){
-            if(dataBuscando.get(Calendar.HOUR) == calendario.get(Calendar.HOUR)){
-                if(dataBuscando.get(Calendar.MINUTE) == calendario.get(Calendar.MINUTE)){
-                   return "Horário já adicionado para esse funcionário";
-                }
-            }
-        }
-        return "Horário adicionado com sucesso!";
-    }
 }
