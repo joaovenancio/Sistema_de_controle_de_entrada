@@ -40,6 +40,7 @@ public class TelaControladorGeral {
             System.out.println ("-2)Gerenciar Funcionarios");
             System.out.println ("-3)Gerenciar Registros");
             System.out.println ("-4)Usar a Porta");
+            System.out.println ("-5)Sair");
             System.out.println ("-#OPÇÃO:_____");
             System.out.println ();
             

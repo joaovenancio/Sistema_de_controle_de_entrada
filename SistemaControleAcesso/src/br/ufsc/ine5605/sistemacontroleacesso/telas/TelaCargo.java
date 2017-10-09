@@ -45,6 +45,7 @@ public class TelaCargo {
             System.out.println("-4)Remover Cargo pelo Código");
             System.out.println("-5)Modificar Cargo");
             System.out.println("-6)Listar Cargos Existentes");
+            System.out.println("-7)Voltar");
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 

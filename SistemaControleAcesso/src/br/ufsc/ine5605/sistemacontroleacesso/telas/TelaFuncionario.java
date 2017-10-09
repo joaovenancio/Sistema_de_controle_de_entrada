@@ -39,6 +39,7 @@ public class TelaFuncionario {
             System.out.println ("-1)Cadastrar um funcionario");
             System.out.println ("-2)Remover um funcionario pela matricula");
             System.out.println ("-3)Listar os funcionarios cadastrados");
+            System.out.println ("-4)Voltar");
             System.out.println ("-#OPÇÃO:_____");
             System.out.println ();
             
