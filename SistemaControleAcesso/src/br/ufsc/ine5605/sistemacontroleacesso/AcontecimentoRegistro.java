@@ -11,8 +11,15 @@ package br.ufsc.ine5605.sistemacontroleacesso;
  */
 public enum AcontecimentoRegistro {
     //Enums:
+    /**Enum que representa a tentativa de acesso a porta do
+     * financeiro fora do horário permitido pelo cargo
+     */
     FORADEHORARIO("O Usuario em questao tem acesso a porta, porem tentou"
                   + " acessa-la fora do horario permitido pelo seu cargo"),
+    
+    /**Enum que representa a tentativa de acesso a porta do financeiro por um
+     * cargo que não tem acesso 
+     */
     CARGOSEMACESSO("O Usuario em questao nao possui acesso a porta e"
                    + " tentou abri-la");
     
@@ -25,6 +32,10 @@ public enum AcontecimentoRegistro {
     }
     
     //Metodos
+    /**
+     * Método para retorno da descrição de um Enum
+     * @return String - Descrição do registro
+     */
     public String getDescricao() {
         return descricao;
     }
