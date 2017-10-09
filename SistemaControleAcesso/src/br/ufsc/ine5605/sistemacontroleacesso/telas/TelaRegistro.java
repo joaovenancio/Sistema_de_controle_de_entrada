@@ -22,9 +22,29 @@ public class TelaRegistro {
      */
     private Scanner teclado;
     
-    public TelaRegistro(){
-        
-        
+    public TelaRegistro(ControladorRegistros controlador){
+        this.controladorRegistros = controlador;
+        this.teclado = new Scanner(System.in);
     }
     
+    public void iniciar(){
+        int opcao = 0;
+        while (opcao <= 6) {
+            System.out.println("----------------------------------------");
+            System.out.println("--------------Registros--------------");
+            System.out.println("----------------------------------------");
+            System.out.println("------------Escolha uma opção:----------");
+            System.out.println();
+            System.out.println("-1)Buscar Registro por Motivo");
+            System.out.println("-2)Buscar Registro por Matrícula");
+            System.out.println("-3)Buscar Registro por Data");
+            System.out.println("-6)Voltar");
+            System.out.println("-#OPÇÃO:_____");
+            System.out.println();
+
+            opcao = this.teclado.nextInt();
+            this.teclado.nextLine();
+    
+        } 
+    }
 }
