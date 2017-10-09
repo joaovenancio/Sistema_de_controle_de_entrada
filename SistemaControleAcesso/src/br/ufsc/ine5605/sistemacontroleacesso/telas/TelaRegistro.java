@@ -5,10 +5,26 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
+import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorRegistros;
+import java.util.Scanner;
+
 /**
  *
  * @author PEaug
  */
 public class TelaRegistro {
+    /**
+     * Controlador de registro responsável por essa tela
+     */
+    private ControladorRegistros controladorRegistros ;
+    /**
+     * Scanner que capta a entrada do teclado
+     */
+    private Scanner teclado;
+    
+    public TelaRegistro(){
+        
+        
+    }
     
 }

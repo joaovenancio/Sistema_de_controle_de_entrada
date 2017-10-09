@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorGeral;
+
 /**
  *
  * @author PEaug
@@ -16,6 +18,8 @@ public class SistemaControleAcesso {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ControladorGeral c1 = new ControladorGeral();
+        c1.iniciarTela();
     }
     
 }
