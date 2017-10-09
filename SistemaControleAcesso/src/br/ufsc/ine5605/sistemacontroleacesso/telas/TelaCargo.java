@@ -43,9 +43,9 @@ public class TelaCargo {
             System.out.println("-2)Criar um novo Cargo Com Acesso");
             System.out.println("-3)Criar um novo Cargo Gerente");
             System.out.println("-4)Remover Cargo pelo Código");
-            System.out.println("-5)Modificar Cargo");
-            System.out.println("-6)Listar Cargos Existentes");
-            System.out.println("-7)Voltar");
+//            System.out.println("-5)Modificar Cargo");
+            System.out.println("-5)Listar Cargos Existentes");
+            System.out.println("-6)Voltar");
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 
@@ -108,40 +108,40 @@ public class TelaCargo {
                 case 4:
                     //try catch do controlador.removerCargo
                     //Tratar dos erros de input que o usuario pode ter causado:
-                    EnvelopeCargo envelopeCargo= this.removerCargoByCodigo();
-                    
-                	try {
-
-                        this.controladorCargo.removerCargo(envelopeCargo);
-
-                    } catch (IllegalArgumentException exception) {
-                        System.out.println("########################################");
-                        System.out.println("-" + exception.getMessage());
-                        System.out.println("########################################");
-                        System.out.println("-------------Tente novamente------------");
-
-                    }
+                    this.controladorCargo.removerCargo(this.removerCargoByCodigo());
+//                    
+//                	try {
+//
+//                        this.controladorCargo.removerCargo(envelopeCargo);
+//
+//                    } catch (IllegalArgumentException exception) {
+//                        System.out.println("########################################");
+//                        System.out.println("-" + exception.getMessage());
+//                        System.out.println("########################################");
+//                        System.out.println("-------------Tente novamente------------");
+//
+//                    }
                     break;                	
                
-                case 5:
-                    //try catch do controlador.removerCargo
-                    //Tratar dos erros de input que o usuario pode ter causado:
-                    EnvelopeCargo[] envelopeCargoMod=  this.modificarCargo();
-                    
-                	try {
-
-                        this.controladorCargo.modificarCargo(envelopeCargoMod);
-
-                    } catch (IllegalArgumentException exception) {
-                        System.out.println("########################################");
-                        System.out.println("-" + exception.getMessage());
-                        System.out.println("########################################");
-                        System.out.println("-------------Tente novamente------------");
-
-                    }
-                    break;
+//                case 5:
+//                    //try catch do controlador.removerCargo
+//                    //Tratar dos erros de input que o usuario pode ter causado:
+//                    EnvelopeCargo[] envelopeCargoMod=  this.modificarCargo();
+//                    
+//                	try {
+//
+//                        this.controladorCargo.modificarCargo(envelopeCargoMod);
+//
+//                    } catch (IllegalArgumentException exception) {
+//                        System.out.println("########################################");
+//                        System.out.println("-" + exception.getMessage());
+//                        System.out.println("########################################");
+//                        System.out.println("-------------Tente novamente------------");
+//
+//                    }
+//                    break;
                 	
-                case 6:
+                case 5:
 
                     this.listarCargos();
                 }
@@ -209,7 +209,7 @@ public class TelaCargo {
         this.teclado.nextLine();
         
         //Envelope criado para adicionar a lista
-        return new EnvelopeCargo(codigo, nome);
+        return new EnvelopeCargo(codigo, nome, false);
     }
     
     private EnvelopeCargo criarCargoGerente() {
@@ -228,54 +228,49 @@ public class TelaCargo {
         this.teclado.nextLine();
         
         //Envelope criado para adicionar a lista
-        return new EnvelopeCargo(codigo, nome);
+        return new EnvelopeCargo(codigo, nome, true);
     }
     
-	private EnvelopeCargo removerCargoByCodigo() {
+	private ICargo removerCargoByCodigo() {
     	//Capturar os valores para remover o cargos
         System.out.println ("----------------------------------------");
-        System.out.println ("----------------Remove Cargo--------------");
+        System.out.println ("---------------Remove Cargo-------------");
         System.out.println ("----------------------------------------");
         
         System.out.println ("-Insira o código do cargo:_________");
-        String codigo = this.teclado.nextLine();
+        int codigo = this.teclado.nextInt();
         this.teclado.nextLine();
-        
-        System.out.println ("-Nome do cargo:___________________");
-        String nome = this.teclado.nextLine();
-        this.teclado.nextLine();
-        
-        
-        return new EnvelopeCargo(codigo, nome);
 
+        return this.controladorCargo.findCargoByIndice(codigo);
+        
 	}
 	
-    private EnvelopeCargo[] modificarCargo() {
-    	//Capturar os valores para modificar o cargos
-        System.out.println ("----------------------------------------");
-        System.out.println ("----------------Modifica Cargo--------------");
-        System.out.println ("----------------------------------------");
-        
-        System.out.println ("-Insira o código do cargo a ser modificado:_________");
-        String primeiroCodigo = this.teclado.nextLine();
-        this.teclado.nextLine();
-        
-        System.out.println ("-Insira o novo código do cargo:_________");
-        String codigo = this.teclado.nextLine();
-        this.teclado.nextLine();
-        
-        System.out.println ("-Novo nome do cargo:___________________");
-        String nome = this.teclado.nextLine();
-        this.teclado.nextLine();
-        
-        EnvelopeCargo[] listaEnvelopeCargo= new EnvelopeCargo[2];
-        
-        listaEnvelopeCargo[0]= new EnvelopeCargo(primeiroCodigo, null);
-        listaEnvelopeCargo[1]= new EnvelopeCargo(codigo, nome);
-        
-        return listaEnvelopeCargo;
-
-	}
+//    private EnvelopeCargo[] modificarCargo() {
+//    	//Capturar os valores para modificar o cargos
+//        System.out.println ("----------------------------------------");
+//        System.out.println ("----------------Modifica Cargo--------------");
+//        System.out.println ("----------------------------------------");
+//        
+//        System.out.println ("-Insira o código do cargo a ser modificado:_________");
+//        String primeiroCodigo = this.teclado.nextLine();
+//        this.teclado.nextLine();
+//        
+//        System.out.println ("-Insira o novo código do cargo:_________");
+//        String codigo = this.teclado.nextLine();
+//        this.teclado.nextLine();
+//        
+//        System.out.println ("-Novo nome do cargo:___________________");
+//        String nome = this.teclado.nextLine();
+//        this.teclado.nextLine();
+//        
+//        EnvelopeCargo[] listaEnvelopeCargo= new EnvelopeCargo[2];
+//        
+//        listaEnvelopeCargo[0]= new EnvelopeCargo(primeiroCodigo, null);
+//        listaEnvelopeCargo[1]= new EnvelopeCargo(codigo, nome);
+//        
+//        return listaEnvelopeCargo;
+//
+//	}
     
 	public void listarCargos() {
         System.out.println ("----------------------------------------");

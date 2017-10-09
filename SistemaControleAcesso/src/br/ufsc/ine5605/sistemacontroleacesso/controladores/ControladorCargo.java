@@ -65,7 +65,7 @@ public class ControladorCargo {
 //    }
     
     
-    public void removerCargo(EnvelopeCargo cargo){
+    public void removerCargo(ICargo cargo){
     	if(cargo != null){
     		if (listaCargo.contains(cargo)){
     			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
@@ -124,7 +124,7 @@ public class ControladorCargo {
 		return telaCargo;
 	}
 
-    public ICargo getCargoByIndice(int indiceCargo) {
+    public ICargo findCargoByIndice(int indiceCargo) {
 		return null;
 
     }

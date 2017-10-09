@@ -15,13 +15,14 @@ import java.util.Date;
  * @author PEaug
  */
 public class CargoComAcesso extends Gerente{
+    //Atributos
     /**
      * ArrayList que representa os horários que o cargo tem acesso a porta do 
      * Financeiro
      */
      private ArrayList<Calendar> arrayComHorarios;
 
-             
+    //Construtor
     public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
         super(codigo, nome);
         this.arrayComHorarios.add(inicio);
