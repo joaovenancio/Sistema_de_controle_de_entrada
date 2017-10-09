@@ -18,8 +18,8 @@ public class TelaControladorGeral {
     private Scanner teclado;
     
     //Construtor
-    public TelaControladorGeral(ControladorGeral controladorGreal) {
-        this.controladorGeral = controladorGeral;
+    public TelaControladorGeral(ControladorGeral owner) {
+        this.controladorGeral = owner;
         this.teclado = new Scanner(System.in);
     }
     
