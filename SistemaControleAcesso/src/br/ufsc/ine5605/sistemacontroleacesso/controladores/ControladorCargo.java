@@ -32,7 +32,7 @@ public class ControladorCargo {
     public ControladorCargo(ControladorGeral controladorGeral){
     	this.controladorGeral= controladorGeral;
     	this.listaCargo= new ArrayList<Cargo>();
-    	this.telaCargo= new TelaCargo(this, scanner);
+    	this.telaCargo= new TelaCargo(this);
     }
 
     public void iniciarTela () {
@@ -51,17 +51,17 @@ public class ControladorCargo {
     	}
     }
     
-    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
-		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
-				envelope.inicio, envelope.fim );
-    	if(cargo != null){
-    		if (! listaCargo.contains(cargo)){
-    			listaCargo.add(cargo);
-    		}else{
-                throw new IllegalArgumentException("Cargo jah cadastrado.");
-    		}
-    	}
-    }
+//    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
+//		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
+//				envelope.inicio, envelope.fim );
+//    	if(cargo != null){
+//    		if (! listaCargo.contains(cargo)){
+//    			listaCargo.add(cargo);
+//    		}else{
+//                throw new IllegalArgumentException("Cargo jah cadastrado.");
+//    		}
+//    	}
+//    }
     
     
     public void removerCargo(EnvelopeCargo cargo){

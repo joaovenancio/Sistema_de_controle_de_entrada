@@ -26,7 +26,7 @@ public class TelaCargo {
     private ControladorCargo controladorCargo;
     private Scanner teclado;
 
-    public TelaCargo(ControladorCargo controladorCargo, Scanner teclado) {
+    public TelaCargo(ControladorCargo controladorCargo) {
         this.controladorCargo = controladorCargo;
         this.teclado = new Scanner(System.in);
     }
@@ -75,7 +75,7 @@ public class TelaCargo {
                      //Tratar dos erros de input que o usuario pode ter causado:
                      try {
 
-                         this.controladorCargo.adicionarCargo(envelopeAcesso);
+//                         this.controladorCargo.adicionarCargo(envelopeAcesso);
 
                      } catch (IllegalArgumentException exception) {
                          System.out.println("########################################");
