@@ -15,7 +15,7 @@ public abstract class Cargo implements ICargo {
     protected String codigo;
     protected String nome;
 
-    /*
+   /**Método para retorno do código do Cargo
     *@return String - Retorna o código do Cargo 
     */
     @Override
@@ -23,7 +23,7 @@ public abstract class Cargo implements ICargo {
         return codigo;
     }
     
-    /*
+   /**Método para retorno do nome do Cargo 
     *return String - Retorna o nome do Cargo
     */
     @Override
@@ -31,23 +31,23 @@ public abstract class Cargo implements ICargo {
         return nome;
     }
     
-    /*
-    *@param String - Código a ser setado no Cargo
+   /**Método para alteração do código do Cargo
+    *@param codigo String - Código a ser setado no Cargo
     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     
-    /*
-    *@param String - Nome a ser setado no Cargo 
+   /**Método para alteração do Nome do Cargo
+    *@param nome String - Nome a ser setado no Cargo 
     */
     public void setNome(String nome) {
         this.nome = nome;
     }
     
-    /**
+    /**Método que indica se o cargo possui acesso a Porta do Financeiro
      *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
-     **/
+     */
     public boolean temAcesso(){
         return true;
     }
