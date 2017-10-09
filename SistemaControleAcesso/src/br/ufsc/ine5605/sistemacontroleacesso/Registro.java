@@ -4,11 +4,38 @@
  * and open the template in the editor.
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
+import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IRegistro;
+import java.util.Calendar;
 
 /**
  *
- * @author PEaug
+ * @author Joao Vitor Venancio
  */
-public class Registro {
+public class Registro implements IRegistro {
+    //Atributos
+    private AcontecimentoRegistro acontecimento;
+    private Calendar dataAcontecimento;
+    private int numDeMatricula;
+    
+    //Construtor
+    public Registro(AcontecimentoRegistro acontecimento, Calendar dataAcontecimento, int numDeMatricula ) {
+        this.acontecimento = acontecimento;
+        this.dataAcontecimento = dataAcontecimento;
+        this.numDeMatricula = numDeMatricula;
+    }
+    
+    //Metodos
+    public AcontecimentoRegistro getAcontecimento() {
+        return this.acontecimento;
+    }
+
+    public Calendar getDataAcontecimento() {
+        return this.dataAcontecimento;
+    }
+
+    public int getNumDeMatricula() {
+        return this.numDeMatricula;
+    }
+    
     
 }

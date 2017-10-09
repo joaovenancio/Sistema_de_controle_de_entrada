@@ -7,7 +7,25 @@ package br.ufsc.ine5605.sistemacontroleacesso;
 
 /**
  *
- * @author PEaug
+ * @author Joao Vitor Venancio
  */
 public enum AcontecimentoRegistro {
+    //Enums:
+    FORADEHORARIO("O Usuario em questao tem acesso a porta, porem tentou"
+                  + " acessa-la fora do horario permitido pelo seu cargo"),
+    CARGOSEMACESSO("O Usuario em questao nao possui acesso a porta e"
+                   + " tentou abri-la");
+    
+    //Atributos
+    private String descricao;
+    
+    //Construtor
+    AcontecimentoRegistro (String descricao) {
+        this.descricao = descricao;
+    }
+    
+    //Metodos
+    public String getDescricao() {
+        return descricao;
+    }
 }
