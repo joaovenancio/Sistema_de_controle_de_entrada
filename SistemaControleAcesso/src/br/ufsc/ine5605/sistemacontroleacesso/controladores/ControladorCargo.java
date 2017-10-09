@@ -129,26 +129,27 @@ public class ControladorCargo {
             throw new IllegalArgumentException("Cargo não cadastrado.");
     	}
     }
+    
     //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o cargo alterador
-//    public void modificarCargo(EnvelopeCargo[] cargo){
-//    	
+    public void modificarCargo(EnvelopeCargo[] cargo){
     	
-//    	if(cargo != null){
-//    		if (listaCargo.contains(cargo[0])){
-//    			cargo[0].codigo= cargo[1].codigo;
-//    			cargo[0].nome= cargo[1].nome;
-//    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
-//    			for(Funcionario func: listaFuncionario){
-//    				if (func.getCargo().equals(cargo)){
-//    				
-//    				}
-//    			}
-//    			listaCargo.remove(cargo);
-//    		}else{
-//                throw new IllegalArgumentException("Cargo nao cadastrado.");
-//    		}
-//    	}
-//    }
+    	
+    	if(cargo != null){
+    		if (listaCargo.contains(cargo[0])){
+    			cargo[0].codigo= cargo[1].codigo;
+    			cargo[0].nome= cargo[1].nome;
+    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
+    			for(Funcionario func: listaFuncionario){
+    				if (func.getCargo().equals(cargo)){
+    				
+    				}
+    			}
+    			listaCargo.remove(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo nao cadastrado.");
+    		}
+    	}
+    }
     
     /**
      * @param horaInicio int - hora a ser adicionada no Array de horas
@@ -175,9 +176,17 @@ public class ControladorCargo {
 		return telaCargo;
 	}
 
-    public ICargo findCargoByIndice(String indiceCargo) {
+    public ICargo findCargoByIndice(int indiceCargo) {
+		try{
+			return this.listaCargo.get(indiceCargo);
+		}catch(ArrayIndexOutOfBoundsException exception){
+            throw new IllegalArgumentException("Indice acima do tamanho do array"); 
+		}
+    }
+    
+    public ICargo findCargoByCodigo(String codigo) {
 		for(Cargo cargo: this.listaCargo){
-			if (cargo.getCodigo().equals(indiceCargo)){
+			if (cargo.getCodigo().equals(codigo)){
 				return cargo;
 			}
 		}
