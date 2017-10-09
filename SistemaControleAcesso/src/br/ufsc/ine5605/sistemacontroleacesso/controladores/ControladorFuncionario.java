@@ -53,7 +53,12 @@ public class ControladorFuncionario {
                 throw new IllegalArgumentException("Dia do nascimento invalida, não existe dia com esse numero");
             }
             
-            //Feito o tratamento do ano, criar um objeto do tipo Calendar para poder cirar o funcionario
+            //Ver se foi associado um cargo a um funcionario
+            if (envelope.cargo == null) {
+                throw new IllegalArgumentException("Não foi associado um Cargo a um Funcionario");
+            }
+            
+            //Feito o tratamento do Cargo, ano, mes e dia, criar um objeto do tipo Calendar para poder cirar o funcionario
             Calendar dataDeNascimento = Calendar.getInstance();
             dataDeNascimento.clear();
             dataDeNascimento.set(Calendar.YEAR, envelope.ano);

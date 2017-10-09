@@ -139,7 +139,7 @@ public class TelaFuncionario {
         int indiceCargo = teclado.nextInt();
         teclado.nextLine();
         //GetCargo
-        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().getCargoByIndice(indiceCargo);
+        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().findCargoByIndice(indiceCargo);
         
         //Enveolpe cirado para adicionar a lista
         return new EnvelopeFuncionario(numeroDeMatricula, nome,
