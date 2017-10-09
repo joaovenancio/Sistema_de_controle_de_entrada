@@ -63,6 +63,7 @@ public class TelaFuncionario {
                         System.out.println("-------------Tente novamente------------");
                         
                     }
+                    break;
                 
                 case 2:
                     
@@ -70,14 +71,18 @@ public class TelaFuncionario {
                     if (controlador.removerFuncionarioPelaMatricula(matricula)) {
                         System.out.println ("-Funcioario removido com sucesso!");
                     } else {
+                        System.out.println("########################################");
                         System.out.println ("-Funcionario nao encontrado pela");
                         System.out.println ("-matricula fornecida, nao foi");
                         System.out.println ("-possivel remove-lo");
+                        System.out.println("########################################");
                     }
+                    break;
                 
                 case 3:
                     
                     this.listarFuncionarios();
+                    break;
             }
         }
     }
