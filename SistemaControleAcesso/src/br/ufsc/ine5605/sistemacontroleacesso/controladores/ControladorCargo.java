@@ -40,18 +40,33 @@ public class ControladorCargo {
         this.telaCargo.iniciar();
     }
     
+    //* Adiciona cargo Gerente ou CargoSemAcesso.
     public void adicionarCargo(EnvelopeCargo envelope){
-		Gerente cargo= new Gerente(envelope.codigo, envelope.nome);
-
-    	if(cargo != null){
-    		if (! listaCargo.contains(cargo)){
-    			listaCargo.add(cargo);
-    		}else{
-                throw new IllegalArgumentException("Cargo jah cadastrado.");
-    		}	
+    	
+    	if (envelope.ehGerente){
+    		Gerente cargo= new Gerente(envelope.codigo, envelope.nome);
+    		
+    		if(cargo != null){
+        		if (! listaCargo.contains(cargo)){
+        			listaCargo.add(cargo);
+        		}else{
+                    throw new IllegalArgumentException("Cargo jah cadastrado.");
+        		}	
+        	}
+    		
+    	}else{
+    		CargoSemAcesso cargo = new CargoSemAcesso(envelope.codigo, envelope.nome); 
+    		
+    		if(cargo != null){
+        		if (! listaCargo.contains(cargo)){
+        			listaCargo.add(cargo);
+        		}else{
+                    throw new IllegalArgumentException("Cargo jah cadastrado.");
+        		}	
+        	}
     	}
     }
-    
+    //* Adiciona cargos com acesso - CargoComAcesso.
 //    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
 //		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
 //				envelope.inicio, envelope.fim );
@@ -64,7 +79,7 @@ public class ControladorCargo {
 //    	}
 //    }
     
-    
+    //*Remove cargo utilizando como parâmetro um cargo
     public void removerCargo(ICargo cargo){
     	if(cargo != null){
     		if (listaCargo.contains(cargo)){
@@ -80,8 +95,10 @@ public class ControladorCargo {
     		}
     	}
     }
-    
+    //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o cargo alterador
     public void modificarCargo(EnvelopeCargo[] cargo){
+    	
+    	
     	if(cargo != null){
     		if (listaCargo.contains(cargo[0])){
     			cargo[0].codigo= cargo[1].codigo;
