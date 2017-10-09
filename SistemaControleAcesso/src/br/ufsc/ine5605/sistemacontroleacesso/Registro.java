@@ -25,14 +25,18 @@ public class Registro implements IRegistro {
     }
     
     //Metodos
+    
+    @Override
     public AcontecimentoRegistro getAcontecimento() {
         return this.acontecimento;
     }
 
+    @Override
     public Calendar getDataAcontecimento() {
         return this.dataAcontecimento;
     }
 
+    @Override
     public int getNumDeMatricula() {
         return this.numDeMatricula;
     }

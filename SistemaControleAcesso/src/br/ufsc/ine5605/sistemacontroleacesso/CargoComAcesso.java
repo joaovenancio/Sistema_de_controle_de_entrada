@@ -27,7 +27,7 @@ public class CargoComAcesso extends Gerente{
     /**
      * @param hora int - hora a ser adicionada no Array de horas
      * @param minutos int - minutos a serem adicionados no Array de horas
-     * @return
+     * @return String - Status da operação
      **/
     public String addHorario(int hora, int minutos){
         Calendar calendario = Calendar.getInstance();

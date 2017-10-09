@@ -85,7 +85,7 @@ public class ControladorFuncionario {
     /**
      * Procura pela lista de IFuncioarios por um com a mesma matricula
      * @param matricula int - Matricula do funcionaio que se quer remover
-     * @retrun boolean - True se encotrou e removeu / False se não encotrou (portanto nao removeu)
+     * @return boolean - True se encotrou e removeu / False se não encotrou (portanto nao removeu)
      */
     public boolean removerFuncionarioPelaMatricula (int matricula) {
         IFuncionario funcionarioRemover = null;

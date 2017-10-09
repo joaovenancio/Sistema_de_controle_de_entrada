@@ -15,7 +15,7 @@ import java.util.Calendar;
 public interface IRegistro {
     
    /**<b>Método para retorno do Acontecimento do Registro</b>
-    *@return AcontecimentoRegistro - Aconteciimento do Registro
+    *@return AcontecimentoRegistro - Acontecimento do Registro
     */
     public AcontecimentoRegistro getAcontecimento();
     

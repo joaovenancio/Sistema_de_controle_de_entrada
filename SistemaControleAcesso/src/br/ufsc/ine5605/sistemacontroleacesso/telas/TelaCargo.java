@@ -151,7 +151,7 @@ public class TelaCargo {
         System.out.println ("----------------Novo Cargo--------------");
         System.out.println ("----------------------------------------");
         
-        System.out.println ("-Insira o c骴igo do cargo:_________");
+        System.out.println ("-Insira o c贸digo do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
@@ -159,19 +159,19 @@ public class TelaCargo {
         String nome = this.teclado.nextLine();
         this.teclado.nextLine();
         
-        System.out.println ("In韈io do hor醨io de acesso - hora:_____________________");
+        System.out.println ("In锟絚io do hor谩rio de acesso - hora:_____________________");
         int inicioHora = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("In韈io do hor醨io de acesso - minuto:_____________________");
+        System.out.println ("In铆cio do hor谩rio de acesso - minuto:_____________________");
         int inicioMinuto = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("-Fim do hor醨io de acesso - hora:_____________________");
+        System.out.println ("-Fim do hor谩rio de acesso - hora:_____________________");
         int fimHora = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("Fim do hor醨io de acesso - minuto:_____________________");
+        System.out.println ("Fim do hor谩rio de acesso - minuto:_____________________");
         int fimMinuto = this.teclado.nextInt();
         this.teclado.nextLine();
         
@@ -194,7 +194,7 @@ public class TelaCargo {
         System.out.println ("----------------Novo Cargo--------------");
         System.out.println ("----------------------------------------");
         
-        System.out.println ("-Insira o c骴igo do cargo:_________");
+        System.out.println ("-Insira o c贸digo do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
@@ -213,7 +213,7 @@ public class TelaCargo {
         System.out.println ("----------------Novo Cargo--------------");
         System.out.println ("----------------------------------------");
         
-        System.out.println ("-Insira o c骴igo do cargo:_________");
+        System.out.println ("-Insira o c贸digo do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
@@ -231,7 +231,7 @@ public class TelaCargo {
         System.out.println ("----------------Remove Cargo--------------");
         System.out.println ("----------------------------------------");
         
-        System.out.println ("-Insira o c骴igo do cargo:_________");
+        System.out.println ("-Insira o c贸digo do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
@@ -250,11 +250,11 @@ public class TelaCargo {
         System.out.println ("----------------Modifica Cargo--------------");
         System.out.println ("----------------------------------------");
         
-        System.out.println ("-Insira o c骴igo do cargo a ser modificado:_________");
+        System.out.println ("-Insira o c贸digo do cargo a ser modificado:_________");
         String primeiroCodigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
-        System.out.println ("-Insira o novo c骴igo do cargo:_________");
+        System.out.println ("-Insira o novo c贸digo do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
         
