@@ -19,7 +19,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
-//TODO:IMPLEMENTAR
+
 /**
  *
  * @author PEaug
