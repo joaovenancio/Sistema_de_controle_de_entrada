@@ -180,10 +180,12 @@ public class TelaCargo {
         this.teclado.nextLine();
         
         Calendar calendarioInicio= Calendar.getInstance();
+        calendarioInicio.clear();
         calendarioInicio.set(Calendar.HOUR, inicioHora);
         calendarioInicio.set(Calendar.MINUTE, inicioMinuto);
         
         Calendar calendarioFim= Calendar.getInstance();
+        calendarioFim.clear();
         calendarioFim.set(Calendar.HOUR, fimHora);
         calendarioFim.set(Calendar.MINUTE, fimMinuto);
 
