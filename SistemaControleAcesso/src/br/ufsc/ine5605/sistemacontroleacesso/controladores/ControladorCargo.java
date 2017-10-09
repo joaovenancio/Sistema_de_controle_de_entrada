@@ -25,7 +25,6 @@ import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
  * @author PEaug
  */
 public class ControladorCargo {
-    private Scanner scanner;
     private TelaCargo telaCargo;
     private ArrayList<Cargo> listaCargo;
     private ControladorGeral controladorGeral;
