@@ -15,6 +15,10 @@ import java.util.Date;
  * @author PEaug
  */
 public class CargoComAcesso extends Gerente{
+    /**
+     * ArrayList que representa os horários que o cargo tem acesso a porta do 
+     * Financeiro
+     */
      private ArrayList<Calendar> arrayComHorarios;
 
              
@@ -44,6 +48,4 @@ public class CargoComAcesso extends Gerente{
         }
         return "Horário adicionado com sucesso!";
     }
-    
-    //TODO:Rever se as classes estão alinhadas com o documento da homologacao
 }
