@@ -29,9 +29,9 @@ public class EnvelopeCargoComAcesso {
 	public EnvelopeCargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
 		this.codigo = codigo;
 		this.nome = nome;
-                this.arrayComHorarios = new ArrayList<>();
-                this.arrayComHorarios.add(inicio);
-                this.arrayComHorarios.add(fim);
+        this.arrayComHorarios = new ArrayList<>();
+        this.arrayComHorarios.add(inicio);
+        this.arrayComHorarios.add(fim);
                 
 	}
     

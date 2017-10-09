@@ -40,64 +40,115 @@ public class ControladorCargo {
         this.telaCargo.iniciar();
     }
     
+    //* Adiciona cargo Gerente ou CargoSemAcesso.
     public void adicionarCargo(EnvelopeCargo envelope){
-		Gerente cargo= new Gerente(envelope.codigo, envelope.nome);
-
-    	if(cargo != null){
-    		if (! listaCargo.contains(cargo)){
-    			listaCargo.add(cargo);
-    		}else{
-                throw new IllegalArgumentException("Cargo jah cadastrado.");
-    		}	
+    	boolean existeCodigo = false;
+    	boolean existeNome= false;
+		
+    	//Verifica se existe cargo com mesmo codigo ou nome
+    	for(Cargo cargoArray: listaCargo){
+			if (cargoArray.getCodigo() == envelope.codigo){
+				existeCodigo = true;
+			}
+			if (cargoArray.getNome() == envelope.nome){
+				existeNome = true;
+			} 
     	}
+	
+    	if (! existeCodigo){
+    		if(! existeNome){
+		    	if (envelope.ehGerente){
+		    		Gerente cargo= new Gerente(envelope.codigo, envelope.nome);
+		    		
+		    		if(cargo != null){
+		    			listaCargo.add(cargo);
+		        	}
+		    	}else{
+		    		CargoSemAcesso cargo = new CargoSemAcesso(envelope.codigo, envelope.nome); 
+		    		
+		    		if(cargo != null){
+		    			listaCargo.add(cargo);
+		        	}
+		    	}
+	    	}else{
+	            throw new IllegalArgumentException("Nome do cargo jah cadastrado.");
+			}	
+		}else{
+            throw new IllegalArgumentException("Código do cargo jah cadastrado.");
+		}
     }
+
     
-//    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
-//		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
-//				envelope.inicio, envelope.fim );
-//    	if(cargo != null){
-//    		if (! listaCargo.contains(cargo)){
-//    			listaCargo.add(cargo);
-//    		}else{
-//                throw new IllegalArgumentException("Cargo jah cadastrado.");
-//    		}
-//    	}
-//    }
+    //* Adiciona cargos com acesso - CargoComAcesso.
+    public void adicionarCargo(EnvelopeCargoComAcesso envelope){
+    	boolean existeCodigo = false;
+    	boolean existeNome= false;
+    	
+    	for(Cargo cargoArray: listaCargo){
+			if (cargoArray.getCodigo() == envelope.codigo){
+				existeCodigo = true;
+			}
+			
+			if (cargoArray.getNome() == envelope.nome){
+				existeNome = true;
+			} 
+    	}
+    	
+    	if (! existeCodigo){
+    		if(! existeNome){
+    	    	CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
+						envelope.arrayComHorarios.get(0), envelope.arrayComHorarios.get(1));
+		    		
+	    		if(cargo != null){
+	    			listaCargo.add(cargo);
+	    		}
+	    	}else{
+	            throw new IllegalArgumentException("Nome do cargo jah cadastrado.");
+			}	
+		}else{
+            throw new IllegalArgumentException("Código do cargo jah cadastrado.");
+		}
+    }
+
     
-    
+    //*Remove cargo utilizando como parâmetro um cargo
     public void removerCargo(ICargo cargo){
     	if(cargo != null){
     		if (listaCargo.contains(cargo)){
     			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
-    			for(Funcionario func: listaFuncionario){
-    				if (func.getCargo().equals(cargo)){
-    					
+    			for(Funcionario funcio: listaFuncionario){
+    				if (funcio.getCargo().equals(cargo)){
+    					funcio.setCargo(null);
     				}
     			}
     			listaCargo.remove(cargo);
     		}else{
-                throw new IllegalArgumentException("Cargo nao cadastrado.");
+                throw new IllegalArgumentException("Cargo não cadastrado.");
     		}
+    	}else{
+            throw new IllegalArgumentException("Cargo não cadastrado.");
     	}
     }
-    
-    public void modificarCargo(EnvelopeCargo[] cargo){
-    	if(cargo != null){
-    		if (listaCargo.contains(cargo[0])){
-    			cargo[0].codigo= cargo[1].codigo;
-    			cargo[0].nome= cargo[1].nome;
-    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
-    			for(Funcionario func: listaFuncionario){
-    				if (func.getCargo().equals(cargo)){
-    				
-    				}
-    			}
-    			listaCargo.remove(cargo);
-    		}else{
-                throw new IllegalArgumentException("Cargo nao cadastrado.");
-    		}
-    	}
-    }
+    //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o cargo alterador
+//    public void modificarCargo(EnvelopeCargo[] cargo){
+//    	
+    	
+//    	if(cargo != null){
+//    		if (listaCargo.contains(cargo[0])){
+//    			cargo[0].codigo= cargo[1].codigo;
+//    			cargo[0].nome= cargo[1].nome;
+//    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
+//    			for(Funcionario func: listaFuncionario){
+//    				if (func.getCargo().equals(cargo)){
+//    				
+//    				}
+//    			}
+//    			listaCargo.remove(cargo);
+//    		}else{
+//                throw new IllegalArgumentException("Cargo nao cadastrado.");
+//    		}
+//    	}
+//    }
     
     /**
      * @param horaInicio int - hora a ser adicionada no Array de horas
@@ -124,9 +175,14 @@ public class ControladorCargo {
 		return telaCargo;
 	}
 
-    public ICargo findCargoByIndice(int indiceCargo) {
+    public ICargo findCargoByIndice(String indiceCargo) {
+		for(Cargo cargo: this.listaCargo){
+			if (cargo.getCodigo().equals(indiceCargo)){
+				return cargo;
+			}
+		}
+		
 		return null;
-
     }
     
 }
