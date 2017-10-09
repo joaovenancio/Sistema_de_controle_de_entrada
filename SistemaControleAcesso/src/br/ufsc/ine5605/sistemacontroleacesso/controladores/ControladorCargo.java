@@ -19,6 +19,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
+import java.util.Calendar;
 
 /**
  *
@@ -97,6 +98,23 @@ public class ControladorCargo {
     		}
     	}
     }
+    
+    /**
+     * @param horaInicio int - hora a ser adicionada no Array de horas
+     * @param horaFim int - minutos a serem adicionados no Array de horas
+     * @return String - Status da operação
+     **/
+  //  public String addHorario(Calendar horaInicio, Calendar horaFim){
+        
+  //      for(Calendar dataBuscando : this.arrayComHorarios){
+  //          if(dataBuscando.get(Calendar.HOUR) == calendario.get(Calendar.HOUR)){
+  //              if(dataBuscando.get(Calendar.MINUTE) == calendario.get(Calendar.MINUTE)){
+  //                 return "Horário já adicionado para esse funcionário";
+  //              }
+  //          }
+    //    }
+      //  return "Horário adicionado com sucesso!";
+    //}
     
     public ArrayList<Cargo> getListaCargo() {
 		return listaCargo;

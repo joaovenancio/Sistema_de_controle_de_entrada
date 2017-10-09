@@ -69,6 +69,7 @@ public class TelaCargo {
                         System.out.println("-------------Tente novamente------------");
 
                     }
+                    break;
 
                 case 2:
                 	 EnvelopeCargoComAcesso envelopeAcesso = this.criarCargoComAcesso();
@@ -85,7 +86,8 @@ public class TelaCargo {
                          System.out.println("-------------Tente novamente------------");
 
                      }
-               
+                     break;
+                     
                 case 3:
                 	EnvelopeCargo envelopeGerente = this.criarCargoGerente();
                     //try catch do controlador.addCargo
@@ -101,7 +103,8 @@ public class TelaCargo {
                         System.out.println("-------------Tente novamente------------");
 
                     }
-               
+                    break;
+                    
                 case 4:
                     //try catch do controlador.removerCargo
                     //Tratar dos erros de input que o usuario pode ter causado:
@@ -118,8 +121,7 @@ public class TelaCargo {
                         System.out.println("-------------Tente novamente------------");
 
                     }
-               
-                	
+                    break;                	
                
                 case 5:
                     //try catch do controlador.removerCargo
@@ -137,12 +139,13 @@ public class TelaCargo {
                         System.out.println("-------------Tente novamente------------");
 
                     }
-                	
+                    break;
                 	
                 case 6:
 
                     this.listarCargos();
-            }
+                }
+                break;
         }
     }
 
