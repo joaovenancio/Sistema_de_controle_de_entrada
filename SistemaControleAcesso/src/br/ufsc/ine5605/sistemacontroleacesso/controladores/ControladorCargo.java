@@ -7,7 +7,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoComAcesso;
-import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoSemAcesso;
+
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaCargo;
 
@@ -26,7 +26,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
  */
 public class ControladorCargo {
     private Scanner scanner;
-	private TelaCargo telaCargo;
+    private TelaCargo telaCargo;
     private ArrayList<Cargo> listaCargo;
     private ControladorGeral controladorGeral;
 
@@ -52,18 +52,6 @@ public class ControladorCargo {
     	}
     }
     
-    public void adicionarCargo(EnvelopeCargoSemAcesso envelope){
-		CargoSemAcesso cargo= new CargoSemAcesso(envelope.codigo, envelope.nome);
-
-    	if(cargo != null){
-    		if (! listaCargo.contains(cargo)){
-    			listaCargo.add(cargo);
-    		}else{
-                throw new IllegalArgumentException("Cargo jah cadastrado.");
-    		}
-    	}
-    }
-    
     public void adicionarCargo(EnvelopeCargoComAcesso envelope){
 		CargoComAcesso cargo= new CargoComAcesso(envelope.codigo, envelope.nome, 
 				envelope.inicio, envelope.fim );
@@ -83,7 +71,7 @@ public class ControladorCargo {
     			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
     			for(Funcionario func: listaFuncionario){
     				if (func.getCargo().equals(cargo)){
-    					func.setCargo(null);
+    					
     				}
     			}
     			listaCargo.remove(cargo);
@@ -101,7 +89,7 @@ public class ControladorCargo {
     			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
     			for(Funcionario func: listaFuncionario){
     				if (func.getCargo().equals(cargo)){
-    					func.setCargo(null);
+    				
     				}
     			}
     			listaCargo.remove(cargo);
