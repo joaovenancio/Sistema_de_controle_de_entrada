@@ -6,6 +6,9 @@
 package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
 import br.ufsc.ine5605.sistemacontroleacesso.Cargo;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.Gerente;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoComAcesso;
@@ -126,11 +129,31 @@ public class TelaCargo {
                 case 5:
                     //try catch do controlador.removerCargo
                     //Tratar dos erros de input que o usuario pode ter causado:
-                    ICargo novoICargo=  this.modificarCargo();
                     
+                	//Retorna o cargo a ser modificado
+                	ICargo modCargo=  this.modificarCargo();
+                    
+                   //Verifica qual o tipo de cargo a ser modificado 
                 	try {
-                		//this.modificar();
-                        //this.controladorCargo.modificarCargo(novoICargo);
+                		if (modCargo instanceof CargoSemAcesso){
+                			EnvelopeCargo modEnvelope= this.criarCargoSemAcesso();
+                			controladorCargo.modificarCargo(modCargo, modEnvelope.codigo,
+                					modEnvelope.nome);
+                			
+                		}else if(modCargo instanceof CargoComAcesso){
+                			EnvelopeCargoComAcesso modEnvelope= this.criarCargoComAcesso();
+                			CargoComAcesso cargoComAcesso= (CargoComAcesso) modCargo;
+                			
+                			controladorCargo.modificarCargo(cargoComAcesso, modEnvelope.codigo,
+                					modEnvelope.nome, modEnvelope.arrayComHorarios);
+                			
+                		}else{
+                			EnvelopeCargo modEnvelope= this.criarCargoGerente();
+                			controladorCargo.modificarCargo(modCargo, modEnvelope.codigo,
+                					modEnvelope.nome);
+                		}
+
+                		
 
                     } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");

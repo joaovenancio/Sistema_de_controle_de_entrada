@@ -22,7 +22,15 @@ public class CargoComAcesso extends Gerente{
      */
      private ArrayList<Calendar> arrayComHorarios;
 
-    //Construtor
+    public ArrayList<Calendar> getArrayComHorarios() {
+		return arrayComHorarios;
+	}
+
+	public void setArrayComHorarios(ArrayList<Calendar> arrayComHorarios) {
+		this.arrayComHorarios = arrayComHorarios;
+	}
+
+	//Construtor
     public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
         super(codigo, nome);
         this.arrayComHorarios.add(inicio);

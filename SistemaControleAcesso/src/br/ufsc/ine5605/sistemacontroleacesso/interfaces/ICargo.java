@@ -15,6 +15,10 @@ public interface ICargo {
 
     public String getCodigo();
     
+    public void setNome(String nome);
+
+    public void setCodigo(String codigo);        
+    
     public boolean temAcesso();
     
 }

@@ -130,21 +130,40 @@ public class ControladorCargo {
     	}
     }
     
-    //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o cargo alterador
-    public void modificarCargo(EnvelopeCargo[] cargo){
-    	
+    //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o codigo e nome
+    public void modificarCargo(ICargo cargo, String codigo, String nome){
     	
     	if(cargo != null){
-    		if (listaCargo.contains(cargo[0])){
-    			cargo[0].codigo= cargo[1].codigo;
-    			cargo[0].nome= cargo[1].nome;
+    		if (listaCargo.contains(cargo)){
+    			cargo.setCodigo(codigo);
+    			cargo.setNome(nome);
+
     			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
     			for(Funcionario func: listaFuncionario){
     				if (func.getCargo().equals(cargo)){
     				
     				}
     			}
-    			listaCargo.remove(cargo);
+    		}else{
+                throw new IllegalArgumentException("Cargo nao cadastrado.");
+    		}
+    	}
+    }
+    
+  //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o codigo, nome e horários
+    public void modificarCargo(CargoComAcesso cargo, String codigo, String nome, ArrayList<Calendar> arrayHorarios){
+    	
+    	if(cargo != null){
+    		if (listaCargo.contains(cargo)){
+    			cargo.setCodigo(codigo);
+    			cargo.setNome(nome);
+    			cargo.setArrayComHorarios(arrayHorarios);
+    			ArrayList<Funcionario> listaFuncionario= controladorGeral.getControladorFuncionario().getFuncionarios();
+    			for(Funcionario func: listaFuncionario){
+    				if (func.getCargo().equals(cargo)){
+    				
+    				}
+    			}
     		}else{
                 throw new IllegalArgumentException("Cargo nao cadastrado.");
     		}
