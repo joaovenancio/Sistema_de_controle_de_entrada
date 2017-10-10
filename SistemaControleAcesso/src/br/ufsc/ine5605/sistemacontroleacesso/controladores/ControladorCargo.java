@@ -130,7 +130,7 @@ public class ControladorCargo {
     	}
     }
     
-    //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o codigo e nome
+    //*Modifica cargo utilizando como parametro o cargo a ser alterado e o codigo e nome
     public void modificarCargo(ICargo cargo, String codigo, String nome){
     	
     	if(cargo != null){
@@ -150,7 +150,7 @@ public class ControladorCargo {
     	}
     }
     
-  //*Modifica cargo utilizando como parâmetro o cargo a ser alterado e o codigo, nome e horários
+  //*Modifica cargo utilizando como parï¿½metro o cargo a ser alterado e o codigo, nome e horï¿½rios
     public void modificarCargo(CargoComAcesso cargo, String codigo, String nome, ArrayList<Calendar> arrayHorarios){
     	
     	if(cargo != null){
