@@ -110,6 +110,24 @@ public class ControladorFuncionario {
         }
     }
     
+    /**
+     * Procura por um funcionario que possua a matricula colocada como parametro.
+     * @param matricula int - Numero da matrícula do funcionario.
+     * @return Funcionario - Que possui o numero de matricula, ou null se nao encontrar.
+     */
+    public Funcionario findFuncionarioByMatricula (int matricula) {
+        for (Funcionario funcionarioLista : this.funcionarios) {
+            if (funcionarioLista.getNumeroDeMatricula() == matricula) {
+                return funcionarioLista;
+            }
+        }
+        return null;
+    }
+    
+    public void modificarFuncionario (Funcionario funcionario, EnvelopeFuncionario envelope) {
+        
+    }
+    
     //Getter:
     public TelaFuncionario getTelaFuncionario () {
         return this.telaFuncionario;
