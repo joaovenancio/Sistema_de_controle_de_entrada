@@ -74,7 +74,7 @@ public class ControladorCargo {
 	            throw new IllegalArgumentException("Nome do cargo jah cadastrado.");
 			}	
 		}else{
-            throw new IllegalArgumentException("Código do cargo jah cadastrado.");
+            throw new IllegalArgumentException("Cï¿½digo do cargo jah cadastrado.");
 		}
     }
 
@@ -106,12 +106,12 @@ public class ControladorCargo {
 	            throw new IllegalArgumentException("Nome do cargo jah cadastrado.");
 			}	
 		}else{
-            throw new IllegalArgumentException("Código do cargo jah cadastrado.");
+            throw new IllegalArgumentException("Cï¿½digo do cargo jah cadastrado.");
 		}
     }
 
     
-    //*Remove cargo utilizando como parâmetro um cargo
+    //*Remove cargo utilizando como parï¿½metro um cargo
     public void removerCargo(ICargo cargo){
     	if(cargo != null){
     		if (listaCargo.contains(cargo)){
@@ -123,10 +123,10 @@ public class ControladorCargo {
     			}
     			listaCargo.remove(cargo);
     		}else{
-                throw new IllegalArgumentException("Cargo não cadastrado.");
+                throw new IllegalArgumentException("Cargo nï¿½o cadastrado.");
     		}
     	}else{
-            throw new IllegalArgumentException("Cargo não cadastrado.");
+            throw new IllegalArgumentException("Cargo nï¿½o cadastrado.");
     	}
     }
     
