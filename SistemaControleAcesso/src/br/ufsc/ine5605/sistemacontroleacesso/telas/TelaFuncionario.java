@@ -1,5 +1,6 @@
 package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
+import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
@@ -31,7 +32,7 @@ public class TelaFuncionario {
      */
     public void iniciar() {
         int opcao = 0;
-        while (opcao <= 3 ) {
+        while (opcao <= 4 ) {
             System.out.println ("----------------------------------------");
             System.out.println ("--------------Funcionarios--------------");
             System.out.println ("----------------------------------------");
@@ -40,7 +41,8 @@ public class TelaFuncionario {
             System.out.println ("-1)Cadastrar um funcionario");
             System.out.println ("-2)Remover um funcionario pela matricula");
             System.out.println ("-3)Listar os funcionarios cadastrados");
-            System.out.println ("-4)Voltar");
+            System.out.println ("-4)Modificar um funcionario");
+            System.out.println ("-5)Voltar");
             System.out.println ("-#OPÇÃO:_____");
             System.out.println ();
             
@@ -99,9 +101,20 @@ public class TelaFuncionario {
                 
                 //Listar os funcionarios
                 case 3:
-                    
                     this.listarFuncionarios();
                     break;
+                    
+                //Modificar um funcionario
+                case 4:
+                    
+                    try {
+                        
+                        this.modificarFuncionario();
+                        
+                    } catch (IllegalArgumentException exception) {
+                        
+                    }
+                    
             }
         }
     }
@@ -200,5 +213,76 @@ public class TelaFuncionario {
             System.out.println ("-Salario: " + funcionarioLista.getSalario());
             System.out.println ("----------------------------------------");
         }
+    }
+    
+    /**
+     * Mostra inptus para modificar os dados de um funcionario. Se o numero de matricila estive errado,
+     * ele joga uma excecao.
+     */
+    private void modificarFuncionario() {
+        System.out.println ("----------------------------------------");
+        System.out.println ("----------Modificar Funcionario---------");
+        System.out.println ("----------------------------------------");
+        System.out.println ("-Inisra o numero de matricula:__________");
+        int matricula = this.teclado.nextInt();
+        this.teclado.nextLine();
+        //Achar o funcionario e guardar ele:
+        Funcionario funcionarioParaModificar = this.controlador.findFuncionarioByMatricula(matricula);
+        
+        //Nova matricula:
+        System.out.println ("-Insira um novo numero de matricula:_____");
+        int numeroDeMatricula = this.teclado.nextInt();
+        this.teclado.nextLine();
+        
+        //Novo nome:
+        System.out.println ("-Novo nome do funcionario:_______________");
+        String nome = this.teclado.nextLine();
+        this.teclado.nextLine();
+        
+        //Aqui fica os inputs para a data de nascimento, esperar a implementacao
+        //do Calendar
+        System.out.println ("-Dia do nascimento:_____________________");
+        int dia = this.teclado.nextInt();
+        this.teclado.nextLine();
+        System.out.println ("-Mes do nascimento:_____________________");
+        int mes = this.teclado.nextInt();
+        this.teclado.nextLine();
+        System.out.println ("-Ano do nascimento:_____________________");
+        int ano = this.teclado.nextInt();
+        this.teclado.nextLine();
+        //
+        
+        //Novo numero de telefone:
+        System.out.println ("-Novo Numero de Telefone do Funcionario:");
+        String telefone = this.teclado.nextLine();
+        this.teclado.nextLine();
+        
+        //Novo salario:
+        System.out.println ("-Salario:_______________________________");
+        int salario = this.teclado.nextInt();
+        this.teclado.nextLine();
+        
+        //Novo cargo:
+        //Associar um cargo a um funcionario:
+        System.out.println ("-----Slecione o cargo do funcionario----");
+        //Mostra os cargos
+        this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
+        //Input para selecionar o cargo
+        System.out.println ("-");
+        System.out.println ("-Digite o numero do cargo:_______________");
+        int indiceCargo = teclado.nextInt();
+        teclado.nextLine();
+        //GetCargo
+        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().findCargoByIndice(indiceCargo);
+        
+        //Enveolpe criado para poder ser processado pela metodo do controlador
+        EnvelopeFuncionario novoFuncionario = new EnvelopeFuncionario(numeroDeMatricula, nome,
+        telefone, salario, cargo, ano, mes, dia);
+        
+        
+        //Executar a modificacao:
+        this.controlador.modificarFuncionario(funcionarioParaModificar, novoFuncionario);
+        
+        
     }
 }
