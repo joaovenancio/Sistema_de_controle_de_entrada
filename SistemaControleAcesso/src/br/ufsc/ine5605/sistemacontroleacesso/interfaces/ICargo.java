@@ -15,6 +15,6 @@ public interface ICargo {
 
     public String getCodigo();
     
-    
+    public boolean temAcesso();
     
 }
