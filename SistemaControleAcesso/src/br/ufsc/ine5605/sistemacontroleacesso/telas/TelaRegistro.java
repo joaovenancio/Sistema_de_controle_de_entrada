@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
+import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
+import br.ufsc.ine5605.sistemacontroleacesso.Registro;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorRegistros;
 import java.util.Scanner;
 
@@ -35,7 +37,7 @@ public class TelaRegistro {
             System.out.println("----------------------------------------");
             System.out.println("------------Escolha uma opção:----------");
             System.out.println();
-            System.out.println("-1)Buscar Registro por Motivo");
+            System.out.println("-1)Buscar Registro por Acontecimento");
             System.out.println("-2)Buscar Registro por Matrícula");
             System.out.println("-3)Buscar Registro por Data");
             System.out.println("-6)Voltar");
@@ -44,7 +46,34 @@ public class TelaRegistro {
 
             opcao = this.teclado.nextInt();
             this.teclado.nextLine();
+            
+            switch(opcao){
+                
+                case 1:
+                    System.out.println("----------------------------------------");
+                    System.out.println("-----Buscar Registro por Acontecimento----");
+                    System.out.println("----------------------------------------");
+                    System.out.println("-----Acontecimentos----");
+                    this.listarAcontecimentos();
+                    System.out.println("---Selecione um dos acontecimentos");
+                    System.out.println("-#OPÇÃO:_____");
+                    System.out.println();
+                    int acontecimentoSelecionado; 
+                    acontecimentoSelecionado = this.teclado.nextInt();
+                    this.teclado.nextLine();
+                    this.controladorRegistros.findByAcontecimento(acontecimentoSelecionado);
+                            break;
+                    }
+            
+                    
+            }
     
         } 
+
+    private void listarAcontecimentos() {
+        for(AcontecimentoRegistro acontecimentoBusca : AcontecimentoRegistro.values()){
+            System.out.println( "-"+acontecimentoBusca.ordinal() +")" + acontecimentoBusca.toString());
+        }
     }
 }
+
