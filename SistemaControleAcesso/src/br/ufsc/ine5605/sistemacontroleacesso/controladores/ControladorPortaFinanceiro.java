@@ -41,9 +41,11 @@ public class ControladorPortaFinanceiro {
     public void abrirPorta(int numeroDeMatricula, Calendar horario) {
         //Verificar se o numero de matricula existe:
         boolean existe = false;
+        Funcionario funcionarioPorta = null;
         for (Funcionario funcionarioLista : this.controladorGeral.getControladorFuncionario().getFuncionarios()) {
             if (funcionarioLista.getNumeroDeMatricula() == numeroDeMatricula) {
                 existe = true;
+                funcionarioPorta = funcionarioLista;
                 break;
             }
         }
@@ -52,9 +54,17 @@ public class ControladorPortaFinanceiro {
             throw new IllegalArgumentException("Usuario com essa matricula nao existe");
         }
         
-        //Tentar acesso a porta:
         
         //Metodo em andamento
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        //Verificar se o usuario em questao possui acesso a aporta:
+//        if (!(funcionarioPorta.getCargo().temAcesso())) {
+//            
+//        }
+        
+        
+        
     }
 }

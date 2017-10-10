@@ -234,7 +234,7 @@ public class TelaCargo {
 	private ICargo removerCargoByCodigo() {
     	//Capturar os valores para remover o cargos
         System.out.println ("----------------------------------------");
-        System.out.println ("---------------Remove Cargo-------------");
+        System.out.println ("--------------Remover Cargo-------------");
         System.out.println ("----------------------------------------");
         
         System.out.println ("-Insira o código do cargo:_________");
