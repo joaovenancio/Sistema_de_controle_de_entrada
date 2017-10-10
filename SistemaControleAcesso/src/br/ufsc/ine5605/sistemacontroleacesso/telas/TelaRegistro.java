@@ -75,13 +75,21 @@ public class TelaRegistro {
                     System.out.println("----------------------------------------");
                     System.out.println("-----Buscar Registro de Acesso Negado por Matrícula----");
                     System.out.println("----------------------------------------");
-
+                    System.out.println("----------Matrículas ativas:");
+                    System.out.println("------------------------------------------");
                     for (IFuncionario funcionarioLista : controladorRegistros.
                             getControladorGeral().getControladorFuncionario().getFuncionarios()) {
 
                         System.out.println("-Nome: " + funcionarioLista.getNome());
                         System.out.println("-Matricula: " + funcionarioLista.getNumeroDeMatricula());
+                        System.out.println("---------------------------------------");
                     }
+                    System.out.println("---Selecione um número de matrícula");
+                    System.out.println("-#OPÇÃO:_____");
+                    int numerodeMatriculaSelecionado;
+                    numerodeMatriculaSelecionado = this.teclado.nextInt();
+                    this.teclado.nextLine();
+                    
             }
 
         }

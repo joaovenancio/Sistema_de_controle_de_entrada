@@ -16,22 +16,47 @@ import java.util.ArrayList;
  */
 public class ControladorRegistros {
     //Atributos:
+    /**
+     * Controlador Geral responsável por essa instância de controlador
+     */
     private ControladorGeral controladorGeral;
+    
+    /**
+     * Tela de Registro desse Controlador
+     */
     private TelaRegistro telaRegistro;
+    
+    /**
+     * ArrayList que armazena os registros gerados
+     */
     private ArrayList<Registro> arrayDeRegistros;
    
-            
+    
+     /**
+      * @param controladorGeral ControladorGeral - Controlador Geral responsável
+      * por esse Controlador
+      */       
     //Construtor
     public ControladorRegistros (ControladorGeral controladorGeral) {
         this.controladorGeral = controladorGeral;
         this.telaRegistro = new TelaRegistro(this);
         this.arrayDeRegistros = new ArrayList<>();
     }
-
+    
+    
+    /**
+     * Método que inicia a tela
+     */
     public void iniciarTela() {
         this.telaRegistro.iniciar();
     }
-
+    
+    
+    /**Método responsável pela busca de registros com um respectivo Enum
+     * 
+     * @param indiceDoAcontecimento int - Índice do Enum que se deseja usar para a busca
+     * @return registrosEncontrados ArrayList - ArrayList com os registros selecionados
+     */
     public ArrayList<Registro> findAcontecimentoByIndice(int indiceDoAcontecimento) {
        //Criando o ArrayList de Retorno
         ArrayList<Registro> registrosEncontrados = new ArrayList<>();
@@ -43,20 +68,27 @@ public class ControladorRegistros {
             if(registroBusca.getAcontecimento().equals(acontecimentos[indiceDoAcontecimento])){
        //O registro que satisfaz a condição é adicionado ao Array de retorno
                 registrosEncontrados.add(registroBusca);
-//TODO:PASSAR PARA A TELA!!                
-//                System.out.println(registroBusca.getAcontecimento());
-//                System.out.println(registroBusca.getDataAcontecimento().getTime());
-//                System.out.println(registroBusca.getNumDeMatricula());
             }
         }
       //Retornando o Array para a tela  
         return registrosEncontrados;
     }
 
-    public Iterable<Registro> getArrayDeRegistros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    /**Método que retorna o ArrayList que armazena os Registros do sistema
+     *
+     * @return arrayDeRegistros ArrayList - ArrayList que armazena os Registros 
+     * do sistema
+     */
+    public ArrayList<Registro> getArrayDeRegistros() {
+        return arrayDeRegistros;
     }
     
+    
+    /**Método que retorna para o Controlador Geral responsável por esse controlador
+     * 
+     * @return controladorGeral ControladorGeral - Controlador Geral responsável por esse controlador3
+     */
     public ControladorGeral getControladorGeral(){
         return controladorGeral;
     }
