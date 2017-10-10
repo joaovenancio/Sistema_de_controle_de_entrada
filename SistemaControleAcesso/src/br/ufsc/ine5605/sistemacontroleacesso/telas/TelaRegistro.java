@@ -37,9 +37,8 @@ public class TelaRegistro {
             System.out.println("----------------------------------------");
             System.out.println("------------Escolha uma opção:----------");
             System.out.println();
-            System.out.println("-1)Buscar Registro por Acontecimento");
-            System.out.println("-2)Buscar Registro por Matrícula");
-            System.out.println("-3)Buscar Registro por Data");
+            System.out.println("-1)Buscar Acesso Negado por Acontecimento");
+            System.out.println("-2)Buscar Acesso Negado por Matrícula");
             System.out.println("-6)Voltar");
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
@@ -61,7 +60,8 @@ public class TelaRegistro {
                     int acontecimentoSelecionado; 
                     acontecimentoSelecionado = this.teclado.nextInt();
                     this.teclado.nextLine();
-                    this.controladorRegistros.findByAcontecimento(acontecimentoSelecionado);
+                    //TODO: Terminar a implementação com a busca no Array de Retorno
+                    this.controladorRegistros.findAcontecimentoByIndice(acontecimentoSelecionado);
                             break;
                     }
             

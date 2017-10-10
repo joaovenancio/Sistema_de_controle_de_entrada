@@ -32,13 +32,25 @@ public class ControladorRegistros {
         this.telaRegistro.iniciar();
     }
 
-    public void findByAcontecimento(int indiceDoAcontecimento) {
+    public ArrayList<Registro> findAcontecimentoByIndice(int indiceDoAcontecimento) {
+       //Criando o ArrayList de Retorno
+        ArrayList<Registro> registrosEncontrados = new ArrayList<>();
+       //Criando o Vetor com os índices do Enum
         AcontecimentoRegistro[] acontecimentos = AcontecimentoRegistro.values();
+       //Iniciando a busca no Array do Controlador por Objetos com Enum igual ao do parametro 
         for(Registro registroBusca : arrayDeRegistros){
+       //Se o registroBusca tiver um Enum igual ao Enum que está sendo apontado pelo vetor     
             if(registroBusca.getAcontecimento().equals(acontecimentos[indiceDoAcontecimento])){
-                System.out.println();
+       //O registro que satisfaz a condição é adicionado ao Array de retorno
+                registrosEncontrados.add(registroBusca);
+//TODO:PASSAR PARA A TELA!!                
+//                System.out.println(registroBusca.getAcontecimento());
+//                System.out.println(registroBusca.getDataAcontecimento().getTime());
+//                System.out.println(registroBusca.getNumDeMatricula());
             }
         }
+      //Retornando o Array para a tela  
+        return registrosEncontrados;
     }
 
     public Iterable<Registro> getArrayDeRegistros() {
