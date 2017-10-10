@@ -89,7 +89,7 @@ public class TelaRegistro {
                     int numerodeMatriculaSelecionado;
                     numerodeMatriculaSelecionado = this.teclado.nextInt();
                     this.teclado.nextLine();
-                    
+                    //Aqui eu tenho que pegar o número de matricula pra poder pesquisar no array de resgistros(findBy)
             }
 
         }

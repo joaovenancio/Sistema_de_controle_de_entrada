@@ -57,7 +57,7 @@ public class ControladorRegistros {
      * @param indiceDoAcontecimento int - Índice do Enum que se deseja usar para a busca
      * @return registrosEncontrados ArrayList - ArrayList com os registros selecionados
      */
-    public ArrayList<Registro> findAcontecimentoByIndice(int indiceDoAcontecimento) {
+    public ArrayList<Registro> findRegistroByAcontecimento(int indiceDoAcontecimento) {
        //Criando o ArrayList de Retorno
         ArrayList<Registro> registrosEncontrados = new ArrayList<>();
        //Criando o Vetor com os índices do Enum
@@ -71,6 +71,28 @@ public class ControladorRegistros {
             }
         }
       //Retornando o Array para a tela  
+        return registrosEncontrados;
+    }
+    
+    /**Método responsável por buscar registros no Array do controlador usando um
+     * número de matrícula
+     * 
+     * @param numerodeMatricula int - Número de matrícula a ser buscado no Array 
+     * de Registros
+     * @return registrosEncontrados ArrayList - Array dos Registros que possuem
+     * o mesmo número de matrícula dado por parâmetro
+     */
+    public ArrayList<Registro> findRegistroByMatricula(int numerodeMatricula){
+        //Criando o ArrayList de Retorno
+        ArrayList<Registro> registrosEncontrados = new ArrayList<>();
+        /*Iniciando a busca no Array de Registros do Controlador por Objetos que
+         *possuam o mesmo número de matrícula passado por parametro
+         */
+        for(Registro registroBusca : arrayDeRegistros){
+            if(registroBusca.getNumDeMatricula() == numerodeMatricula){
+                registrosEncontrados.add(registroBusca);
+            }
+        }
         return registrosEncontrados;
     }
 
