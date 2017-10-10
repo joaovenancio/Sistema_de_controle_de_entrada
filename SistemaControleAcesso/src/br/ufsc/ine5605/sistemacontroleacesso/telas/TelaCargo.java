@@ -43,9 +43,9 @@ public class TelaCargo {
             System.out.println("-2)Criar um novo Cargo Com Acesso");
             System.out.println("-3)Criar um novo Cargo Gerente");
             System.out.println("-4)Remover Cargo pelo Código");
-//            System.out.println("-5)Modificar Cargo");
-            System.out.println("-5)Listar Cargos Existentes");
-            System.out.println("-6)Voltar");
+            System.out.println("-5)Modificar Cargo");
+            System.out.println("-6)Listar Cargos Existentes");
+            System.out.println("-7)Voltar");
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 
@@ -234,11 +234,11 @@ public class TelaCargo {
 	private ICargo removerCargoByCodigo() {
     	//Capturar os valores para remover o cargos
         System.out.println ("----------------------------------------");
-        System.out.println ("---------------Remove Cargo-------------");
+        System.out.println ("--------------Remover Cargo-------------");
         System.out.println ("----------------------------------------");
         
         System.out.println ("-Insira o código do cargo:_________");
-        int codigo = this.teclado.nextInt();
+        String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
 
         return this.controladorCargo.findCargoByIndice(codigo);

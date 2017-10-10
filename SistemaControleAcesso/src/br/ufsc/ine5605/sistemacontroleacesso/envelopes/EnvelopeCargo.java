@@ -16,7 +16,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 public class EnvelopeCargo {
 	public String codigo;
 	public String nome;
-        public boolean ehGerente;
+    public boolean ehGerente;
 	
 	public EnvelopeCargo(String codigo, String nome, boolean ehGerente) {
             this.codigo = codigo;

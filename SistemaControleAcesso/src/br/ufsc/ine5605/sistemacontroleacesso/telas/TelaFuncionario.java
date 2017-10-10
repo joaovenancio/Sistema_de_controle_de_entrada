@@ -6,6 +6,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -47,6 +48,7 @@ public class TelaFuncionario {
             this.teclado.nextLine();
             
             switch (opcao) {
+                //Cadastrar um funcionario:
                 case 1:
                     
                     EnvelopeFuncionario envelope = this.cadastrarFuncionario();
@@ -62,12 +64,28 @@ public class TelaFuncionario {
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
                         
+                    } catch (InputMismatchException exception) {
+                        System.out.println("########################################");
+                        System.out.println("-ERRO DE INPUT: CARACTERES NAO SAO");
+                        System.out.println("-ACEITOS PARA ESSE CAMPO");
+                        System.out.println("########################################");
                     }
                     break;
                 
+                    //Remover um funcionario pela matricula
                 case 2:
+                    int matricula = 0;
+                    try {
                     
-                    int matricula = this.removerFuncionario();
+                        matricula = this.removerFuncionario();
+                        
+                    } catch (InputMismatchException exception) {
+                        System.out.println("########################################");
+                        System.out.println("-ERRO DE INPUT: CARACTERES NAO SAO");
+                        System.out.println("-ACEITOS PARA ESSE CAMPO");
+                        System.out.println("########################################");
+                    }
+                    
                     if (controlador.removerFuncionarioPelaMatricula(matricula)) {
                         System.out.println ("-Funcioario removido com sucesso!");
                     } else {
@@ -79,6 +97,7 @@ public class TelaFuncionario {
                     }
                     break;
                 
+                //Listar os funcionarios
                 case 3:
                     
                     this.listarFuncionarios();
