@@ -7,7 +7,6 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -66,11 +65,6 @@ public class TelaFuncionario {
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
                         
-                    } catch (InputMismatchException exception) {
-                        System.out.println("########################################");
-                        System.out.println("-ERRO DE INPUT: CARACTERES NAO SAO");
-                        System.out.println("-ACEITOS PARA ESSE CAMPO");
-                        System.out.println("########################################");
                     }
                     break;
                 
@@ -81,7 +75,7 @@ public class TelaFuncionario {
                     
                         matricula = this.removerFuncionario();
                         
-                    } catch (InputMismatchException exception) {
+                    } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");
                         System.out.println("-ERRO DE INPUT: CARACTERES NAO SAO");
                         System.out.println("-ACEITOS PARA ESSE CAMPO");
@@ -132,8 +126,9 @@ public class TelaFuncionario {
         System.out.println ("----------------------------------------");
         
         System.out.println ("-Insira um numero de matricula:_________");
-        int numeroDeMatricula = this.teclado.nextInt();
-        this.teclado.nextLine();
+        //Tratar o input, caso for uma String, pode quebrar o sistema:
+        //Caso estiver tudo ok: 
+        int numeroDeMatricula = inputDeIntTratado();
         
         System.out.println ("-Nome do funcionario:___________________");
         String nome = this.teclado.nextLine();
@@ -141,16 +136,16 @@ public class TelaFuncionario {
         
         //Aqui fica os inputs para a data de nascimento, esperar a implementacao
         //do Calendar
+        //-----
         System.out.println ("-Dia do nascimento:_____________________");
-        int dia = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int dia = inputDeIntTratado();
+        
         System.out.println ("-Mes do nascimento:_____________________");
-        int mes = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int mes = this.inputDeIntTratado();
+        
         System.out.println ("-Ano do nascimento:_____________________");
-        int ano = this.teclado.nextInt();
-        this.teclado.nextLine();
-        //
+        int ano = this.inputDeIntTratado();
+        //-----
         
         System.out.println ("-Telefone do funcionario:_______________");
         String telefone = this.teclado.nextLine();
@@ -163,14 +158,13 @@ public class TelaFuncionario {
         
         //Associar um cargo a um funcionario:
         System.out.println ("-----Slecione o cargo do funcionario----");
-        //Mostra os cargos
+        //Mostra os cargos:
         this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
-        //Input para selecionar o cargo
+        //Input para selecionar o cargo:
         System.out.println ("-");
         System.out.println ("-Digite o numero do cargo:_______________");
-        int indiceCargo = teclado.nextInt();
-        teclado.nextLine();
-        //GetCargo
+        int indiceCargo = this.inputDeIntTratado();
+        //GetCargo pelo indice que o usuario colocou:
         ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().findCargoByIndice(indiceCargo);
         
         //Enveolpe cirado para adicionar a lista
@@ -190,8 +184,7 @@ public class TelaFuncionario {
         System.out.println ("----------------------------------------");
         System.out.println ("-Inisra o numero de matricula:__________");
         //Capturar o valor da matricula
-        int matricula = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int matricula = this.inputDeIntTratado();
         
         return matricula;
     }
@@ -224,14 +217,14 @@ public class TelaFuncionario {
         System.out.println ("----------Modificar Funcionario---------");
         System.out.println ("----------------------------------------");
         System.out.println ("-Inisra o numero de matricula:__________");
-        int matricula = this.teclado.nextInt();
+        int matricula = this.inputDeIntTratado();
         this.teclado.nextLine();
         //Achar o funcionario e guardar ele:
         Funcionario funcionarioParaModificar = this.controlador.findFuncionarioByMatricula(matricula);
         
         //Nova matricula:
         System.out.println ("-Insira um novo numero de matricula:_____");
-        int numeroDeMatricula = this.teclado.nextInt();
+        int numeroDeMatricula = this.inputDeIntTratado();
         this.teclado.nextLine();
         
         //Novo nome:
@@ -242,7 +235,7 @@ public class TelaFuncionario {
         //Aqui fica os inputs para a data de nascimento, esperar a implementacao
         //do Calendar
         System.out.println ("-Dia do nascimento:_____________________");
-        int dia = this.teclado.nextInt();
+        int dia = this.inputDeIntTratado();
         this.teclado.nextLine();
         System.out.println ("-Mes do nascimento:_____________________");
         int mes = this.teclado.nextInt();
@@ -284,5 +277,27 @@ public class TelaFuncionario {
         this.controlador.modificarFuncionario(funcionarioParaModificar, novoFuncionario);
         
         
+    }
+    
+    private int inputDeIntTratado () {
+        Scanner scannerDeTratamento = null;
+        do {
+            String inputDoUsuario = this.teclado.nextLine();
+            scannerDeTratamento = new Scanner(inputDoUsuario);
+            //"Esvaziar" o buffer do scanner:
+            teclado.nextLine();
+            if (!(scannerDeTratamento.hasNextInt())) {
+                System.out.println("########################################");
+                System.out.println("----ERRO DE INPUT: CARACTERES NAO SAO---");
+                System.out.println("--------ACEITOS PARA ESSE CAMPO.--------");
+                System.out.println("########################################");
+                System.out.println("---------INSIRA UM VALOR VALIDO---------");
+                System.out.println("########################################");
+            }
+        } while (!(scannerDeTratamento.hasNextInt()));
+        //Caso estiver tudo ok: 
+        int resultado = scannerDeTratamento.nextInt();
+        scannerDeTratamento = null;
+        return resultado;
     }
 }
