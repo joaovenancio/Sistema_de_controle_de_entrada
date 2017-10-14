@@ -41,12 +41,12 @@ public class TelaRegistro {
             System.out.println();
             System.out.println("-1)Buscar Acesso Negado por Acontecimento");
             System.out.println("-2)Buscar Acesso Negado por Matrícula");
-            System.out.println("-6)Voltar");
+            System.out.println("-3)Voltar");
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 
             opcao = this.inputDeIntTratado();
-            this.teclado.nextLine();
+           
 
             switch (opcao) {
 
