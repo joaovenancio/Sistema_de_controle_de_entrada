@@ -278,8 +278,8 @@ public class TelaFuncionario {
         
         
     }
-    /**Método que trata os inputs numericos, evitando que sejam colocados caracteres
-     * 
+    /**
+     * Método que trata os inputs numericos, evitando que sejam colocados caracteres.
      * @return int  
      */
     private int inputDeIntTratado () {

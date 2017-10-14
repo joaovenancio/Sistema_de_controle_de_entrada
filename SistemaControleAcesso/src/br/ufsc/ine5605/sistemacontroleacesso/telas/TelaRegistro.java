@@ -33,7 +33,7 @@ public class TelaRegistro {
 
     public void iniciar() {
         int opcao = 0;
-        while (opcao <= 6) {
+        while (opcao <= 3 && opcao >= 1) {
             System.out.println("----------------------------------------");
             System.out.println("--------------Registros--------------");
             System.out.println("----------------------------------------");
