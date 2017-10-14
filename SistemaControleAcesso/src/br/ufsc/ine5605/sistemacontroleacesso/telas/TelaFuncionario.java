@@ -209,7 +209,7 @@ public class TelaFuncionario {
     }
     
     /**
-     * Mostra inptus para modificar os dados de um funcionario. Se o numero de matricila estive errado,
+     * Mostra inptus para modificar os dados de um funcionario. Se o numero de matricila estiver errado,
      * ele joga uma excecao.
      */
     private void modificarFuncionario() {
@@ -257,7 +257,7 @@ public class TelaFuncionario {
         
         //Novo cargo:
         //Associar um cargo a um funcionario:
-        System.out.println ("-----Slecione o cargo do funcionario----");
+        System.out.println ("-----Selecione o cargo do funcionario----");
         //Mostra os cargos
         this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
         //Input para selecionar o cargo
@@ -278,7 +278,10 @@ public class TelaFuncionario {
         
         
     }
-    
+    /**Método que trata os inputs numericos, evitando que sejam colocados caracteres
+     * 
+     * @return int  
+     */
     private int inputDeIntTratado () {
         Scanner scannerDeTratamento = null;
         do {

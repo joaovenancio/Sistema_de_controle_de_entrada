@@ -45,7 +45,7 @@ public class TelaRegistro {
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 
-            opcao = this.teclado.nextInt();
+            opcao = this.inputDeIntTratado();
             this.teclado.nextLine();
 
             switch (opcao) {
@@ -60,17 +60,17 @@ public class TelaRegistro {
                     System.out.println("-#OPÇÃO:_____");
                     System.out.println();
                     int acontecimentoSelecionado;
-                    acontecimentoSelecionado = this.teclado.nextInt();
-                    this.teclado.nextLine();
-                    //Aqui começa o método de findAcontecimentoByIndice e o retorno já passa pelo foreach
+                    acontecimentoSelecionado = this.inputDeIntTratado();
+                    this.teclado.nextLine();                  
+                    //Aqui começa o método de findRegistroByAcontecimento e o retorno já passa pelo foreach
                     for (Registro registroBusca
-                            : this.controladorRegistros.findAcontecimentoByIndice(acontecimentoSelecionado)) {
+                            : this.controladorRegistros.findRegistroByAcontecimento(acontecimentoSelecionado)) {
                         //A partir daqui são printados: Acontecimento, Data do Acontecimento e Nº de Matrícula
                         System.out.println(registroBusca.getAcontecimento());
                         System.out.println(registroBusca.getDataAcontecimento().getTime());
                         System.out.println(registroBusca.getNumDeMatricula());
-                        break;
                     }
+                    break;
                 case 2:
                     System.out.println("----------------------------------------");
                     System.out.println("-----Buscar Registro de Acesso Negado por Matrícula----");
@@ -87,9 +87,15 @@ public class TelaRegistro {
                     System.out.println("---Selecione um número de matrícula");
                     System.out.println("-#OPÇÃO:_____");
                     int numerodeMatriculaSelecionado;
-                    numerodeMatriculaSelecionado = this.teclado.nextInt();
+                    numerodeMatriculaSelecionado = this.inputDeIntTratado();
                     this.teclado.nextLine();
-                    //Aqui eu tenho que pegar o número de matricula pra poder pesquisar no array de resgistros(findBy)
+                    for(Registro registroLista : 
+                            controladorRegistros.findRegistroByMatricula(numerodeMatriculaSelecionado)){
+                        System.out.println("------------");
+                        System.out.println(registroLista.getAcontecimento());
+                        System.out.println(registroLista.getDataAcontecimento());
+                    }
+                    break;
             }
 
         }
@@ -100,5 +106,27 @@ public class TelaRegistro {
         for (AcontecimentoRegistro acontecimentoBusca : AcontecimentoRegistro.values()) {
             System.out.println("-" + acontecimentoBusca.ordinal() + ")" + acontecimentoBusca.toString());
         }
+    }
+    
+     private int inputDeIntTratado () {
+        Scanner scannerDeTratamento = null;
+        do {
+            String inputDoUsuario = this.teclado.nextLine();
+            scannerDeTratamento = new Scanner(inputDoUsuario);
+            //"Esvaziar" o buffer do scanner:
+            teclado.nextLine();
+            if (!(scannerDeTratamento.hasNextInt())) {
+                System.out.println("########################################");
+                System.out.println("----ERRO DE INPUT: CARACTERES NAO SAO---");
+                System.out.println("--------ACEITOS PARA ESSE CAMPO.--------");
+                System.out.println("########################################");
+                System.out.println("---------INSIRA UM VALOR VALIDO---------");
+                System.out.println("########################################");
+            }
+        } while (!(scannerDeTratamento.hasNextInt()));
+        //Caso estiver tudo ok: 
+        int resultado = scannerDeTratamento.nextInt();
+        scannerDeTratamento = null;
+        return resultado;
     }
 }
