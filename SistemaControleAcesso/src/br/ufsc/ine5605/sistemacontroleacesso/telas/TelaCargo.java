@@ -38,7 +38,7 @@ public class TelaCargo {
 
     public void iniciar() {
         int opcao = 0;
-        while (opcao <= 7) {
+        while (opcao < 7) {
             System.out.println("----------------------------------------");
             System.out.println("--------------Cargos--------------");
             System.out.println("----------------------------------------");
@@ -173,6 +173,7 @@ public class TelaCargo {
                 case 6:
 
                     this.listarCargos();
+                    
                 }
         }
     }
