@@ -162,10 +162,10 @@ public class TelaFuncionario {
         this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
         //Input para selecionar o cargo:
         System.out.println ("-");
-        System.out.println ("-Digite o numero do cargo:_______________");
-        int indiceCargo = this.inputDeIntTratado();
+        System.out.println ("-Digite o código do cargo:_______________");
+        String codigoCargo = this.teclado.nextLine();
         //GetCargo pelo indice que o usuario colocou:
-        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().findCargoByIndice(indiceCargo);
+        ICargo cargo = this.controlador.getControladorGeral().getControladorCargo().findCargoByCodigo(codigoCargo);
         
         //Enveolpe cirado para adicionar a lista
         return new EnvelopeFuncionario(numeroDeMatricula, nome,
