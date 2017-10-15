@@ -17,6 +17,8 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 //TODO:IMPLEMENTAR
 
@@ -57,17 +59,16 @@ public class TelaCargo {
 
             switch (opcao) {
                 case 1:
-
-                    EnvelopeCargo envelope = this.criarCargoSemAcesso();
-                    //try catch do controlador.addCargo
-                    //Tratar dos erros de input que o usuario pode ter causado:
                     try {
+                        EnvelopeCargo envelope = this.criarCargoSemAcesso();
+                        //try catch do controlador.addCargo
+                        //Tratar dos erros de input que o usuario pode ter causado:
 
                         this.controladorCargo.adicionarCargo(envelope);
 
-                    } catch (IllegalArgumentException exception) {
+                    } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
                         System.out.println("########################################");
-                        System.out.println("-" + exception.getMessage());
+                        System.out.println("- Erro: " + exception.getMessage());
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
 
@@ -75,16 +76,16 @@ public class TelaCargo {
                     break;
 
                 case 2:
-                	 EnvelopeCargoComAcesso envelopeAcesso = this.criarCargoComAcesso();
-                     //try catch do controlador.addCargo
-                     //Tratar dos erros de input que o usuario pode ter causado:
-                     try {
+                	try {
+                         //try catch do controlador.addCargo
+                         //Tratar dos erros de input que o usuario pode ter causado:
+                		 EnvelopeCargoComAcesso envelopeAcesso = this.criarCargoComAcesso();
 
-//                         this.controladorCargo.adicionarCargo(envelopeAcesso);
+                         this.controladorCargo.adicionarCargo(envelopeAcesso);
 
-                     } catch (IllegalArgumentException exception) {
+                     } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
                          System.out.println("########################################");
-                         System.out.println("-" + exception.getMessage());
+                         System.out.println("- Erro: " + exception.getMessage());
                          System.out.println("########################################");
                          System.out.println("-------------Tente novamente------------");
 
@@ -92,16 +93,16 @@ public class TelaCargo {
                      break;
                      
                 case 3:
-                	EnvelopeCargo envelopeGerente = this.criarCargoGerente();
-                    //try catch do controlador.addCargo
-                    //Tratar dos erros de input que o usuario pode ter causado:
                     try {
+                    	EnvelopeCargo envelopeGerente = this.criarCargoGerente();
+                        //try catch do controlador.addCargo
+                        //Tratar dos erros de input que o usuario pode ter causado:
 
                         this.controladorCargo.adicionarCargo(envelopeGerente);
 
-                    } catch (IllegalArgumentException exception) {
+                    } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
                         System.out.println("########################################");
-                        System.out.println("-" + exception.getMessage());
+                        System.out.println("- Erro: " + exception.getMessage());
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
 
@@ -117,7 +118,7 @@ public class TelaCargo {
 
                         this.controladorCargo.removerCargo(ICargo);
 
-                    } catch (IllegalArgumentException exception) {
+                    } catch (IllegalArgumentException | InputMismatchException exception) {
                         System.out.println("########################################");
                         System.out.println("-" + exception.getMessage());
                         System.out.println("########################################");
@@ -155,7 +156,7 @@ public class TelaCargo {
 
                 		
 
-                    } catch (IllegalArgumentException exception) {
+                    } catch (IllegalArgumentException | InputMismatchException exception) {
                         System.out.println("########################################");
                         System.out.println("-" + exception.getMessage());
                         System.out.println("########################################");
@@ -185,21 +186,25 @@ public class TelaCargo {
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
+        while(! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome com apenas caracteres.");
+             nome = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
         
-        System.out.println ("In�cio do horário de acesso - hora:_____________________");
+        System.out.println ("Início do horário de acesso - apenas hora:_____________________");
         int inicioHora = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("Início do horário de acesso - minuto:_____________________");
+        System.out.println ("Início do horário de acesso - apenas minuto:_____________________");
         int inicioMinuto = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("-Fim do horário de acesso - hora:_____________________");
+        System.out.println ("Fim do horário de acesso - apenas hora:_____________________");
         int fimHora = this.teclado.nextInt();
         this.teclado.nextLine();
         
-        System.out.println ("Fim do horário de acesso - minuto:_____________________");
+        System.out.println ("Fim do horário de acesso - apenas minuto:_____________________");
         int fimMinuto = this.teclado.nextInt();
         this.teclado.nextLine();
         
@@ -230,7 +235,12 @@ public class TelaCargo {
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
+        while(! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome com apenas caracteres.");
+             nome = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
+        
         
         //Envelope criado para adicionar a lista
         return new EnvelopeCargo(codigo, nome, false);
@@ -249,6 +259,10 @@ public class TelaCargo {
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
+        while(! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome com apenas caracteres.");
+             nome = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
         
         //Envelope criado para adicionar a lista
@@ -279,20 +293,19 @@ public class TelaCargo {
         
         return this.controladorCargo.findCargoByCodigo(codigo);
     }
-	
+    
+    //*Verifca se só tem letras
+    public boolean ehAlfabeto(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
     
 	public void listarCargos() {
         System.out.println ("----------------------------------------");
         System.out.println ("------------Listagem de Cargos----------");
         System.out.println ("----------------------------------------");
+        
         //Listagem dos cargos
-        for (Cargo cargo : this.controladorCargo.getListaCargo()){
-            
-            System.out.println ("-Nome: " + cargo.getNome());
-            System.out.println ("-Codigo: " + cargo.getCodigo());
-
-            System.out.println ("----------------------------------------");
-        }
+        this.controladorCargo.listarCargos();
     }
 
 }

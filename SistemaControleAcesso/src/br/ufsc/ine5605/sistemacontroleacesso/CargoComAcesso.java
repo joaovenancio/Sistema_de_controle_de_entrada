@@ -20,7 +20,7 @@ public class CargoComAcesso extends Gerente{
      * ArrayList que representa os horários que o cargo tem acesso a porta do 
      * Financeiro
      */
-     private ArrayList<Calendar> arrayComHorarios;
+    private ArrayList<Calendar> arrayComHorarios= new ArrayList<Calendar>();
 
     public ArrayList<Calendar> getArrayComHorarios() {
 		return arrayComHorarios;
@@ -36,4 +36,6 @@ public class CargoComAcesso extends Gerente{
         this.arrayComHorarios.add(inicio);
         this.arrayComHorarios.add(fim);
     }
+    
+    
 }

@@ -106,7 +106,7 @@ public class ControladorCargo {
 	            throw new IllegalArgumentException("Nome do cargo jah cadastrado.");
 			}	
 		}else{
-            throw new IllegalArgumentException("C�digo do cargo jah cadastrado.");
+            throw new IllegalArgumentException("Código do cargo já cadastrado");
 		}
     }
 
@@ -199,7 +199,7 @@ public class ControladorCargo {
 		try{
 			return this.listaCargo.get(indiceCargo);
 		}catch(ArrayIndexOutOfBoundsException exception){
-            throw new IllegalArgumentException("Indice acima do tamanho do array"); 
+            throw new IllegalArgumentException("Índice acima do tamanho do array"); 
 		}
     }
     
@@ -212,5 +212,25 @@ public class ControladorCargo {
 		
 		return null;
     }
+
+	public void listarCargos() {
+		// TODO Auto-generated method stub
+		 for (Cargo cargo : this.getListaCargo()){
+	            
+	            System.out.println ("-Nome: " + cargo.getNome());
+	            System.out.println ("-Codigo: " + cargo.getCodigo());
+	             
+	            /* if (cargo instanceof CargoComAcesso){
+	            	CargoComAcesso cargoAcesso= (CargoComAcesso) cargo;
+	            	Calendar horario= cargoAcesso.getArrayComHorarios().get(0);
+	            	
+	            	System.out.println ("-Inicio do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
+	                System.out.println ("-Fim do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
+	            } */
+
+	            System.out.println ("----------------------------------------");
+	        }
+		
+	}
     
 }
