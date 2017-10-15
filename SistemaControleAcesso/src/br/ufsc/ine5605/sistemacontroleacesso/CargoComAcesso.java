@@ -42,6 +42,7 @@ public class CargoComAcesso extends Gerente{
     	if(this.arrayComHorarios.get(0).before(horario) && this.arrayComHorarios.get(1).after(horario)){
     		return true;
     	}
+    	    	
     	return false;
     }
     

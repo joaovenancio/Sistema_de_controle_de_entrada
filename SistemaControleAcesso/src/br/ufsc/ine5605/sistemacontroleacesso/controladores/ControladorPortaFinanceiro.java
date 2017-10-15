@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package br.ufsc.ine5605.sistemacontroleacesso.controladores;
+import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaPortaFinanceiro;
 import java.util.Calendar;
@@ -64,7 +66,14 @@ public class ControladorPortaFinanceiro {
         if (funcionarioPorta.getCargo().temAcesso(horario)) {
             System.out.println("Acesso autorizado.");
         }else{
-            System.out.println("Acesso não autorizado.");
+        	if(funcionarioPorta.getCargo() instanceof CargoComAcesso){
+            	System.out.println(AcontecimentoRegistro.FORADEHORARIO.getDescricao());
+        	}else{
+            	System.out.println(AcontecimentoRegistro.CARGOSEMACESSO.getDescricao());
+
+        	}
+        	
+            //System.out.println("Acesso não autorizado.");
         }
     }
 }
