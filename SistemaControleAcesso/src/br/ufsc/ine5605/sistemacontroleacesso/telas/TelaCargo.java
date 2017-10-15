@@ -66,9 +66,9 @@ public class TelaCargo {
 
                         this.controladorCargo.adicionarCargo(envelope);
 
-                    } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
+                    } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");
-                        System.out.println("- Erro: " + exception.getMessage());
+                        System.out.println("- " + exception.getMessage());
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
 
@@ -83,9 +83,9 @@ public class TelaCargo {
 
                          this.controladorCargo.adicionarCargo(envelopeAcesso);
 
-                     } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
+                     } catch (IllegalArgumentException exception) {
                          System.out.println("########################################");
-                         System.out.println("- Erro: " + exception.getMessage());
+                         System.out.println("- " + exception.getMessage());
                          System.out.println("########################################");
                          System.out.println("-------------Tente novamente------------");
 
@@ -100,9 +100,9 @@ public class TelaCargo {
 
                         this.controladorCargo.adicionarCargo(envelopeGerente);
 
-                    } catch (IllegalArgumentException | InputMismatchException | NullPointerException exception) {
+                    } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");
-                        System.out.println("- Erro: " + exception.getMessage());
+                        System.out.println("- " + exception.getMessage());
                         System.out.println("########################################");
                         System.out.println("-------------Tente novamente------------");
 
@@ -113,12 +113,12 @@ public class TelaCargo {
                     //try catch do controlador.removerCargo
                     //Tratar dos erros de input que o usuario pode ter causado:
                     ICargo ICargo= this.removerCargoByCodigo();
-                    
+                                       
                 	try {
 
                         this.controladorCargo.removerCargo(ICargo);
 
-                    } catch (IllegalArgumentException | InputMismatchException exception) {
+                    } catch (IllegalArgumentException exception) {
                         System.out.println("########################################");
                         System.out.println("-" + exception.getMessage());
                         System.out.println("########################################");
@@ -133,6 +133,11 @@ public class TelaCargo {
                     
                 	//Retorna o cargo a ser modificado
                 	ICargo modCargo=  this.modificarCargo();
+                	
+                    if (modCargo == null){
+                    	System.out.println("Cargo não cadastrado.");
+                    	break;
+                    }
                     
                    //Verifica qual o tipo de cargo a ser modificado 
                 	try {
@@ -169,7 +174,6 @@ public class TelaCargo {
 
                     this.listarCargos();
                 }
-                break;
         }
     }
     
@@ -193,20 +197,28 @@ public class TelaCargo {
         this.teclado.nextLine();
         
         System.out.println ("Início do horário de acesso - apenas hora:_____________________");
-        int inicioHora = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int inicioHora = this.inputDeIntTratado();
         
         System.out.println ("Início do horário de acesso - apenas minuto:_____________________");
-        int inicioMinuto = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int inicioMinuto = this.inputDeIntTratado();
         
         System.out.println ("Fim do horário de acesso - apenas hora:_____________________");
-        int fimHora = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int fimHora = this.inputDeIntTratado();
         
         System.out.println ("Fim do horário de acesso - apenas minuto:_____________________");
-        int fimMinuto = this.teclado.nextInt();
-        this.teclado.nextLine();
+        int fimMinuto = this.inputDeIntTratado();
+        
+        if (inicioHora < 0 || inicioHora > 24) {
+            throw new IllegalArgumentException("Hora de início inserida inválida.");
+            //Mes nao pode ser abaixo de 1 ou acima de 12
+        } else if (inicioMinuto < 0 || inicioMinuto > 59) {
+            throw new IllegalArgumentException("Minuto de início inserido inválido.");
+            //O dia precisa ser maior do que 1 e menor do que 31
+        } else if (fimHora < 0 || fimHora > 24) {
+            throw new IllegalArgumentException("Hora de fim inserida inválida.");
+        } else if (fimMinuto < 0 || fimMinuto > 59) {
+            throw new IllegalArgumentException("Minuto de fim inserido inválido.");
+        }        
         
         Calendar calendarioInicio= Calendar.getInstance();
         calendarioInicio.clear();
@@ -278,7 +290,7 @@ public class TelaCargo {
         System.out.println ("-Insira o código do cargo:_________");
         String codigo = this.teclado.nextLine();
         this.teclado.nextLine();
-
+        
         return this.controladorCargo.findCargoByCodigo(codigo);
         
 	}
@@ -296,7 +308,7 @@ public class TelaCargo {
     
     //*Verifca se só tem letras
     public boolean ehAlfabeto(String name) {
-        return name.matches("[a-zA-Z]+");
+        return name.matches("[a-zA-Z ]*");
     }
     
 	public void listarCargos() {
@@ -306,6 +318,32 @@ public class TelaCargo {
         
         //Listagem dos cargos
         this.controladorCargo.listarCargos();
+    }
+	
+	   /**
+     * Método que trata os inputs numericos, evitando que sejam colocados caracteres.
+     * @return int  
+     */
+    private int inputDeIntTratado () {
+        Scanner scannerDeTratamento = null;
+        do {
+            String inputDoUsuario = this.teclado.nextLine();
+            scannerDeTratamento = new Scanner(inputDoUsuario);
+            //"Esvaziar" o buffer do scanner:
+            teclado.nextLine();
+            if (!(scannerDeTratamento.hasNextInt())) {
+                System.out.println("########################################");
+                System.out.println("----ERRO DE INPUT: CARACTERES NAO SAO---");
+                System.out.println("--------ACEITOS PARA ESSE CAMPO.--------");
+                System.out.println("########################################");
+                System.out.println("---------INSIRA UM VALOR VALIDO---------");
+                System.out.println("########################################");
+            }
+        } while (!(scannerDeTratamento.hasNextInt()));
+        //Caso estiver tudo ok: 
+        int resultado = scannerDeTratamento.nextInt();
+        scannerDeTratamento = null;
+        return resultado;
     }
 
 }

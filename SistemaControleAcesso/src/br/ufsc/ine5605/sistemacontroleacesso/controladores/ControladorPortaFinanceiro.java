@@ -57,15 +57,14 @@ public class ControladorPortaFinanceiro {
         //Tentar acesso a porta:
         
         //Metodo em andamento
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
         
         //Verificar se o usuario em questao possui acesso a aporta:
-//        if (!(funcionarioPorta.getCargo().temAcesso())) {
-//            
-//        }
-        
-        
-        
+        if (!(funcionarioPorta.getCargo().temAcesso(horario))) {
+            System.out.println("Acesso autorizado.");
+        }else{
+            System.out.println("Acesso não autorizado.");
+        }
     }
 }

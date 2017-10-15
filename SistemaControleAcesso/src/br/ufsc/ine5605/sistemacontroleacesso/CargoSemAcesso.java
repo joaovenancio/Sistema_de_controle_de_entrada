@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import java.util.Calendar;
+
 /**
  *
  * @author PEaug
@@ -19,9 +21,10 @@ public class CargoSemAcesso extends Cargo{
     /**
      *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      **/
-    @Override
-    public boolean temAcesso(){
-        return false;
-    }
+    
+	@Override
+	public boolean temAcesso(Calendar horario) {
+		return false;
+	}
 
 }

@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
 
+import java.util.Calendar;
+
 /**
  *
  * @author PEaug
@@ -19,6 +21,6 @@ public interface ICargo {
 
     public void setCodigo(String codigo);        
     
-    public boolean temAcesso();
+    public boolean temAcesso(Calendar horario);
     
 }

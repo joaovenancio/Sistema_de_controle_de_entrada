@@ -54,8 +54,8 @@ public abstract class Cargo implements ICargo {
     /**Método que indica se o cargo possui acesso a Porta do Financeiro
      *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      */
-    @Override
+    
     public boolean temAcesso(){
-        return true;
+    	return true;
     }
 }
