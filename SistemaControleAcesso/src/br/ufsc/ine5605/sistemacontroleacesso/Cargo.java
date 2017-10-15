@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import java.util.Calendar;
+
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 
 /**
@@ -55,7 +57,8 @@ public abstract class Cargo implements ICargo {
      *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      */
     
-    public boolean temAcesso(){
+    @Override
+    public boolean temAcesso(Calendar horario){
     	return true;
     }
 }

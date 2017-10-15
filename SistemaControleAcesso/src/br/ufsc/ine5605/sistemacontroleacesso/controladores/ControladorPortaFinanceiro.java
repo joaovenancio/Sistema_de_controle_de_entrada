@@ -61,7 +61,7 @@ public class ControladorPortaFinanceiro {
         
         
         //Verificar se o usuario em questao possui acesso a aporta:
-        if (!(funcionarioPorta.getCargo().temAcesso(horario))) {
+        if (funcionarioPorta.getCargo().temAcesso(horario)) {
             System.out.println("Acesso autorizado.");
         }else{
             System.out.println("Acesso não autorizado.");

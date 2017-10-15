@@ -21,10 +21,10 @@ public class CargoSemAcesso extends Cargo{
     /**
      *@return boolean - Retorna true se o cargo tem acesso e false caso contrario
      **/
-    
-	@Override
+	
+    @Override
 	public boolean temAcesso(Calendar horario) {
 		return false;
 	}
-
+    
 }
