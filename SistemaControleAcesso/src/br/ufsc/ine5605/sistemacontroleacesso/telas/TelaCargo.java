@@ -141,17 +141,18 @@ public class TelaCargo {
                     
                    //Verifica qual o tipo de cargo a ser modificado 
                 	try {
-                		if (modCargo instanceof CargoSemAcesso){
-                			EnvelopeCargo modEnvelope= this.criarCargoSemAcesso();
-                			controladorCargo.modificarCargo(modCargo, modEnvelope.codigo,
-                					modEnvelope.nome);
-                			
-                		}else if(modCargo instanceof CargoComAcesso){
+                		if (modCargo instanceof CargoComAcesso){
                 			EnvelopeCargoComAcesso modEnvelope= this.criarCargoComAcesso();
                 			CargoComAcesso cargoComAcesso= (CargoComAcesso) modCargo;
                 			
                 			controladorCargo.modificarCargo(cargoComAcesso, modEnvelope.codigo,
                 					modEnvelope.nome, modEnvelope.arrayComHorarios);
+                		
+                			
+                		}else if(modCargo instanceof Gerente){
+                			EnvelopeCargo modEnvelope= this.criarCargoSemAcesso();
+                			controladorCargo.modificarCargo(modCargo, modEnvelope.codigo,
+                					modEnvelope.nome);
                 			
                 		}else{
                 			EnvelopeCargo modEnvelope= this.criarCargoGerente();
