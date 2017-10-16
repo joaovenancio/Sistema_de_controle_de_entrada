@@ -216,6 +216,9 @@ public class TelaFuncionario {
         System.out.println ("----------------------------------------");
         System.out.println ("----------Modificar Funcionario---------");
         System.out.println ("----------------------------------------");
+        System.out.println ("----------Selecione o Funcionario-------");
+        System.out.println ("-----------que Deseja Modificar---------");
+        this.listarFuncionarios();
         System.out.println ("-Inisra o numero de matricula:__________");
         int matricula = this.inputDeIntTratado();
         this.teclado.nextLine();
@@ -228,19 +231,19 @@ public class TelaFuncionario {
         this.teclado.nextLine();
         
         //Novo nome:
-        System.out.println ("-Novo nome do funcionario:_______________");
+        System.out.println ("-Novo o novo nome do funcionario:________");
         String nome = this.teclado.nextLine();
         this.teclado.nextLine();
         
         //Aqui fica os inputs para a data de nascimento, esperar a implementacao
         //do Calendar
-        System.out.println ("-Dia do nascimento:_____________________");
+        System.out.println ("-Novo Dia do nascimento:_________________");
         int dia = this.inputDeIntTratado();
         this.teclado.nextLine();
-        System.out.println ("-Mes do nascimento:_____________________");
+        System.out.println ("-Novo Mes do nascimento:_________________");
         int mes = this.teclado.nextInt();
         this.teclado.nextLine();
-        System.out.println ("-Ano do nascimento:_____________________");
+        System.out.println ("-Novo Ano do nascimento:_________________");
         int ano = this.teclado.nextInt();
         this.teclado.nextLine();
         //
@@ -275,7 +278,6 @@ public class TelaFuncionario {
         
         //Executar a modificacao:
         this.controlador.modificarFuncionario(funcionarioParaModificar, novoFuncionario);
-        
         
     }
     /**
