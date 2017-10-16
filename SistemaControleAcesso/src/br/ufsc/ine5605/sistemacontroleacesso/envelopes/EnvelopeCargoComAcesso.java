@@ -8,7 +8,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
+//import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 
 /**
  *
@@ -17,7 +17,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
 public class EnvelopeCargoComAcesso {
 	public String codigo;
 	public String nome;
-	public ICargo cargo;//Qual a necessidade desse atributo??
+//	public ICargo cargo;//Qual a necessidade desse atributo??
 	public ArrayList<Calendar> arrayComHorarios;
 
         /*

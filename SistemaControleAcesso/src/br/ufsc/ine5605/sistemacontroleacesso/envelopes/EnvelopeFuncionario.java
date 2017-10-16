@@ -6,7 +6,6 @@
 package br.ufsc.ine5605.sistemacontroleacesso.envelopes;
 
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 
 /**
  *
@@ -18,7 +17,6 @@ public class EnvelopeFuncionario {
     public String nome;
     public String telefone;
     public int salario;
-    public IFuncionario funcionario;
     public ICargo cargo;
     //Informações para a criacao do atributo Calendar
     public int ano;
