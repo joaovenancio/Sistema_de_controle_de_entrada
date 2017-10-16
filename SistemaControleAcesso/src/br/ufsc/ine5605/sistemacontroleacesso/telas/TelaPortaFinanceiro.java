@@ -92,7 +92,7 @@ public class TelaPortaFinanceiro {
         horario.set(Calendar.HOUR_OF_DAY, hora);
         horario.set(Calendar.MINUTE, minutos);
 
-        this.owner.abrirPorta(numeroDeMatricula, horario);
+        System.out.println(this.owner.abrirPorta(numeroDeMatricula, horario));
         
         
     }

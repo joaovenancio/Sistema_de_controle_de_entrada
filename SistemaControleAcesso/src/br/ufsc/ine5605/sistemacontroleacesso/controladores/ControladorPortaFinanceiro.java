@@ -7,6 +7,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
 import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
 import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
+import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.Registro;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaPortaFinanceiro;
@@ -62,15 +63,14 @@ public class ControladorPortaFinanceiro {
 
         //Tentar acesso a porta:
         //Metodo em andamento
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         //Verificar se o usuario em questao possui acesso a a porta:
         if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
-            controladorGeral.getControladorRegistros().addRegistro(registro);
+            //TEM QUE FAZER A VERIFICAÇÃO!
+            //controladorGeral.getControladorRegistros().addRegistro();
             return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
-        } 
-        if (funcionarioPorta.getCargo() instanceof CargoComAcesso){
+        }
+        if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
             return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
-
         }
         return "Acesso Autorizado";
     }
