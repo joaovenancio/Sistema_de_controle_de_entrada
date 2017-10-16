@@ -127,6 +127,7 @@ public class ControladorFuncionario {
     /**
      * Recebe um funcionario e um evelope e troca as informacoes do funcionario por
      * aquelas que estao no enveolpe.
+     * 
      * @param funcionarioParaModificar funcionario - O Funcionario que se quer modificar.
      * @param envelope envelope - Pacote contendo as informacoes para modificar o Funcionario.
      */
@@ -178,6 +179,7 @@ public class ControladorFuncionario {
             
             //Agora colocar as novas informacoes do funcionario no funcionario escolhido:
             funcionarioParaModificar.setDataDeNascimento(dataDeNascimento);
+            funcionarioParaModificar.setCargo(null);
             funcionarioParaModificar.setCargo(envelope.cargo);
             funcionarioParaModificar.setNumeroDeMatricula(envelope.numeroDeMatricula);
             funcionarioParaModificar.setNome(envelope.nome);

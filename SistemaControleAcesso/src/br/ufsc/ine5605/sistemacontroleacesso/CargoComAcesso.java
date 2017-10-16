@@ -43,8 +43,7 @@ public class CargoComAcesso extends Gerente {
      * @param horario - Horário a ser comparado
      * @return - boolean indicando se o cargo tem acesso
      */
-    @Override
-    public boolean temAcesso(Calendar horario) {
+    public boolean verificarHorario(Calendar horario) {
         if (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario)){
         	if(this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario)) {
         		return true;
@@ -52,6 +51,15 @@ public class CargoComAcesso extends Gerente {
         }
 
         return false;
+    }
+    
+    /**
+     * Diz a respeito se esse cargo pode destrancar a porta.
+     * @return true - Ele tem acesso.
+     */
+    @Override
+    public boolean temAcesso () {
+        return true;
     }
 
     /**

@@ -28,7 +28,7 @@ public class CargoSemAcesso extends Cargo{
      **/
 	
     @Override
-	public boolean temAcesso(Calendar horario) {
+	public boolean temAcesso() {
 		return false;
 	}
 

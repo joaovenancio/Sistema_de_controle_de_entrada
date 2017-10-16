@@ -59,29 +59,52 @@ public class ControladorPortaFinanceiro {
         }
         //Se nao existir, joga uma excecao;
         if (!(existe)) {
-            throw new IllegalArgumentException("Usuario com essa matricula nao existe.");
+            throw new IllegalArgumentException("Funcionario com essa matricula nao existe.");
         }
 
         //Tentar acesso a porta:
         //Verificar se o usuario em questao possui acesso a a porta:
-        if (funcionarioPorta.getCargo() != null) {
-            if (funcionarioPorta.getCargo().temAcesso(horario)) {
+//        if (funcionarioPorta.getCargo() != null) {
+//            if (funcionarioPorta.getCargo().temAcesso()) {
+//                return "Acesso Autorizado.";
+//            } else {
+//                if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
+//                    //TEM QUE FAZER A VERIFICAÇÃO!
+//                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.FORADEHORARIO, horario, numeroDeMatricula);
+//                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+//                    return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
+//                } else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso) {
+//                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.CARGOSEMACESSO, horario, numeroDeMatricula);
+//                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+//                    return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
+//                }
+//            }
+//            return "Acesso não autorizado.";
+//        } else {
+//            return "Acesso não autorizado. Funcionário sem cargo.";
+//        }
+        
+        //Ver se eh um funcionario que tem uma array de horarios:
+        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
+            //Se eh, verificar o horario:
+            CargoComAcesso cargo = (CargoComAcesso) funcionarioPorta.getCargo();
+            if (cargo.verificarHorario(horario)) {
+                //O horario deixa abrir a porta:
                 return "Acesso Autorizado.";
             } else {
-                if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
-                    //TEM QUE FAZER A VERIFICAÇÃO!
-                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.FORADEHORARIO, horario, numeroDeMatricula);
-                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
-                    return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
-                } else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso) {
-                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.CARGOSEMACESSO, horario, numeroDeMatricula);
-                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
-                    return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
-                }
+                //Caso contrario, criar um registro:
+                EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.FORADEHORARIO, horario, numeroDeMatricula);
+                controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+                return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
             }
-            return "Acesso não autorizado.";
+        } else if (funcionarioPorta.getCargo().temAcesso()) { //Verificar se eh um cargo de gerencia
+            //Se ele for gerente, vai dar true:
+            return "Acesso Autorizado.";
         } else {
-            return "Acesso não autorizado. Funcionário sem cargo.";
+            //Caso ele nao for:
+            EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.CARGOSEMACESSO, horario, numeroDeMatricula);
+            controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
         }
     }
 }

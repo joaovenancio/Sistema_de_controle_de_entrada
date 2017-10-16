@@ -21,6 +21,6 @@ public interface ICargo {
 
     public void setCodigo(String codigo);        
     
-    public boolean temAcesso(Calendar horario);
+    public boolean temAcesso();
     
 }

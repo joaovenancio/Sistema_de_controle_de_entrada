@@ -204,6 +204,7 @@ public class TelaFuncionario {
             System.out.println ("-Matricula: " + funcionarioLista.getNumeroDeMatricula());
             System.out.println ("-Telefone: " + funcionarioLista.getTelefone());
             System.out.println ("-Salario: " + funcionarioLista.getSalario());
+            System.out.println ("-Cargo: " + funcionarioLista.getCargo().getNome());
             System.out.println ("----------------------------------------");
         }
     }
@@ -231,7 +232,7 @@ public class TelaFuncionario {
         this.teclado.nextLine();
         
         //Novo nome:
-        System.out.println ("-Novo o novo nome do funcionario:________");
+        System.out.println ("-Novo nome do funcionario:_______________");
         String nome = this.teclado.nextLine();
         this.teclado.nextLine();
         

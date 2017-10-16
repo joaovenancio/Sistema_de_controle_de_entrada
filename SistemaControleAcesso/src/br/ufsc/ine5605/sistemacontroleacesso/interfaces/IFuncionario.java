@@ -33,4 +33,11 @@ public interface IFuncionario {
      * @return salário do funcionario
      */
     public int getSalario();
+    
+    /**
+     * Metodo que retorna o Cargo do funcionario.
+     * 
+     * @return ICargo do funcioanrio. 
+     */
+    public ICargo getCargo();
 }
