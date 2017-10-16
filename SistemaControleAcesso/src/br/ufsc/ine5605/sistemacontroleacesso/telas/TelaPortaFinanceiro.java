@@ -83,7 +83,7 @@ public class TelaPortaFinanceiro {
         int minutos = this.inputDeIntTratado();
         //Tratamento dos minutos:
         if (!(minutos >= 0 && minutos <= 60)) {
-            throw new IllegalArgumentException("Minutos inváildos, insira um valor entre 0 e 60 minutos");
+            throw new IllegalArgumentException("Minutos inválidos, insira um valor entre 0 e 60 minutos");
         }
         
         //Criar o Calendar com os dados obtidos:
