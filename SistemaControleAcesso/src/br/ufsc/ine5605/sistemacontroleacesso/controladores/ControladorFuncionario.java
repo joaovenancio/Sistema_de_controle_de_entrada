@@ -180,7 +180,6 @@ public class ControladorFuncionario {
             int indexArray = this.funcionarios.indexOf(funcionarioParaModificar);
             
             this.funcionarios.get(indexArray).setDataDeNascimento(dataDeNascimento);
-            this.funcionarios.get(indexArray).setCargo(null);
             this.funcionarios.get(indexArray).setCargo(envelope.cargo);
             this.funcionarios.get(indexArray).setNumeroDeMatricula(envelope.numeroDeMatricula);
             this.funcionarios.get(indexArray).setNome(envelope.nome);
