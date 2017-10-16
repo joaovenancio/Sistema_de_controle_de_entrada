@@ -207,7 +207,7 @@ public class ControladorCargo {
 
     /**
      *
-     * @return
+     * @return listaCargo.
      */
     public ArrayList<Cargo> getListaCargo() {
         return listaCargo;
@@ -215,7 +215,7 @@ public class ControladorCargo {
 
     /**
      *
-     * @return
+     * @return telaCargo.
      */
     public TelaCargo getTelaCargo() {
         return telaCargo;
