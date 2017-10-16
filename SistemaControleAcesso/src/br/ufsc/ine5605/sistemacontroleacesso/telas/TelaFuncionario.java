@@ -103,7 +103,10 @@ public class TelaFuncionario {
                         this.modificarFuncionario();
                         
                     } catch (IllegalArgumentException exception) {
-                        
+                    	System.out.println("########################################");
+                        System.out.println("-" + exception.getMessage());
+                        System.out.println("########################################");
+                        System.out.println("-------------Tente novamente------------");
                     }
                     
             }
@@ -217,12 +220,14 @@ public class TelaFuncionario {
         System.out.println ("----------Selecione o Funcionario-------");
         System.out.println ("-----------que Deseja Modificar---------");
         this.listarFuncionarios();
-        System.out.println ("-Inisra o numero de matricula:__________");
+        System.out.println ("-Insira o numero de matricula:__________");
         int matricula = this.inputDeIntTratado();
         this.teclado.nextLine();
         //Achar o funcionario e guardar ele:
         Funcionario funcionarioParaModificar = this.controlador.findFuncionarioByMatricula(matricula);
-        
+        if (funcionarioParaModificar == null){
+            throw new IllegalArgumentException("Funcionário não cadastrado.");
+        }
         //Nova matricula:
         System.out.println ("-Insira um novo numero de matricula:_____");
         int numeroDeMatricula = this.inputDeIntTratado();
