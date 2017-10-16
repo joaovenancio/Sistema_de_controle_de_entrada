@@ -124,8 +124,60 @@ public class ControladorFuncionario {
         return null;
     }
     
-    public void modificarFuncionario (Funcionario funcionario, EnvelopeFuncionario envelope) {
+    public void modificarFuncionario (Funcionario funcionarioParaModificar, EnvelopeFuncionario envelope) {
+        //Verificar se o funcionario não é nulo:
+        if (funcionarioParaModificar == null) {
+            throw new IllegalArgumentException("Não existe um funcionário com essa matricula");
+        }
         
+        //Tratamento do envelope:
+        if (envelope == null) {
+        } else {
+            //Fazer o tratamento dos dados dentro do envelope:
+            //Ano nao pode ser abaixo de 0
+            if (envelope.ano < 0 ) {
+                throw new IllegalArgumentException("Ano de nascimento invalido");
+                //Mes nao pode ser abaixo de 1 ou acima de 12
+            } else if (!(envelope.mes >= 1 && envelope.mes <= 12)) {
+                throw new IllegalArgumentException("Mes de nascimento invalido, extrapolou os meses possiveis");
+                //O dia precisa ser maior do que 1 e menor do que 31
+            } else if (!(envelope.dia > 0 && envelope.dia <= 31)) {
+                throw new IllegalArgumentException("Dia do nascimento invalida, não existe dia com esse numero");
+            }
+            
+            //Feito o tratamento do Cargo, ano, mes e dia, criar um objeto do tipo Calendar para poder cirar o funcionario
+            Calendar dataDeNascimento = Calendar.getInstance();
+            dataDeNascimento.clear();
+            dataDeNascimento.set(Calendar.YEAR, envelope.ano);
+            dataDeNascimento.set(Calendar.MONTH, envelope.mes -1); //Os meses começam a contar no 0, por isso o menos um
+            dataDeNascimento.set(Calendar.DATE, envelope.dia);
+            
+            //Ver se foi associado um cargo a um funcionario
+            if (envelope.cargo == null) {
+                throw new IllegalArgumentException("Não foi associado um Cargo a um Funcionario");
+            }
+            
+            //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
+            //Verificar se jah existe a mesma matricula:
+            for (IFuncionario funcionarioLista : funcionarios) {
+                if (funcionarioLista.getNumeroDeMatricula() == envelope.numeroDeMatricula ) {
+                    throw new IllegalArgumentException("Numero de matricula jah registrado");
+                } else {
+                    //Verificar se jah existe o mesmo nome:
+                    if (funcionarioLista.getNome().equals(envelope.nome) ) {
+                        throw new IllegalArgumentException("Nome de funcionario jah cadastrado");
+                    }
+                }
+            }
+            
+            //Agora colocar as novas informacoes do funcionario no funcionario escolhido:
+            funcionarioParaModificar.setDataDeNascimento(dataDeNascimento);
+            funcionarioParaModificar.setCargo(envelope.cargo);
+            funcionarioParaModificar.setNumeroDeMatricula(envelope.numeroDeMatricula);
+            funcionarioParaModificar.setNome(envelope.nome);
+            funcionarioParaModificar.setTelefone(envelope.telefone);
+            funcionarioParaModificar.setSalario(envelope.salario);
+        }
     }
     
     //Getter:
