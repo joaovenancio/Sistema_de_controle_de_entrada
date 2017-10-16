@@ -64,15 +64,19 @@ public class ControladorPortaFinanceiro {
         //Tentar acesso a porta:
         //Metodo em andamento
         //Verificar se o usuario em questao possui acesso a a porta:
-        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
-            //TEM QUE FAZER A VERIFICAÇÃO!
-            //controladorGeral.getControladorRegistros().addRegistro();
-            return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
+        
+        if (funcionarioPorta.getCargo().temAcesso(horario)) {
+        	return "Acesso Autorizado.";
+        }else{
+	        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
+	            //TEM QUE FAZER A VERIFICAÇÃO!
+	            //controladorGeral.getControladorRegistros().addRegistro();
+	            return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
+	        }else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
+	            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
+	        }
         }
-        if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
-            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
-        }
-        return "Acesso Autorizado";
+        return "Acesso não autorizado.";
     }
     
 }
