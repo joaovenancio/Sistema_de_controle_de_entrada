@@ -97,6 +97,12 @@ public class TelaPortaFinanceiro {
         
         
     }
+    
+    /**
+     * Faz o tratamento de input. Da prompt para o usuario digitar e retorna um int
+     * sem quebrar o sistema.
+     * @return int - numero que se quer obter
+     */
     private int inputDeIntTratado () {
         Scanner scannerDeTratamento = null;
         do {

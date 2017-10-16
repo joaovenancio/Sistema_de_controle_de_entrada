@@ -44,8 +44,7 @@ public class TelaControladorGeral {
             System.out.println ("-#OPÇÃO:_____");
             System.out.println ();
             
-            opcao = this.teclado.nextInt();
-            this.teclado.nextLine();
+            opcao = inputDeIntTratado ();
             
             switch(opcao) {
                 
@@ -71,5 +70,32 @@ public class TelaControladorGeral {
                  
             }
         }
+    }
+    
+    /**
+     * Faz o tratamento de input. Da prompt para o usuario digitar e retorna um int
+     * sem quebrar o sistema.
+     * @return int - numero que se quer obter
+     */
+    private int inputDeIntTratado () {
+        Scanner scannerDeTratamento = null;
+        do {
+            String inputDoUsuario = this.teclado.nextLine();
+            scannerDeTratamento = new Scanner(inputDoUsuario);
+            //"Esvaziar" o buffer do scanner:
+            teclado.nextLine();
+            if (!(scannerDeTratamento.hasNextInt())) {
+                System.out.println("########################################");
+                System.out.println("----ERRO DE INPUT: CARACTERES NAO SAO---");
+                System.out.println("--------ACEITOS PARA ESSE CAMPO.--------");
+                System.out.println("########################################");
+                System.out.println("---------INSIRA UM VALOR VALIDO---------");
+                System.out.println("########################################");
+            }
+        } while (!(scannerDeTratamento.hasNextInt()));
+        //Caso estiver tudo ok: 
+        int resultado = scannerDeTratamento.nextInt();
+        scannerDeTratamento = null;
+        return resultado;
     }
 }
