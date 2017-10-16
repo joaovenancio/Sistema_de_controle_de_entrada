@@ -32,7 +32,7 @@ public enum AcontecimentoRegistro {
     //Construtor
     /**Construtor do Enum
      * 
-     * @param descricao - Descrição do Acontecimento
+     * @param descricao - Descrição do Acontecimento a ser registrado
      */
     AcontecimentoRegistro (String descricao) {
         this.descricao = descricao;

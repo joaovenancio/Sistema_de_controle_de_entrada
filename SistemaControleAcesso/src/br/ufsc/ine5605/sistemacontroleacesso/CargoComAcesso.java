@@ -14,37 +14,62 @@ import java.util.Date;
  *
  * @author PEaug
  */
-public class CargoComAcesso extends Gerente{
-    //Atributos
+public class CargoComAcesso extends Gerente {
+
     /**
-     * ArrayList que representa os horários que o cargo tem acesso a porta do 
-     * Financeiro
+     * Atributo que representa os horários que o cargo pode acessar a porta do
+     * financeiro
      */
-    private ArrayList<Calendar> arrayComHorarios= new ArrayList<Calendar>();
+    private ArrayList<Calendar> arrayComHorarios;
 
-    @Override
-    public ArrayList<Calendar> getArrayComHorarios() {
-		return arrayComHorarios;
-	}
-
-	public void setArrayComHorarios(ArrayList<Calendar> arrayComHorarios) {
-		this.arrayComHorarios = arrayComHorarios;
-	}
-
-	//Construtor
+    /**
+     * Construtor do Cargo com acesso
+     *
+     * @param codigo - Código do cargo
+     * @param nome - Nome do cargo
+     * @param inicio - Horário de inicio do expediente desse cargo
+     * @param fim - Horário de fim do expediente desse cargo
+     */
     public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
         super(codigo, nome);
+        this.arrayComHorarios = new ArrayList<>();
         this.arrayComHorarios.add(inicio);
         this.arrayComHorarios.add(fim);
     }
-    
+
+    /**
+     * Método que mostra se o cargo tem ou não acesso a porta do financeiro
+     *
+     * @param horario - Horário a ser comparado
+     * @return - boolean indicando se o cargo tem acesso
+     */
     @Override
-    public boolean temAcesso(Calendar horario){
-    	if(this.arrayComHorarios.get(0).before(horario) && this.arrayComHorarios.get(1).after(horario)){
-    		return true;
-    	}
-    	    	
-    	return false;
+    public boolean temAcesso(Calendar horario) {
+        if (this.arrayComHorarios.get(0).before(horario) && this.arrayComHorarios.get(1).after(horario)) {
+            return true;
+        }
+
+        return false;
     }
-    
+
+    /**
+     * Método que retorna o Array de horários que o cargo pode acessar a porta
+     * do financeiro
+     *
+     * @return - Array de horários que o cargo pode acessar a porta do
+     * financeiro
+     */
+    public ArrayList<Calendar> getArrayComHorarios() {
+        return arrayComHorarios;
+    }
+
+    /**
+     * Método que modifica o Array de horários que o cargo pode acessar a porta
+     *
+     * @param arrayComHorarios - Array de horários que o cargo pode acessar a
+     * porta do finnceiro
+     */
+    public void setArrayComHorarios(ArrayList<Calendar> arrayComHorarios) {
+        this.arrayComHorarios = arrayComHorarios;
+    }
 }

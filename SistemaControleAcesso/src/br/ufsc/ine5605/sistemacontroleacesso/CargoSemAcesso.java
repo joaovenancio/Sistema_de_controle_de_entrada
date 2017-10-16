@@ -28,9 +28,5 @@ public class CargoSemAcesso extends Cargo{
 		return false;
 	}
 
-    @Override
-    public ArrayList<Calendar> getArrayComHorarios() {
-        return null;
-    }
     
 }

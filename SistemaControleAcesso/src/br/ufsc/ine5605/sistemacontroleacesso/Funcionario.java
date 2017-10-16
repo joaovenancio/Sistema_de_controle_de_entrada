@@ -32,7 +32,6 @@ public class Funcionario implements IFuncionario{
         this.salario = salario;
         this.cargo = cargo;
         this.dataDeNascimento = dataDeNascimento;
-        //Falta o CARGO
     }
     
     //Metodos:
