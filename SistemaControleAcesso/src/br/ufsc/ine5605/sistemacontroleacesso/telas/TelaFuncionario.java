@@ -157,7 +157,7 @@ public class TelaFuncionario {
         
         
         //Associar um cargo a um funcionario:
-        System.out.println ("-----Slecione o cargo do funcionario----");
+        System.out.println ("-----Selecione o cargo do funcionario----");
         //Mostra os cargos:
         this.controlador.getControladorGeral().getControladorCargo().getTelaCargo().listarCargos();
         //Input para selecionar o cargo:

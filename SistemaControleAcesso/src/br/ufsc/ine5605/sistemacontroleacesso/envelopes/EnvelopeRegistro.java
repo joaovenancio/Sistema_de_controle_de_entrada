@@ -13,9 +13,9 @@ import java.util.Calendar;
  * @author PEaug
  */
 public class EnvelopeRegistro {
-    private AcontecimentoRegistro acontecimento;
-    private Calendar dataAcontecimento;
-    private int numDeMatricula;
+    public AcontecimentoRegistro acontecimento;
+    public Calendar dataAcontecimento;
+    public int numDeMatricula;
     
     public EnvelopeRegistro(AcontecimentoRegistro acontecimento, 
             Calendar dataAcontecimento, int numDeMatricula) {
