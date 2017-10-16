@@ -45,9 +45,7 @@ public class TelaFuncionario {
             System.out.println ("-#OPÇÃO:_____");
             System.out.println ();
             
-            opcao = this.teclado.nextInt();
-            this.teclado.nextLine();
-            
+            opcao = inputDeIntTratado();            
             switch (opcao) {
                 //Cadastrar um funcionario:
                 case 1:
