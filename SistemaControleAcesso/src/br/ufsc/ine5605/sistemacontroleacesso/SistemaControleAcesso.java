@@ -13,7 +13,8 @@ import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorGeral;
  */
 public class SistemaControleAcesso {
 
-    /**
+    /**Método <b>MAIN</b> da Aplicação
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {

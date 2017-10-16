@@ -10,12 +10,27 @@ package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
  * @author Joao Vitor Venancio
  */
 public interface IFuncionario {
-
+    /**
+     * 
+     * @return 
+     */
     public int getNumeroDeMatricula();
     
+    /**Método que retorna o número de telefone do funcionario
+     * 
+     * @return - número de telefone do funcionario
+     */
     public String getTelefone();
 
-    public Object getNome();
+    /**
+     *  
+     * @return 
+     */
+    public String getNome();
     
+    /**Método que retorna o salário do funcionario
+     * 
+     * @return salário do funcionario
+     */
     public int getSalario();
 }

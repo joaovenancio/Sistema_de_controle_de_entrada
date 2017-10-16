@@ -30,7 +30,7 @@ public enum AcontecimentoRegistro {
     private String descricao;
     
     //Construtor
-    /**Construtor do Enum
+    /**Construtor da descrição do Enum
      * 
      * @param descricao - Descrição do Acontecimento a ser registrado
      */

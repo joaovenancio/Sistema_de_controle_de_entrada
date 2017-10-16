@@ -28,7 +28,7 @@ public class CargoComAcesso extends Gerente {
      * @param codigo - Código do cargo
      * @param nome - Nome do cargo
      * @param inicio - Horário de inicio do expediente desse cargo
-     * @param fim - Horário de fim do expediente desse cargo
+     * @param fim  - Horário de fim do expediente desse cargo
      */
     public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
         super(codigo, nome);

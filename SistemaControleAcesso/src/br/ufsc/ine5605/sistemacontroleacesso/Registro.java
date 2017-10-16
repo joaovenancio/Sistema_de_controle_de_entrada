@@ -17,7 +17,13 @@ public class Registro implements IRegistro {
     private Calendar dataAcontecimento;
     private int numDeMatricula;
     
-    //Construtor
+    /**Construtor de Registro
+     * 
+     * @param acontecimento acontecimento que gerou o registro
+     * @param dataAcontecimento data do acontecimento que gerou o registro
+     * @param numDeMatricula número de matrícula do funcionário que gerou o 
+     * registro
+     */
     public Registro(AcontecimentoRegistro acontecimento, Calendar dataAcontecimento, int numDeMatricula ) {
         this.acontecimento = acontecimento;
         this.dataAcontecimento = dataAcontecimento;

@@ -13,14 +13,15 @@ import java.util.Calendar;
  */
 public class Gerente extends CargoSemAcesso{
     
+    /**Construtor da classe Gerente
+     * 
+     * @param codigo código do Gerente
+     * @param nome  nome desse tipo de Gerente
+     */
     public Gerente(String codigo, String nome) {
         super(codigo, nome);
     }
     
-    /**
-     * @param horario
-     *@return se o cargo tem acesso
-     **/
     
     @Override
     public boolean temAcesso(Calendar horario){
