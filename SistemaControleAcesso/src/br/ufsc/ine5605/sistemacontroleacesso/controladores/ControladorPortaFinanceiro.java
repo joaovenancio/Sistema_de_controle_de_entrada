@@ -63,7 +63,6 @@ public class ControladorPortaFinanceiro {
         }
 
         //Tentar acesso a porta:
-        //Metodo em andamento
         //Verificar se o usuario em questao possui acesso a a porta:
         if (funcionarioPorta.getCargo() != null) {
             if (funcionarioPorta.getCargo().temAcesso(horario)) {

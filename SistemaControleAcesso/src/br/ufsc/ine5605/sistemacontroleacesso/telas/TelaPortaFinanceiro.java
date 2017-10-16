@@ -23,7 +23,7 @@ public class TelaPortaFinanceiro {
 
     public void iniciar() {
         int opcao = 0;
-        while (opcao <= 1 && opcao >= 0 ) {
+        while (opcao <= 2 && opcao >= 1 ) {
             System.out.println ("----------------------------------------");
             System.out.println ("-----------------Porta------------------");
             System.out.println ("----------------------------------------");
@@ -92,6 +92,7 @@ public class TelaPortaFinanceiro {
         horario.set(Calendar.HOUR_OF_DAY, hora);
         horario.set(Calendar.MINUTE, minutos);
 
+        //Metodo para abrir a porta e printar o se deu certo ou nao:
         System.out.println(this.owner.abrirPorta(numeroDeMatricula, horario));
         
         
