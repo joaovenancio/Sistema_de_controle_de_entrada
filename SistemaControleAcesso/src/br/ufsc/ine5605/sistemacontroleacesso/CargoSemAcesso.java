@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -26,5 +27,10 @@ public class CargoSemAcesso extends Cargo{
 	public boolean temAcesso(Calendar horario) {
 		return false;
 	}
+
+    @Override
+    public ArrayList<Calendar> getArrayComHorarios() {
+        return null;
+    }
     
 }

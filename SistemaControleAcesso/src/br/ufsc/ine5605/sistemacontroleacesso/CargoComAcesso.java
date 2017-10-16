@@ -22,6 +22,7 @@ public class CargoComAcesso extends Gerente{
      */
     private ArrayList<Calendar> arrayComHorarios= new ArrayList<Calendar>();
 
+    @Override
     public ArrayList<Calendar> getArrayComHorarios() {
 		return arrayComHorarios;
 	}
