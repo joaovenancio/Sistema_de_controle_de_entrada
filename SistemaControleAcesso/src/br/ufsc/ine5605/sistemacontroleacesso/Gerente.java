@@ -18,6 +18,7 @@ public class Gerente extends CargoSemAcesso{
     }
     
     /**
+     * @param horario
      *@return se o cargo tem acesso
      **/
     
