@@ -95,7 +95,16 @@ public class ControladorRegistros {
         }
         return registrosEncontrados;
     }
-
+    
+    /**Método que adiciona um novo Registro no Array de Registros
+     * 
+     * @param registro - Registro a ser adicionado
+     */
+    private void adicionarRegistro(Registro registro){
+        
+            this.arrayDeRegistros.add(registro);
+       
+    }
     
     /**Método que retorna o ArrayList que armazena os Registros do sistema
      *
