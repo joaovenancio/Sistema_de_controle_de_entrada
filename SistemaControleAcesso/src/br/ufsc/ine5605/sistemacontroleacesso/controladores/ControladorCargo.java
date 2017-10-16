@@ -221,21 +221,7 @@ public class ControladorCargo {
         return telaCargo;
     }
 
-    /**
-     *
-     * @param indiceCargo
-     * @return
-     */
-    public ICargo findCargoByIndice(int indiceCargo) {
-        try {
-            return this.listaCargo.get(indiceCargo);
-        } catch (ArrayIndexOutOfBoundsException exception) {
-            System.out.println("Índice acima do tamanho do array");
-            return null;
-        }
-    }
-
-    /**
+    /**Método que encontra cargo por código
      *
      * @param codigo
      * @return

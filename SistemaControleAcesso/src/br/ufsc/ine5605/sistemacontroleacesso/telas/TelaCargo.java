@@ -26,6 +26,18 @@ import java.util.Scanner;
  *
  * @author PEaug
  */
+/**
+ * @author W8.1
+ *
+ */
+/**
+ * @author W8.1
+ *
+ */
+/**
+ * @author W8.1
+ *
+ */
 public class TelaCargo {
 
     private ControladorCargo controladorCargo;
@@ -180,6 +192,9 @@ public class TelaCargo {
     }
     
     
+	/**Cria cargo com acesso através de inputs do usuário
+	 * @return EnvelopeCargoComAcesso
+	 */
 	private EnvelopeCargoComAcesso criarCargoComAcesso() {
     	//Capturar os valores para criar os cargos
         System.out.println ("----------------------------------------");
@@ -188,12 +203,16 @@ public class TelaCargo {
         
         System.out.println ("-Insira o código do cargo:_________");
         String codigo = this.teclado.nextLine();
+        while(codigo.isEmpty()){
+        	System.out.println("Insira um código para o cargo.");
+            codigo = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
-        while(! this.ehAlfabeto(nome)){
-        	System.out.println("Insira um nome com apenas caracteres.");
+        while(nome.isEmpty() || ! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome válido com apenas caracteres.");
              nome = this.teclado.nextLine();
         }
         this.teclado.nextLine();
@@ -237,6 +256,9 @@ public class TelaCargo {
         return new EnvelopeCargoComAcesso(codigo, nome, calendarioInicio, calendarioFim);
 	}    
 
+    /**Cria cargo sem acesso através de inputs do usuário
+     * @return EnvelopeCargo
+     */
     private EnvelopeCargo criarCargoSemAcesso() {
     	//Capturar os valores para criar os cargos
         System.out.println ("----------------------------------------");
@@ -245,12 +267,16 @@ public class TelaCargo {
         
         System.out.println ("-Insira o código do cargo:_________");
         String codigo = this.teclado.nextLine();
+        while(codigo.isEmpty()){
+        	System.out.println("Insira um código para o cargo.");
+            codigo = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
-        while(! this.ehAlfabeto(nome)){
-        	System.out.println("Insira um nome com apenas caracteres.");
+        while(nome.isEmpty() || ! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome válido com apenas caracteres.");
              nome = this.teclado.nextLine();
         }
         this.teclado.nextLine();
@@ -260,6 +286,9 @@ public class TelaCargo {
         return new EnvelopeCargo(codigo, nome, false);
     }
     
+    /**Cria cargo gerente através de inputs do usuário
+     * @return EnvelopeCargo
+     */
     private EnvelopeCargo criarCargoGerente() {
 		// TODO Auto-generated method stub
     	//Capturar os valores para criar os cargos
@@ -269,12 +298,16 @@ public class TelaCargo {
         
         System.out.println ("-Insira o código do cargo:_________");
         String codigo = this.teclado.nextLine();
+        while(codigo.isEmpty()){
+        	System.out.println("Insira um código para o cargo.");
+            codigo = this.teclado.nextLine();
+        }
         this.teclado.nextLine();
         
         System.out.println ("-Nome do cargo:___________________");
         String nome = this.teclado.nextLine();
-        while(! this.ehAlfabeto(nome)){
-        	System.out.println("Insira um nome com apenas caracteres.");
+        while(nome.isEmpty() || ! this.ehAlfabeto(nome)){
+        	System.out.println("Insira um nome válido com apenas caracteres.");
              nome = this.teclado.nextLine();
         }
         this.teclado.nextLine();
@@ -283,6 +316,9 @@ public class TelaCargo {
         return new EnvelopeCargo(codigo, nome, true);
     }
     
+	/**Solicita o código e encontra o cargo a ser removido
+	 * @return ICargo
+	 */
 	private ICargo removerCargoByCodigo() {
     	//Capturar os valores para remover o cargos
         System.out.println ("----------------------------------------");
@@ -297,6 +333,9 @@ public class TelaCargo {
         
 	}
 	
+    /**Solicita o código e encontra o cargo a ser modificado
+     * @return ICargo
+     */
     private ICargo modificarCargo() {
     	//Lista os cargos
     	this.listarCargos();
@@ -308,9 +347,13 @@ public class TelaCargo {
         return this.controladorCargo.findCargoByCodigo(codigo);
     }
     
-    //*Verifca se só tem letras
+    
+    /**Verifica se o nome contém apenas letras e espaços
+     * @param name
+     * @return boolean
+     */
     public boolean ehAlfabeto(String name) {
-        return name.matches("[a-zA-Z ]*");
+        return name.matches("[a-zA-Z-áàâãéèêíïóôõöúçñ ]*");
     }
     
 	public void listarCargos() {
@@ -323,7 +366,7 @@ public class TelaCargo {
     }
 	
 	   /**
-     * Método que trata os inputs numericos, evitando que sejam colocados caracteres.
+     * Método que trata os inputs numéricos, evitando que sejam colocados caracteres.
      * @return int  
      */
     private int inputDeIntTratado () {
