@@ -362,7 +362,20 @@ public class TelaCargo {
         System.out.println ("----------------------------------------");
         
         //Listagem dos cargos
-        this.controladorCargo.listarCargos();
+        for (Cargo cargo : this.controladorCargo.getListaCargo()) {
+
+            System.out.println("-Nome: " + cargo.getNome());
+            System.out.println("-Codigo: " + cargo.getCodigo());
+
+            /* if (cargo instanceof CargoComAcesso){
+	            	CargoComAcesso cargoAcesso= (CargoComAcesso) cargo;
+	            	Calendar horario= cargoAcesso.getArrayComHorarios().get(0);
+	            	
+	            	System.out.println ("-Inicio do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
+	                System.out.println ("-Fim do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
+	            } */
+            System.out.println("----------------------------------------");
+        }
     }
 	
 	   /**

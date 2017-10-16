@@ -235,27 +235,4 @@ public class ControladorCargo {
 
         return null;
     }
-
-    /**Método que lista todos os Cargos Existentes
-     * 
-     */
-    public void listarCargos() {
-        // TODO Auto-generated method stub
-        for (Cargo cargo : this.getListaCargo()) {
-
-            System.out.println("-Nome: " + cargo.getNome());
-            System.out.println("-Codigo: " + cargo.getCodigo());
-
-            /* if (cargo instanceof CargoComAcesso){
-	            	CargoComAcesso cargoAcesso= (CargoComAcesso) cargo;
-	            	Calendar horario= cargoAcesso.getArrayComHorarios().get(0);
-	            	
-	            	System.out.println ("-Inicio do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
-	                System.out.println ("-Fim do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
-	            } */
-            System.out.println("----------------------------------------");
-        }
-
-    }
-
 }
