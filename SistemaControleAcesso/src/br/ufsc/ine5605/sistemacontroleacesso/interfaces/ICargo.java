@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso.interfaces;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -16,6 +17,8 @@ public interface ICargo {
     public String getNome();
 
     public String getCodigo();
+    
+    public ArrayList<Calendar> getArrayComHorarios();
     
     public void setNome(String nome);
 
