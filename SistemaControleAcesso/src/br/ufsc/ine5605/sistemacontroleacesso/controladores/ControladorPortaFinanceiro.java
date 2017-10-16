@@ -58,25 +58,28 @@ public class ControladorPortaFinanceiro {
         }
         //Se nao existir, joga uma excecao;
         if (!(existe)) {
-            throw new IllegalArgumentException("Usuario com essa matricula nao existe");
+            throw new IllegalArgumentException("Usuario com essa matricula nao existe.");
         }
 
         //Tentar acesso a porta:
         //Metodo em andamento
         //Verificar se o usuario em questao possui acesso a a porta:
         
-        if (funcionarioPorta.getCargo().temAcesso(horario)) {
-        	return "Acesso Autorizado.";
-        }else{
-	        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
-	            //TEM QUE FAZER A VERIFICAÇÃO!
-	            //controladorGeral.getControladorRegistros().addRegistro();
-	            return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
-	        }else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
-	            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
+        if (funcionarioPorta.getCargo() != null){	
+	        if (funcionarioPorta.getCargo().temAcesso(horario)) {
+	        	return "Acesso Autorizado.";
+	        }else{
+		        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
+		            //TEM QUE FAZER A VERIFICAÇÃO!
+		            //controladorGeral.getControladorRegistros().addRegistro();
+		            return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
+		        }else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
+		            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
+		        }
 	        }
-        }
-        return "Acesso não autorizado.";
+	        return "Acesso não autorizado.";
+	    }else{
+	    	return "Acesso não autorizado. Funcionário sem cargo.";
+	    }
     }
-    
 }

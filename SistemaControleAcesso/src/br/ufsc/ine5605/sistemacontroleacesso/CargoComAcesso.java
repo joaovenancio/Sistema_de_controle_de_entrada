@@ -45,7 +45,8 @@ public class CargoComAcesso extends Gerente {
      */
     @Override
     public boolean temAcesso(Calendar horario) {
-        if (this.arrayComHorarios.get(0).before(horario) && this.arrayComHorarios.get(1).after(horario)) {
+        if (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario)
+        		&& this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario)) {
             return true;
         }
 
