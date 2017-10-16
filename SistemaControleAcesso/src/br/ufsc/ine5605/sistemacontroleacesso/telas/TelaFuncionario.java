@@ -279,7 +279,6 @@ public class TelaFuncionario {
         //Executar a modificacao:
         this.controlador.modificarFuncionario(funcionarioParaModificar, novoFuncionario);
         
-        
     }
     /**
      * Método que trata os inputs numericos, evitando que sejam colocados caracteres.
