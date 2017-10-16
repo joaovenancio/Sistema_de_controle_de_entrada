@@ -66,9 +66,8 @@ public class TelaCargo {
             System.out.println("-#OPÇÃO:_____");
             System.out.println();
 
-            opcao = this.teclado.nextInt();
-            this.teclado.nextLine();
-
+            opcao = inputDeIntTratado();
+      
             switch (opcao) {
                 case 1:
                     try {
