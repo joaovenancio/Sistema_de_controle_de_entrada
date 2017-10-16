@@ -7,6 +7,7 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
 import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
 import br.ufsc.ine5605.sistemacontroleacesso.Registro;
+import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeRegistro;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaRegistro;
 import java.util.ArrayList;
 
@@ -98,9 +99,9 @@ public class ControladorRegistros {
     
     /**Método que adiciona um novo Registro no Array de Registros
      * 
-     * @param registro - Registro a ser adicionado
+     * @param envelope - Registro a ser adicionado
      */
-    private void adicionarRegistro(Registro registro){
+    private void adicionarRegistro(EnvelopeRegistro envelope){
         
             this.arrayDeRegistros.add(registro);
        
