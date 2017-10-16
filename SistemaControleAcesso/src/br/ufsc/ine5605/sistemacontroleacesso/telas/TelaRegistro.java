@@ -6,9 +6,9 @@
 package br.ufsc.ine5605.sistemacontroleacesso.telas;
 
 import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
+import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.Registro;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorRegistros;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -88,7 +88,7 @@ public class TelaRegistro {
                     System.out.println("----------------------------------------");
                     System.out.println("----------Matrículas ativas:");
                     System.out.println("------------------------------------------");
-                    for (IFuncionario funcionarioLista : controladorRegistros.
+                    for (Funcionario funcionarioLista : controladorRegistros.
                             getControladorGeral().getControladorFuncionario().getFuncionarios()) {
 
                         System.out.println("-Nome: " + funcionarioLista.getNome());

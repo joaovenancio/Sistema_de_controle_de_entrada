@@ -6,14 +6,13 @@
 package br.ufsc.ine5605.sistemacontroleacesso;
 
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import java.util.Calendar;
 
 /**
  *
  * @author Joao Vitor Venancio
  */
-public class Funcionario implements IFuncionario{
+public class Funcionario{
     //Atributos:
     /**
      * Atributo que representa o número de matrícula do funcionário
@@ -71,7 +70,6 @@ public class Funcionario implements IFuncionario{
      * 
      * @return  número de matrícula
      */
-    @Override
     public int getNumeroDeMatricula() {
         return numeroDeMatricula;
     }
@@ -88,7 +86,6 @@ public class Funcionario implements IFuncionario{
      * 
      * @return nome do funcionário
      */
-    @Override
     public String getNome() {
         return nome;
     }
@@ -117,7 +114,7 @@ public class Funcionario implements IFuncionario{
         this.dataDeNascimento = dataDeNascimento;
     }
 
-    @Override
+    
     public String getTelefone() {
         return telefone;
     }
@@ -131,12 +128,10 @@ public class Funcionario implements IFuncionario{
         this.telefone = telefone;
     }
 
-    @Override
     public int getSalario() {
         return salario;
     }
     
-    //COLOCAR NA INTERFACE????????
     /**Método que modifica o salário do funcionario
      * 
      * @param salario  salário do funcionario a ser setado

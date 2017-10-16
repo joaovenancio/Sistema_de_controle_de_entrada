@@ -2,7 +2,6 @@ package br.ufsc.ine5605.sistemacontroleacesso.controladores;
 
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaFuncionario;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,7 +70,7 @@ public class ControladorFuncionario {
             
             //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
             //Verificar se jah existe a mesma matricula:
-            for (IFuncionario funcionarioLista : funcionarios) {
+            for (Funcionario funcionarioLista : funcionarios) {
                 if (funcionarioLista.getNumeroDeMatricula() == novoFuncionario.getNumeroDeMatricula() ) {
                     throw new IllegalArgumentException("Numero de matricula jah registrado");
                 } else {
@@ -93,9 +92,9 @@ public class ControladorFuncionario {
      * @return boolean - True se encotrou e removeu / False se não encotrou (portanto nao removeu)
      */
     public boolean removerFuncionarioPelaMatricula (int matricula) {
-        IFuncionario funcionarioRemover = null;
+        Funcionario funcionarioRemover = null;
         boolean encontrou = false;
-        for (IFuncionario funcionarioLista : this.funcionarios) {
+        for (Funcionario funcionarioLista : this.funcionarios) {
             if (funcionarioLista.getNumeroDeMatricula() == matricula) {
                 funcionarioRemover = funcionarioLista;
                 encontrou = true;
@@ -166,7 +165,7 @@ public class ControladorFuncionario {
             
             //Verificação se já existe esse nome e matricula para esse funcionario ao mesmo tempo:
             //Verificar se jah existe a mesma matricula:
-            for (IFuncionario funcionarioLista : funcionarios) {
+            for (Funcionario funcionarioLista : funcionarios) {
                 if (funcionarioLista.getNumeroDeMatricula() == envelope.numeroDeMatricula ) {
                     throw new IllegalArgumentException("Numero de matricula jah registrado");
                 } else {
@@ -178,13 +177,15 @@ public class ControladorFuncionario {
             }
             
             //Agora colocar as novas informacoes do funcionario no funcionario escolhido:
-            funcionarioParaModificar.setDataDeNascimento(dataDeNascimento);
-            funcionarioParaModificar.setCargo(null);
-            funcionarioParaModificar.setCargo(envelope.cargo);
-            funcionarioParaModificar.setNumeroDeMatricula(envelope.numeroDeMatricula);
-            funcionarioParaModificar.setNome(envelope.nome);
-            funcionarioParaModificar.setTelefone(envelope.telefone);
-            funcionarioParaModificar.setSalario(envelope.salario);
+            int indexArray = this.funcionarios.indexOf(funcionarioParaModificar);
+            
+            this.funcionarios.get(indexArray).setDataDeNascimento(dataDeNascimento);
+            this.funcionarios.get(indexArray).setCargo(null);
+            this.funcionarios.get(indexArray).setCargo(envelope.cargo);
+            this.funcionarios.get(indexArray).setNumeroDeMatricula(envelope.numeroDeMatricula);
+            this.funcionarios.get(indexArray).setNome(envelope.nome);
+            this.funcionarios.get(indexArray).setTelefone(envelope.telefone);
+            this.funcionarios.get(indexArray).setSalario(envelope.salario);
         }
     }
     

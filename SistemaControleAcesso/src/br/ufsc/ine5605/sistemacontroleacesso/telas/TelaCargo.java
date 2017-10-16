@@ -14,7 +14,6 @@ import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargo;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeCargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -4,7 +4,6 @@ import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeFuncionario;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
-import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
 //Calendar ou date?
 import java.util.Calendar;
 import java.util.Scanner;
@@ -196,7 +195,7 @@ public class TelaFuncionario {
         System.out.println ("---------Listagem de Funcionarios-------");
         System.out.println ("----------------------------------------");
         //Listagem dos funcionarios
-        for (IFuncionario funcionarioLista : this.controlador.getFuncionarios()){
+        for (Funcionario funcionarioLista : this.controlador.getFuncionarios()){
             
             System.out.println ("-Nome: " + funcionarioLista.getNome());
             System.out.println ("-Matricula: " + funcionarioLista.getNumeroDeMatricula());
