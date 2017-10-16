@@ -9,6 +9,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.AcontecimentoRegistro;
 import br.ufsc.ine5605.sistemacontroleacesso.Registro;
 import br.ufsc.ine5605.sistemacontroleacesso.controladores.ControladorRegistros;
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.IFuncionario;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -46,7 +47,6 @@ public class TelaRegistro {
             System.out.println();
 
             opcao = this.inputDeIntTratado();
-           
 
             switch (opcao) {
 
@@ -58,17 +58,28 @@ public class TelaRegistro {
                     this.listarAcontecimentos();
                     System.out.println("---Selecione um dos acontecimentos");
                     System.out.println("-#OPÇÃO:_____");
-                    System.out.println();
                     int acontecimentoSelecionado;
                     acontecimentoSelecionado = this.inputDeIntTratado();
-                    this.teclado.nextLine();                  
+                   //ALGUÉM CONSEGUE TRATAR ISSO?
+                    try {
+                        if (acontecimentoSelecionado > AcontecimentoRegistro.values().length -1) {
+                        }
+                    } catch (IllegalArgumentException exception) {
+                        System.out.println("########################################");
+                        //System.out.println("-" + exception.getMessage());
+                        System.out.println("########################################");
+                        System.out.println("-------------Tente novamente(Opção Inválida)------------");
+
+                    }
+                    System.out.println();
+                    this.teclado.nextLine();
                     //Aqui começa o método de findRegistroByAcontecimento e o retorno já passa pelo foreach
                     for (Registro registroBusca
                             : this.controladorRegistros.findRegistroByAcontecimento(acontecimentoSelecionado)) {
                         //A partir daqui são printados: Acontecimento, Data do Acontecimento e Nº de Matrícula
                         System.out.println(registroBusca.getAcontecimento());
-                        System.out.println(registroBusca.getDataAcontecimento().getTime());
-                        System.out.println(registroBusca.getNumDeMatricula());
+                        System.out.println(registroBusca.getDataAcontecimento().get(Calendar.HOUR_OF_DAY)+":"+registroBusca.getDataAcontecimento().get(Calendar.MINUTE));
+                        System.out.println("Matrícula:" + registroBusca.getNumDeMatricula());
                     }
                     break;
                 case 2:
@@ -89,11 +100,12 @@ public class TelaRegistro {
                     int numerodeMatriculaSelecionado;
                     numerodeMatriculaSelecionado = this.inputDeIntTratado();
                     this.teclado.nextLine();
-                    for(Registro registroLista : 
-                            controladorRegistros.findRegistroByMatricula(numerodeMatriculaSelecionado)){
+                    for (Registro registroLista
+                            : controladorRegistros.findRegistroByMatricula(numerodeMatriculaSelecionado)) {
                         System.out.println("------------");
                         System.out.println(registroLista.getAcontecimento());
-                        System.out.println(registroLista.getDataAcontecimento());
+                        System.out.println(registroLista.getDataAcontecimento().get(Calendar.HOUR_OF_DAY)+":"+registroLista.getDataAcontecimento().get(Calendar.MINUTE));
+                        //System.out.println(registroLista.getDataAcontecimento());
                     }
                     break;
             }
@@ -107,8 +119,8 @@ public class TelaRegistro {
             System.out.println("-" + acontecimentoBusca.ordinal() + ")" + acontecimentoBusca.toString());
         }
     }
-    
-     private int inputDeIntTratado () {
+
+    private int inputDeIntTratado() {
         Scanner scannerDeTratamento = null;
         do {
             String inputDoUsuario = this.teclado.nextLine();

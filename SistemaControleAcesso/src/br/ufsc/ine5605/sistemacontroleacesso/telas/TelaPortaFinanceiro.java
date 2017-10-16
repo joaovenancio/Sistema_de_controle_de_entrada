@@ -37,7 +37,7 @@ public class TelaPortaFinanceiro {
             opcao = this.inputDeIntTratado();
             
             switch(opcao) {
-                //Detrancar a porta:
+                //Destrancar a porta:
                 case 1:
                     try {
                         
