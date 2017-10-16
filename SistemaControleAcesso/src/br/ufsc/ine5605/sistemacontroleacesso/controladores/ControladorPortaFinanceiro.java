@@ -10,6 +10,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.CargoComAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.CargoSemAcesso;
 import br.ufsc.ine5605.sistemacontroleacesso.Funcionario;
 import br.ufsc.ine5605.sistemacontroleacesso.Registro;
+import br.ufsc.ine5605.sistemacontroleacesso.envelopes.EnvelopeRegistro;
 import br.ufsc.ine5605.sistemacontroleacesso.telas.TelaPortaFinanceiro;
 import java.util.Calendar;
 
@@ -64,22 +65,24 @@ public class ControladorPortaFinanceiro {
         //Tentar acesso a porta:
         //Metodo em andamento
         //Verificar se o usuario em questao possui acesso a a porta:
-        
-        if (funcionarioPorta.getCargo() != null){	
-	        if (funcionarioPorta.getCargo().temAcesso(horario)) {
-	        	return "Acesso Autorizado.";
-	        }else{
-		        if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
-		            //TEM QUE FAZER A VERIFICAÇÃO!
-		            //controladorGeral.getControladorRegistros().addRegistro();
-		            return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
-		        }else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso){
-		            return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
-		        }
-	        }
-	        return "Acesso não autorizado.";
-	    }else{
-	    	return "Acesso não autorizado. Funcionário sem cargo.";
-	    }
+        if (funcionarioPorta.getCargo() != null) {
+            if (funcionarioPorta.getCargo().temAcesso(horario)) {
+                return "Acesso Autorizado.";
+            } else {
+                if (funcionarioPorta.getCargo() instanceof CargoComAcesso) {
+                    //TEM QUE FAZER A VERIFICAÇÃO!
+                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.FORADEHORARIO, horario, numeroDeMatricula);
+                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+                    return AcontecimentoRegistro.FORADEHORARIO.getDescricao();
+                } else if (funcionarioPorta.getCargo() instanceof CargoSemAcesso) {
+                    EnvelopeRegistro envelope = new EnvelopeRegistro(AcontecimentoRegistro.CARGOSEMACESSO, horario, numeroDeMatricula);
+                    controladorGeral.getControladorRegistros().adicionarRegistro(envelope);
+                    return AcontecimentoRegistro.CARGOSEMACESSO.getDescricao();
+                }
+            }
+            return "Acesso não autorizado.";
+        } else {
+            return "Acesso não autorizado. Funcionário sem cargo.";
+        }
     }
 }
