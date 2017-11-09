@@ -215,27 +215,39 @@ public class TelaCargo {
         }
         this.teclado.nextLine();
         
-        System.out.println ("Início do horário de acesso - apenas hora:_____________________");
+        System.out.println ("Início do primeiro período de acesso - apenas hora:_____________________");
         int inicioHora = this.inputDeIntTratado();
         
-        System.out.println ("Início do horário de acesso - apenas minuto:_____________________");
+        System.out.println ("Início do primeiro período de acesso - apenas minuto:_____________________");
         int inicioMinuto = this.inputDeIntTratado();
         
-        System.out.println ("Fim do horário de acesso - apenas hora:_____________________");
+        System.out.println ("Fim do primeiro período de acesso - apenas hora:_____________________");
         int fimHora = this.inputDeIntTratado();
         
-        System.out.println ("Fim do horário de acesso - apenas minuto:_____________________");
+        System.out.println ("Fim do primeiro período de acesso - apenas minuto:_____________________");
         int fimMinuto = this.inputDeIntTratado();
         
-        if (inicioHora < 0 || inicioHora > 24) {
+        System.out.println ("Início do segundo período de acesso - apenas hora:_____________________");
+        int inicioSHora = this.inputDeIntTratado();
+        
+        System.out.println ("Início do segundo período de acesso - apenas minuto:_____________________");
+        int inicioSMinuto = this.inputDeIntTratado();
+        
+        System.out.println ("Fim do segundo período de acesso - apenas hora:_____________________");
+        int fimSHora = this.inputDeIntTratado();
+        
+        System.out.println ("Fim do segundo período de acesso - apenas minuto:_____________________");
+        int fimSMinuto = this.inputDeIntTratado();        
+        
+        if (inicioHora < 0 || inicioSHora < 0 || inicioHora > 24 || inicioSHora > 24) {
             throw new IllegalArgumentException("Hora de início inserida inválida.");
             //Mes nao pode ser abaixo de 1 ou acima de 12
-        } else if (inicioMinuto < 0 || inicioMinuto > 59) {
+        } else if (inicioMinuto < 0 || inicioSMinuto < 0 || inicioMinuto > 59 || inicioSMinuto > 59) {
             throw new IllegalArgumentException("Minuto de início inserido inválido.");
             //O dia precisa ser maior do que 1 e menor do que 31
-        } else if (fimHora < 0 || fimHora > 24) {
+        } else if (fimHora < 0 || fimSHora < 0 || fimHora > 24 || fimSHora > 24) {
             throw new IllegalArgumentException("Hora de fim inserida inválida.");
-        } else if (fimMinuto < 0 || fimMinuto > 59) {
+        } else if (fimMinuto < 0 || fimSMinuto < 0 || fimMinuto > 59 || fimSMinuto > 59) {
             throw new IllegalArgumentException("Minuto de fim inserido inválido.");
         }        
         
@@ -248,10 +260,20 @@ public class TelaCargo {
         calendarioFim.clear();
         calendarioFim.set(Calendar.HOUR, fimHora);
         calendarioFim.set(Calendar.MINUTE, fimMinuto);
+        
+        Calendar calendarioSInicio= Calendar.getInstance();
+        calendarioSInicio.clear();
+        calendarioSInicio.set(Calendar.HOUR, inicioSHora);
+        calendarioSInicio.set(Calendar.MINUTE, inicioSMinuto);
+        
+        Calendar calendarioSFim= Calendar.getInstance();
+        calendarioSFim.clear();
+        calendarioSFim.set(Calendar.HOUR, fimSHora);
+        calendarioSFim.set(Calendar.MINUTE, fimSMinuto);
 
         
         //Envelope criado para adicionar a lista
-        return new EnvelopeCargoComAcesso(codigo, nome, calendarioInicio, calendarioFim);
+        return new EnvelopeCargoComAcesso(codigo, nome, calendarioInicio, calendarioFim, calendarioSInicio, calendarioSFim);
 	}    
 
     /**Cria cargo sem acesso através de inputs do usuário
@@ -365,13 +387,17 @@ public class TelaCargo {
             System.out.println("-Nome: " + cargo.getNome());
             System.out.println("-Codigo: " + cargo.getCodigo());
 
-            /* if (cargo instanceof CargoComAcesso){
+            if (cargo instanceof CargoComAcesso){
 	            	CargoComAcesso cargoAcesso= (CargoComAcesso) cargo;
 	            	Calendar horario= cargoAcesso.getArrayComHorarios().get(0);
-	            	
-	            	System.out.println ("-Inicio do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
-	                System.out.println ("-Fim do Acesso: " + horario.get(HOUR_OF_DAY) + ":" + horario.get(MINUTE);
-	            } */
+	            	System.out.print("-Acesso: " + horario.get(Calendar.HOUR_OF_DAY) + ":" + horario.get(Calendar.MINUTE));
+	            	horario= cargoAcesso.getArrayComHorarios().get(1);
+	            	System.out.print(" às " + horario.get(Calendar.HOUR_OF_DAY) + ":" + horario.get(Calendar.MINUTE));
+	            	horario= cargoAcesso.getArrayComHorarios().get(2);
+	            	System.out.print(" e " + horario.get(Calendar.HOUR_OF_DAY) + ":" + horario.get(Calendar.MINUTE));
+	            	horario= cargoAcesso.getArrayComHorarios().get(3);
+	            	System.out.println(" às " + horario.get(Calendar.HOUR_OF_DAY) + ":" + horario.get(Calendar.MINUTE));
+	        }
             System.out.println("----------------------------------------");
         }
     }

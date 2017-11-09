@@ -110,7 +110,8 @@ public class ControladorCargo {
         if (!existeCodigo) {
             if (!existeNome) {
                 CargoComAcesso cargo = new CargoComAcesso(envelope.codigo, envelope.nome,
-                        envelope.arrayComHorarios.get(0), envelope.arrayComHorarios.get(1));
+                        envelope.arrayComHorarios.get(0), envelope.arrayComHorarios.get(1),
+                        envelope.arrayComHorarios.get(2), envelope.arrayComHorarios.get(3));
 
                 if (cargo != null) {
                     listaCargo.add(cargo);
@@ -133,8 +134,8 @@ public class ControladorCargo {
             if (this.listaCargo.contains(cargo)) {
                 ArrayList<Funcionario> listaFuncionario = controladorGeral.getControladorFuncionario().getFuncionarios();
                 for (Funcionario funcionario : listaFuncionario) {
-                    if (funcionario.getCargo().equals(cargo)) {
-                        funcionario.setCargo(null);
+                    if (funcionario.getCargo().getCodigo().equals(cargo.getCodigo())) {
+                        throw new IllegalArgumentException("Cargo vinculado a um funcionário. Resolva todas as pendências.");
                     }
                 }
                 this.listaCargo.remove(cargo);

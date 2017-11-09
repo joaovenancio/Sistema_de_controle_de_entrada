@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.sistemacontroleacesso;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
@@ -13,7 +14,7 @@ import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
  *
  * @author PEaug
  */
-public abstract class Cargo implements ICargo {
+public abstract class Cargo implements ICargo, Serializable {
     /**
      * Atributo que representa o <b>código do Cargo</b>
      */

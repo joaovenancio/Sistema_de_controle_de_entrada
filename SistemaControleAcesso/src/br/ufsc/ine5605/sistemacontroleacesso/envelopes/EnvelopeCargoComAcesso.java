@@ -26,12 +26,14 @@ public class EnvelopeCargoComAcesso {
         *@param Calendar - Horário de ínicio de expediente do cargo
         *@param Calendar - Horário de final de expediente do cargo        
         */
-	public EnvelopeCargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
+	public EnvelopeCargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim, Calendar sInicio, Calendar sFim) {
 		this.codigo = codigo;
 		this.nome = nome;
         this.arrayComHorarios = new ArrayList<>();
         this.arrayComHorarios.add(inicio);
         this.arrayComHorarios.add(fim);
+        this.arrayComHorarios.add(sInicio);
+        this.arrayComHorarios.add(sFim);
                 
 	}
     

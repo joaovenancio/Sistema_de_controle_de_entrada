@@ -30,11 +30,13 @@ public class CargoComAcesso extends Gerente {
      * @param inicio - Horário de inicio do expediente desse cargo
      * @param fim  - Horário de fim do expediente desse cargo
      */
-    public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim) {
+    public CargoComAcesso(String codigo, String nome, Calendar inicio, Calendar fim, Calendar sInicio, Calendar sFim) {
         super(codigo, nome);
         this.arrayComHorarios = new ArrayList<>();
         this.arrayComHorarios.add(inicio);
         this.arrayComHorarios.add(fim);
+        this.arrayComHorarios.add(sInicio);
+        this.arrayComHorarios.add(sFim);
     }
 
     /**
@@ -44,11 +46,65 @@ public class CargoComAcesso extends Gerente {
      * @return - boolean indicando se o cargo tem acesso
      */
     public boolean verificarHorario(Calendar horario) {
-        if (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario)){
-        	if(this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario)) {
-        		return true;
-        	}
-        }
+    	//O período de acesso está contido no mesmo dia
+    	if(arrayComHorarios.get(0).before(arrayComHorarios.get(1))){
+    		if (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario)){
+            	if(this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario)) {
+            		return true;
+            	}
+            }
+    	//O período de acesso está contido em mais de um dia	
+    	}else{
+    		Calendar meioDia = Calendar.getInstance();
+            meioDia.set(Calendar.HOUR_OF_DAY, 12);
+            
+            //O horário de entrada é depois do meio dia
+    		if (horario.after(meioDia)){
+	    		if (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario)){
+	            	if(! (this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario))) {
+	            		return true;
+	            	}
+	            }
+	    	//O horário de entrada é igual ou antes do meio dia	
+    		}else{
+    			if (! (this.arrayComHorarios.get(0).before(horario) || this.arrayComHorarios.get(0).equals(horario))){
+	            	if(this.arrayComHorarios.get(1).after(horario) || this.arrayComHorarios.get(1).equals(horario)) {
+	            		return true;
+	            	}
+	            }
+    		}
+    	}
+        
+    	//Para o segundo período de acesso
+    	
+    	//O período de acesso está contido no mesmo dia
+    	if(arrayComHorarios.get(2).before(arrayComHorarios.get(3))){
+    		if (this.arrayComHorarios.get(2).before(horario) || this.arrayComHorarios.get(2).equals(horario)){
+            	if(this.arrayComHorarios.get(3).after(horario) || this.arrayComHorarios.get(3).equals(horario)) {
+            		return true;
+            	}
+            }
+    	//O período de acesso está contido em mais de um dia	
+    	}else{
+    		Calendar meioDia = Calendar.getInstance();
+            meioDia.set(Calendar.HOUR_OF_DAY, 12);
+            
+            //O horário de entrada é depois do meio dia
+    		if (horario.after(meioDia)){
+	    		if (this.arrayComHorarios.get(2).before(horario) || this.arrayComHorarios.get(3).equals(horario)){
+	            	if(! (this.arrayComHorarios.get(2).after(horario) || this.arrayComHorarios.get(3).equals(horario))) {
+	            		return true;
+	            	}
+	            }
+	    	//O horário de entrada é igual ou antes do meio dia	
+    		}else{
+    			if (! (this.arrayComHorarios.get(2).before(horario) || this.arrayComHorarios.get(2).equals(horario))){
+	            	if(this.arrayComHorarios.get(3).after(horario) || this.arrayComHorarios.get(3).equals(horario)) {
+	            		return true;
+	            	}
+	            }
+    		}
+    	}
 
         return false;
     }

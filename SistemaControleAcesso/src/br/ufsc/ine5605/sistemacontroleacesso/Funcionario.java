@@ -6,13 +6,15 @@
 package br.ufsc.ine5605.sistemacontroleacesso;
 
 import br.ufsc.ine5605.sistemacontroleacesso.interfaces.ICargo;
+
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  *
  * @author Joao Vitor Venancio
  */
-public class Funcionario{
+public class Funcionario implements Serializable{
     //Atributos:
     /**
      * Atributo que representa o número de matrícula do funcionário
